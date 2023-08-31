@@ -1,0 +1,27 @@
+.about-info-container {
+  width: max-content;
+  height: max-content;
+  margin-right: 95px;
+  margin-bottom: 50px;
+}
+
+.about-info-title {
+  color: #00B0E1;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 250;
+  line-height: 130%; /* 62.4px */
+}
+
+.about-info-line {
+
+}
+
+.about-info-subtitle {
+  color: #A9A9A9;
+  font-family: Montserrat;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 23.8px */
+}

@@ -1,0 +1,50 @@
+
+
+.header-container {
+  margin-top: 30px;
+
+}
+
+
+.header-box {
+  display: flex;
+  align-items: center;
+}
+
+/* left */
+
+.header-logo {
+
+}
+
+/* middle */
+
+.header-menu {}
+
+.header-menu-items {
+  color: #FFF;
+font-family: Montserrat;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-left: 20px;
+}
+
+
+/* right */
+
+.hedaer-contact-box {}
+
+.hedaer-contanct-title {
+  text-align: right;
+  color: #00B0E1;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.hedaer-contanct-phone {
+
+}

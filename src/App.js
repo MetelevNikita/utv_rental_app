@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
 
-function App() {
-  return (
+// bootstrap
+
+import { Container, Col, Row } from 'react-bootstrap'
+
+// Router
+
+import { Routes, Route } from 'react-router-dom'
+
+// components
+
+
+import Header from './components/header/header'
+import Video from './UI/video'
+import AboutUs from './components/pages/jsx/aboutUs'
+import Services from './components/pages/jsx/services'
+
+
+
+
+
+const App = () => {
+
+
+  return(
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container>
+          <Header></Header>
+          <Video></Video>
+          <AboutUs></AboutUs>
+          <Services></Services>
+
+
+      </Container>
+
+
+
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
