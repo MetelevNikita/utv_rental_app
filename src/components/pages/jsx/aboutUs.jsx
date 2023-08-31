@@ -52,8 +52,8 @@ const AboutUs = () => {
 
           <div className="about-partners-title">Нам доверяют:</div>
 
-          {arrOfPartners.map((logo) => {
-            return <img className='logo-partners' src={logo} alt={logo} />
+          {arrOfPartners.map((logo, index) => {
+            return <img key={index+1} className='logo-partners' src={logo} alt={logo} />
           })}
 
         </Col>

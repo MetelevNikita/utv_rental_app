@@ -1,0 +1,81 @@
+.rental-card-container {
+  max-width: 377px;
+  height: max-content;
+  margin-bottom: 40px;
+
+}
+
+.rental-card-img {
+  margin-bottom: 19px;
+}
+
+.rental-card-title {
+  color: #FFF;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: 0.66px;
+
+  /*  */
+
+  max-height: 29px;
+  max-width: 380px;
+  margin-bottom: 15px;
+}
+
+.rental-card-line-top {
+  margin-bottom: 14px
+
+}
+
+.rental-card-subtitle {
+  color: rgba(169, 169, 169, 0.60);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+
+  max-height: 70px;
+  max-width: 378px;
+  margin-bottom: 16px;
+}
+
+.rental-card-quantity {
+  color: rgba(169, 169, 169, 0.60);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+
+  max-height: 29px;
+  max-width: 375px;
+  margin-bottom: 11px;
+}
+
+.rental-card-line-bottom {
+  margin-bottom: 16px;
+}
+
+.rental-card-price {
+  color: #FFF;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: 0.66px;
+
+  max-height: 70px;
+  max-width: 378px;
+  margin-bottom: 30px;
+}
+
+.rental-card-button {
+  border-radius: 67px;
+  border: 1px solid #FFF;
+  background: linear-gradient(113deg, rgba(30, 79, 198, 0.00) 1.67%, rgba(0, 176, 225, 0.00) 100%);
+
+  width: 372px;
+  height: 52px;
+  flex-shrink: 0;
+}

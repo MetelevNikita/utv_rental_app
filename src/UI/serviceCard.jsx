@@ -1,23 +1,19 @@
 import './serviceCard.css'
 
 
-// img
-
-import serviceImg from './../asset/services-card-test.png'
-
-const ServiceCard = () => {
+const ServiceCard = ({img, title, subtitle, date}) => {
 
 
   return(
     <div className="service-card-container">
 
-      <img className='service-card-img' src={serviceImg} alt="serviceImg" />
-      <div className="service-card-title">Разработка интерактивных систем VR</div>
+      <img className='service-card-img' src={img} alt="serviceImg" />
+      <div className="service-card-title">{title}</div>
 
       <hr className='service-card-line'/>
 
-      <div className="service-card-subtitle">Наша компания предоставляет услуги не только по созданию</div>
-      <div className="service-card-date">год : 2023</div>
+      <div className="service-card-subtitle">{subtitle}</div>
+      <div className="service-card-date">год: {date}</div>
 
     </div>
   )

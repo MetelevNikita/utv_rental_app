@@ -15,6 +15,7 @@ import Header from './components/header/header'
 import Video from './UI/video'
 import AboutUs from './components/pages/jsx/aboutUs'
 import Services from './components/pages/jsx/services'
+import Rental from './components/pages/jsx/rental'
 
 
 
@@ -26,10 +27,12 @@ const App = () => {
   return(
     <div className="App">
       <Container>
+        
           <Header></Header>
           <Video></Video>
           <AboutUs></AboutUs>
           <Services></Services>
+          <Rental></Rental>
 
 
       </Container>
