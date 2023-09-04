@@ -19,6 +19,16 @@ import Rental from './components/pages/jsx/rental'
 import Team from './components/pages/jsx/team'
 import Footer from './components/footer/footer'
 
+// Modal
+
+import ModalCreate from './modals/jsx/modal_create'
+
+
+//
+
+import { useState } from 'react'
+
+
 
 
 
@@ -26,23 +36,28 @@ import Footer from './components/footer/footer'
 
 const App = () => {
 
+  const [modalCreate, setModalCreate] = useState(false)
+
+
+
+
 
   return(
     <div className="App">
       <Container>
 
           <Header></Header>
-          <Video></Video>
+          <Video modalCreateOpen={{modalCreate, setModalCreate}}></Video>
           <AboutUs></AboutUs>
           <Services></Services>
           <Rental></Rental>
           <Team></Team>
           <Footer></Footer>
 
+          {(modalCreate !== false) ? <ModalCreate modalCreateOpen={{modalCreate, setModalCreate}}/> : <></>}
+
 
       </Container>
-
-
 
     </div>
   )

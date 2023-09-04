@@ -10,7 +10,17 @@ import video from './../asset/showreel.webm'
 import { Col, Container, Row } from 'react-bootstrap'
 
 
-const Video = () => {
+//
+
+
+
+const Video = ({modalCreateOpen}) => {
+
+
+
+  const {modalCreate, setModalCreate} = modalCreateOpen
+
+
 
   return(
 
@@ -30,7 +40,7 @@ const Video = () => {
 
               <div className='video-title'>Организация <br /> Онлайн-трансляций</div>
               <div className="video-subtitle">Текст о компании, цели и достижения за время работы, опыт</div>
-              <button className='video-btn'>Отправить заявку</button>
+              <button className='video-btn' onClick={() => {setModalCreate(prev => !prev)}}>Отправить заявку</button>
 
             </div>
         </Col>
