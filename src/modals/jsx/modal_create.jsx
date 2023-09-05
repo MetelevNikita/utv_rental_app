@@ -4,6 +4,7 @@ import './../css/modal_create.css'
 // components
 
 import MyButton from '../../UI/myButton'
+import ModalSubmit from './modal_submit'
 
 //
 
@@ -13,15 +14,28 @@ import { useState } from 'react'
 const ModalCreate = ({modalCreateOpen}) => {
 
   const {modalCreate, setModalCreate} = modalCreateOpen
+  const [modalCreateChk, setModalCreateChk] = useState(false)
+  const [modalSubmit, setModalSubmit] = useState(false)
+
+  console.log(modalCreate)
+
+
+
+
 
 
   const [name, setName] = useState('')
   const [phone, setPhone] = useState()
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState()
   const [text, setText] = useState('')
 
 
   const modalCreateMessage = () => {
+
+    if (modalCreateChk === false) {
+      alert('примите условия соглашения')
+    }
+
 
       const message = {
         name: name,
@@ -31,9 +45,29 @@ const ModalCreate = ({modalCreateOpen}) => {
       }
 
       console.log(message)
+
+
+      setName('')
+      setEmail('')
+      setPhone('')
+      setText('')
+
+
+      setModalCreate(false)
+      setModalSubmit(true)
+
       return message
 
   }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -65,7 +99,7 @@ const ModalCreate = ({modalCreateOpen}) => {
 
                         <input className='modal-create-input' type="tel" name="phone" id="" placeholder='phone' value={phone} onChange={(e) => {setPhone(e.target.value)}}/>
 
-                        <input className='modal-create-input' type="email" name="email" id="" placeholder='email' value={email} onChange={(e) => {setEmail(e.target.value())}}/>
+                        <input className='modal-create-input' type="email" name="email" id="" placeholder='email' value={email} onChange={(e) => {setEmail(e.target.value)}}/>
 
                         <textarea className='modal-create-area-input' name="text" id="" placeholder='text' value={text} onChange={(e) => {setText(e.target.value)}}></textarea>
 
@@ -73,7 +107,7 @@ const ModalCreate = ({modalCreateOpen}) => {
 
 
                   <div className="modal-create-submit-box">
-                    <input className='modal-create-chk' type="checkbox" name="" id="" />
+                    <input className='modal-create-chk' type="checkbox" name="" id="" onChange={() => {setModalCreateChk(prev => !prev)}} checked={modalCreateChk}/>
                     <div className='modal-create-chk-text'>Я согласен с политикой конфиденциальности</div>
 
                     <MyButton style={{marginLeft: 150 + 'px'}} onClick={() => {modalCreateMessage()}}>Отправить</MyButton>
