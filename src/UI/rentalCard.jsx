@@ -5,7 +5,11 @@ import './../UI/rentalCard.css'
 import MyButton from './myButton'
 
 
-const RentalCard = ({img, title, subtitle, quantity, price, id}) => {
+const RentalCard = ({img, title, subtitle, quantity, price, id, modalRentalButton}) => {
+
+
+  const {modalRental, setModalRental} = modalRentalButton
+
 
   return(
     <div className="rental-card-container" id={id}>
@@ -22,7 +26,7 @@ const RentalCard = ({img, title, subtitle, quantity, price, id}) => {
 
       <div className="rental-card-price">Цена: {price} руб</div>
 
-      <MyButton>Арендовать</MyButton>
+      <MyButton onClick={() => {setModalRental(true)}}>Арендовать</MyButton>
 
 
 

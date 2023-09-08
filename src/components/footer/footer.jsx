@@ -11,12 +11,45 @@ import icon_mail from './../../asset/footer_icons/Main_icon.svg'
 import icon_location from './../../asset/footer_icons/Location_icon.svg'
 
 
+//
+
+import { useState } from 'react'
+
+
 const Footer = ()  => {
+
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
+  const [text, setText] = useState('')
+
+  const createMessage = () => {
+
+    const message = {
+      name: name,
+      phone: phone,
+      email: email,
+      text: text
+    }
+
+
+    setName('')
+    setPhone('')
+    setEmail('')
+    setText('')
+
+    
+
+
+    return message
+  }
+
+
 
 
   return(
 
-    <Container>
+    <Container className='mt-5'>
 
       <Row>
         <Col className='col-xl-8 col-md-12'>
@@ -27,16 +60,16 @@ const Footer = ()  => {
           <Row>
             <Col className='d-flex'>
                   <div className="input-box-left">
-                    <input className='footer-input' type="text" placeholder='Имя'/>
-                    <input className='footer-input' type="text" placeholder='Телефон'/>
+                    <input className='footer-input' type="text" placeholder='Имя' value={name} onChange={(e) => {setName(e.target.value)}}/>
+                    <input className='footer-input' type="text" placeholder='Телефон' value={phone} onChange={(e) => {setPhone(e.target.value)}}/>
                   </div>
               </Col>
 
               <Col className='d-flex'>
 
                   <div className="input-box-right">
-                      <input className='footer-input' type="text" placeholder='E-mail'/>
-                      <input className='footer-input' type="text" placeholder='Сообщение'/>
+                      <input className='footer-input' type="text" placeholder='E-mail' value={email} onChange={(e) => {setEmail(e.target.value)}}/>
+                      <input className='footer-input' type="text" placeholder='Сообщение' value={text} onChange={(e) => {setText(e.target.value)}}/>
                   </div>
 
               </Col>

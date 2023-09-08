@@ -6,7 +6,7 @@ import { Container, Col, Row } from 'react-bootstrap'
 
 // Router
 
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Router, Route } from 'react-router-dom'
 
 // components
 
@@ -19,15 +19,24 @@ import Rental from './components/pages/jsx/rental'
 import Team from './components/pages/jsx/team'
 import Footer from './components/footer/footer'
 
+//
+
+
+import RentalAllCard from './components/pages/jsx/rental-all-card'
+
 // Modal
 
 import ModalCreate from './modals/jsx/modal_create'
-
+import ModalSubmit from './modals/jsx/modal_submit'
+import ModalRental from './modals/jsx/modal_rental'
 
 //
 
 import { useState } from 'react'
-import ModalSubmit from './modals/jsx/modal_submit'
+
+
+
+
 
 
 
@@ -38,6 +47,7 @@ import ModalSubmit from './modals/jsx/modal_submit'
 const App = () => {
 
   const [modalCreate, setModalCreate] = useState(false)
+  const [modalRental, setModalRental] = useState(false)
 
 
 
@@ -47,15 +57,28 @@ const App = () => {
     <div className="App">
       <Container>
 
-          <Header></Header>
-          <Video modalCreateOpen={{modalCreate, setModalCreate}}></Video>
-          <AboutUs></AboutUs>
-          <Services></Services>
-          <Rental></Rental>
-          <Team></Team>
-          <Footer></Footer>
+              <Header></Header>
+              <Video modalCreateOpen={{modalCreate, setModalCreate}}></Video>
+
+        <Routes>
+          <Route path='/' element={<>
+              <AboutUs></AboutUs>
+              <Services></Services>
+              <Rental modalRentalOpen={{modalRental, setModalRental}}></Rental>
+              <Team></Team>
+              </>}>
+            </Route>
+
+            <Route path='/rental' element={<RentalAllCard modalRentalOpen={{modalRental, setModalRental}}/>}></Route>
+            <Route path='/rental/:id' element={}></Route>
+        </Routes>
+
+
+              <Footer></Footer>
+
 
           {(modalCreate !== false) ? <ModalCreate modalCreateOpen={{modalCreate, setModalCreate}}/> : <></>}
+          {(modalRental !== false) ? <ModalRental modalRentalOpen={{modalRental, setModalRental}}></ModalRental> : <></>}
 
 
       </Container>

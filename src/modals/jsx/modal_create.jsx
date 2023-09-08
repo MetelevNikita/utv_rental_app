@@ -17,7 +17,6 @@ const ModalCreate = ({modalCreateOpen}) => {
   const [modalCreateChk, setModalCreateChk] = useState(false)
   const [modalSubmit, setModalSubmit] = useState(false)
 
-  console.log(modalCreate)
 
 
 
@@ -30,14 +29,17 @@ const ModalCreate = ({modalCreateOpen}) => {
   const [text, setText] = useState('')
 
 
+
+
   const modalCreateMessage = () => {
 
     if (modalCreateChk === false) {
       alert('примите условия соглашения')
+      return
     }
 
 
-      const message = {
+       const message = {
         name: name,
         phone: phone,
         email: email,
@@ -51,14 +53,17 @@ const ModalCreate = ({modalCreateOpen}) => {
       setEmail('')
       setPhone('')
       setText('')
-
-
       setModalCreate(false)
-      setModalSubmit(true)
 
-      return message
 
   }
+
+
+
+
+
+
+
 
 
 
