@@ -59,7 +59,7 @@ const Rental = ({modalRentalOpen}) => {
         {rentalData.map((card, id) => {
 
           if (card.category === rental) {
-            return <Col key={id} className='col-xl-12 col-md-4 col-sm-12 col-xs-12'><RentalCard modalRentalButton={modalRentalOpen} img={card.img} title={card.title} subtitle={card.subtitle} price={card.price} quantity={card.quantity}></RentalCard></Col>
+            return <Col key={id} className='col-xl-4 col-md-4 col-sm-12 col-xs-12'><RentalCard modalRentalButton={modalRentalOpen} id={card.id} img={card.img} title={card.title} subtitle={card.subtitle} price={card.price} quantity={card.quantity}></RentalCard></Col>
           }
         })}
 

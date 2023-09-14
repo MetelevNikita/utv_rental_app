@@ -1,0 +1,28 @@
+.open-card-container {
+  margin-top: 250px;
+}
+
+.card-open-title {
+  font-size: 32px;
+  margin-bottom: 20px;
+
+}
+
+.card-open-subtitle {
+
+}
+
+.card-open-line {
+
+}
+
+.card-open-quantity {
+  font-size: 32px;
+
+}
+
+.card-open-price {
+  font-size: 32px;
+  font-weight: 700;
+
+}

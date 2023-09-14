@@ -1,5 +1,9 @@
 import './../UI/rentalCard.css'
 
+//
+
+import { Link } from 'react-router-dom'
+
 // components
 
 import MyButton from './myButton'
@@ -9,6 +13,7 @@ const RentalCard = ({img, title, subtitle, quantity, price, id, modalRentalButto
 
 
   const {modalRental, setModalRental} = modalRentalButton
+
 
 
   return(
@@ -26,7 +31,7 @@ const RentalCard = ({img, title, subtitle, quantity, price, id, modalRentalButto
 
       <div className="rental-card-price">Цена: {price} руб</div>
 
-      <MyButton onClick={() => {setModalRental(true)}}>Арендовать</MyButton>
+      <Link to={`/rental/${id}`}><MyButton>Посмотреть</MyButton></Link>
 
 
 

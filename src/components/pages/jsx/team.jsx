@@ -23,9 +23,6 @@ import ScrollCarousel from 'scroll-carousel-react'
 
 const Team = () => {
 
-  console.log(teamData)
-
-
   return(
 
     <Container>

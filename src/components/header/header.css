@@ -34,7 +34,9 @@ margin-left: 20px;
 
 /* right */
 
-.hedaer-contact-box {}
+.hedaer-contact-box {
+  margin-left: 40px;
+}
 
 .hedaer-contanct-title {
   text-align: right;
@@ -46,5 +48,19 @@ margin-left: 20px;
 }
 
 .hedaer-contanct-phone {
+
+}
+
+
+.header-trash-box {
+  display: flex;
+}
+
+.header-trash-counter {
+  margin-right: 10px;
+}
+
+.header-trash-img {
+  width: 20px;
 
 }
