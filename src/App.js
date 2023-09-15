@@ -24,6 +24,7 @@ import Footer from './components/footer/footer'
 
 import RentalAllCard from './components/pages/jsx/rental-all-card'
 import RentalCardOpen from './components/pages/jsx/rental-card-open'
+import Trash from './components/pages/jsx/trash'
 
 // Modal
 
@@ -55,6 +56,8 @@ const App = () => {
   const [modalCreate, setModalCreate] = useState(false)
   const [modalRental, setModalRental] = useState(false)
 
+  const [counterTrash, setCounterTrash] = useState(0)
+
 
 
 
@@ -67,7 +70,7 @@ const App = () => {
         <div className="App">
               <Container>
 
-                      <Header></Header>
+                      <Header trash={{counterTrash, setCounterTrash}}></Header>
                       <Video modalCreateOpen={{modalCreate, setModalCreate}}></Video>
 
                 <Routes>
@@ -79,8 +82,9 @@ const App = () => {
                       </>}>
                     </Route>
 
-                    <Route path='/rental' element={<RentalAllCard modalRentalOpen={{modalRental, setModalRental}}/>}></Route>
-                    <Route path='/rental/:id' element={<RentalCardOpen modalRentalOpen={{modalRental, setModalRental}}/>}></Route>
+                    <Route path='/rental' element={<RentalAllCard />}></Route>
+                    <Route path='/rental/:id' element={<RentalCardOpen trash={{counterTrash, setCounterTrash}} modalRentalOpen={{modalRental, setModalRental}}/>}></Route>
+                    <Route path='/trash' element={<Trash modalCreateOpen={{modalRental, setModalRental}}></Trash>}></Route>
                 </Routes>
 
 

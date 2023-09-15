@@ -13,17 +13,35 @@ import { rentalData } from "../../../servers/rentalData"
 
 import MyButton from '../../../UI/myButton'
 
-//
 
-const RentalCardOpen = ({modalRentalOpen}) => {
+// redux
+
+import { useDispatch, useSelector } from 'react-redux'
+import { addTrash } from '../../../store/trash-slice'
+
+
+const RentalCardOpen = ({modalRentalOpen, trash}) => {
+
+  const dispatch = useDispatch()
+
 
   const {modalRental, setModalRental} = modalRentalOpen
+  const {counterTrash, setCounterTrash} = trash
 
+  console.log(counterTrash)
 
 
   const params = useParams()
   const id = params.id - 1
   const currentCard = rentalData[id]
+
+  const addToTrash = () => {
+
+    dispatch(addTrash(rentalData[id]))
+    setCounterTrash(counterTrash + 1)
+
+
+  }
 
 
 
@@ -55,7 +73,7 @@ const RentalCardOpen = ({modalRentalOpen}) => {
 
       <Row>
         <Col className='col-12 mt-5'>
-          <MyButton>Добавить в корзину</MyButton>
+          <MyButton onClick = {() => {addToTrash()}}>Добавить в корзину</MyButton>
           <MyButton style={{marginLeft: 20 + 'px'}} onClick={() => {setModalRental(true)}}>Задайте вопрос</MyButton>
         </Col>
       </Row>

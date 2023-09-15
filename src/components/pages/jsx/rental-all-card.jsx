@@ -17,12 +17,10 @@ import { Link } from 'react-router-dom'
 
 
 
-const RentalAllCard = ({modalRentalOpen}) => {
+const RentalAllCard = () => {
 
 
 
-
-  const {modalRental, setModalRental} = modalRentalOpen
 
 
 
@@ -39,7 +37,7 @@ const RentalAllCard = ({modalRentalOpen}) => {
                 <div className="rental-box-title d-flex col-sm-12 flex-xl-row flex-md-row flex-sm-column">
                   {rentalData.map((card,index) => {
                     if(card.category === 'Камеры') {
-                      return <Col key={card.id} className='col-xl-4 col-md-4 col-sm-12 col-xs-12'><RentalCard id={card.id} modalRentalButton={modalRentalOpen} img={card.img} title={card.title} subtitle={card.subtitle} price={card.price} quantity={card.quantity}></RentalCard></Col>
+                      return <Col key={card.id} className='col-xl-4 col-md-4 col-sm-12 col-xs-12'><RentalCard id={card.id} img={card.img} title={card.title} subtitle={card.subtitle} price={card.price} quantity={card.quantity}></RentalCard></Col>
                     }
                   })}
                 </div>
@@ -51,7 +49,7 @@ const RentalAllCard = ({modalRentalOpen}) => {
                 <div className="rental-box-camera d-flex col-sm-12 flex-xl-row flex-md-row flex-sm-column">
                   {rentalData.map((card, id) => {
                     if(card.category === 'Свет') {
-                      return <Col key={id} className='col-xl-4 col-md-4 col-sm-12 col-xs-12'><RentalCard modalRentalButton={modalRentalOpen} id={card.id} img={card.img} title={card.title} subtitle={card.subtitle} price={card.price} quantity={card.quantity}></RentalCard></Col>
+                      return <Col key={id} className='col-xl-4 col-md-4 col-sm-12 col-xs-12'><RentalCard id={card.id} img={card.img} title={card.title} subtitle={card.subtitle} price={card.price} quantity={card.quantity}></RentalCard></Col>
                     }
                   })}
                 </div>
@@ -64,7 +62,7 @@ const RentalAllCard = ({modalRentalOpen}) => {
                 <div className="rental-box-camera d-flex flex-xl-row flex-md-row col-sm-12 flex-sm-column">
                   {rentalData.map((card, id) => {
                     if(card.category === 'Звук') {
-                      return <Col key={id} className='col-xl-4 col-md-4 col-sm-12 col-xs-12'><RentalCard modalRentalButton={modalRentalOpen} id={card.id} img={card.img} title={card.title} subtitle={card.subtitle} price={card.price} quantity={card.quantity}></RentalCard></Col>
+                      return <Col key={id} className='col-xl-4 col-md-4 col-sm-12 col-xs-12'><RentalCard id={card.id} img={card.img} title={card.title} subtitle={card.subtitle} price={card.price} quantity={card.quantity}></RentalCard></Col>
                     }
                   })}
                 </div>
@@ -77,7 +75,7 @@ const RentalAllCard = ({modalRentalOpen}) => {
                 <div className="rental-box-camera d-flex flex-xl-row flex-md-row col-sm-12 flex-sm-column">
                   {rentalData.map((card, id) => {
                     if(card.category === 'Операторская техника') {
-                      return <Col key={id} className='col-xl-4 col-md-4 col-sm-12 col-xs-12'> <Link to={`/rental/${card.id}`}><RentalCard modalRentalButton={modalRentalOpen} id={card.id} img={card.img} title={card.title} subtitle={card.subtitle} price={card.price} quantity={card.quantity}></RentalCard></Link></Col>
+                      return <Col key={id} className='col-xl-4 col-md-4 col-sm-12 col-xs-12'> <Link to={`/rental/${card.id}`}><RentalCard id={card.id} img={card.img} title={card.title} subtitle={card.subtitle} price={card.price} quantity={card.quantity}></RentalCard></Link></Col>
                     }
                   })}
                 </div>

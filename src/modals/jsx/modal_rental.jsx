@@ -14,9 +14,9 @@ const ModalRental = ({modalRentalOpen}) => {
   console.log(modalRental)
 
 
-  const [name, setName] = useState('')
-  const [phone, setPhone] = useState('')
-  const [text, setText] = useState('')
+  const [modalName, setModalName] = useState('')
+  const [modalPhone, setModalPhone] = useState('')
+  const [modalText, setModalText] = useState('')
   const [modalRentalChk, setModalRentalChk] = useState(false)
 
 
@@ -28,16 +28,18 @@ const ModalRental = ({modalRentalOpen}) => {
     }
 
     const message = {
-      name: name,
-      phone: phone,
-      text: text
+      name: modalName,
+      phone: modalPhone,
+      text: modalText
     }
 
 
     console.log(message)
-    setName('')
-    setPhone('')
-    setText('')
+    setModalName('')
+    setModalPhone('')
+    setModalText('')
+
+    setModalRental(false)
 
 
     return message
@@ -63,11 +65,11 @@ const ModalRental = ({modalRentalOpen}) => {
 
                 <div className="modal-inputs-box">
 
-                  <input className='modal-rental-input' type="text" name="name" id="" placeholder='name' value={name} onChange={(e) => {setName(e.target.value)}}/>
+                  <input className='modal-rental-input' type="text" name="name" id="" placeholder='name' value={modalName} onChange={(e) => {setModalName(e.target.value)}}/>
 
-                  <input className='modal-rental-input' type="tel" name="phone" id="" placeholder='phone' value={phone} onChange={(e) => {setPhone(e.target.value)}}/>
+                  <input className='modal-rental-input' type="tel" name="phone" id="" placeholder='phone' value={modalPhone} onChange={(e) => {setModalPhone(e.target.value)}}/>
 
-                  <textarea className='modal-rental-area-input' name="text" id="" placeholder='text' value={text} onChange={(e) => {setText(e.target.value)}}></textarea>
+                  <textarea className='modal-rental-area-input' name="text" id="" placeholder='text' value={modalText} onChange={(e) => {setModalText(e.target.value)}}></textarea>
 
                 </div>
 

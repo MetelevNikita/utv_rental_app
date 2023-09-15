@@ -9,10 +9,7 @@ import { Link } from 'react-router-dom'
 import MyButton from './myButton'
 
 
-const RentalCard = ({img, title, subtitle, quantity, price, id, modalRentalButton}) => {
-
-
-  const {modalRental, setModalRental} = modalRentalButton
+const RentalCard = ({img, title, subtitle, quantity, price, id}) => {
 
 
 

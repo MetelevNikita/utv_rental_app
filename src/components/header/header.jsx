@@ -19,9 +19,11 @@ import trashIcon from './../../asset/icon trash.png'
 
 import { useState } from 'react'
 
-const Header = () => {
+const Header = ({trash}) => {
 
-  const [counter, setCounter] = useState(0)
+  const {counterTrash, setCounterTrash} = trash
+
+
 
 
   return(
@@ -42,10 +44,13 @@ const Header = () => {
 
         <Col className="header-box justify-content-end col-4">
 
-          <div className="header-trash-box">
-          <div className='header-trash-counter'>Количество: {counter}</div>
-            <img className='header-trash-img' src={trashIcon} alt="trashicon" />
-          </div>
+          <Link to={'/trash'}>
+            <div className="header-trash-box">
+              <div className='header-trash-counter'>Количество: {counterTrash}</div>
+              <img className='header-trash-img' src={trashIcon} alt="trashicon" />
+            </div>
+          </Link>
+
 
 
           <div className="hedaer-contact-box">

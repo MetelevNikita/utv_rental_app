@@ -1,17 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
+const initialState = {
+  trash: []
+}
+
+
 export const trashSlice = createSlice({
   name: 'trash',
-  initialState: {
-    trash: []
-  },
-
+  initialState,
 
   reducers: {
 
     addTrash: (state, action) => {
-      state.push(action)
+      // state.trash.push(action.payload)
+      state.trash.push(action.payload)
+
+
     },
 
   }
