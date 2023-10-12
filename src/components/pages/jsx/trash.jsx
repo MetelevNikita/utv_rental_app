@@ -22,11 +22,7 @@ const Trash = ({modalCreateOpen}) => {
 
   const {modalRental, setModalRental} = modalCreateOpen
 
-  console.log(modalRental)
-
   const selector = useSelector(state => state.addTrash.trash)
-  console.log(selector)
-
 
   let sum = 0
 

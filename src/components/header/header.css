@@ -24,11 +24,13 @@
 .header-menu-items {
   color: #FFF;
 font-family: Montserrat;
-font-size: 18px;
+font-size: 17px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
 margin-left: 20px;
+cursor: pointer;
+text-decoration: none;
 }
 
 

@@ -20,7 +20,7 @@ const AboutUs = () => {
   const arrOfPartners = [logo1, logo2, logo3]
 
   return(
-    <Container>
+    <Container id='about'>
 
       <Row>
         <Col className="col-12">

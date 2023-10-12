@@ -16,14 +16,14 @@ import MyButton from '../../../UI/myButton'
 import { rentalData } from '../../../servers/rentalData'
 
 
-const Rental = ({modalRentalOpen}) => {
+const Rental = ({modalRentalOpen, trash}) => {
 
   const [rental, setRental] = useState('Камеры')
 
 
 
   return(
-    <Container>
+    <Container id='rental'>
       <Row>
         <Col>
         <div className="rental-title">оборудование для съeмок</div>
@@ -43,23 +43,15 @@ const Rental = ({modalRentalOpen}) => {
 
         </div>
 
-
-        <div className="rental-button-right">
-
-            <Link to={'/rental'}><MyButton>Посмотреть все</MyButton></Link>
-
-        </div>
-
         </Col>
       </Row>
-
 
       <Row>
 
         {rentalData.map((card, id) => {
 
           if (card.category === rental) {
-            return <Col key={id} className='col-xl-4 col-md-4 col-sm-12 col-xs-12'><RentalCard modalRentalButton={modalRentalOpen} id={card.id} img={card.img} title={card.title} subtitle={card.subtitle} price={card.price} quantity={card.quantity}></RentalCard></Col>
+            return <Col key={id} className='col-xl-4 col-md-4 col-sm-12 col-xs-12'><RentalCard modalRentalButton={modalRentalOpen} addGetTrash={trash} id={card.id} img={card.img} title={card.title} subtitleShort={card.subtitlShort} price={card.price} quantity={card.quantity}></RentalCard></Col>
           }
         })}
 

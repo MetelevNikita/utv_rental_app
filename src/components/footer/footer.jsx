@@ -38,7 +38,7 @@ const Footer = ()  => {
     setEmail('')
     setText('')
 
-    
+
 
 
     return message
@@ -49,7 +49,7 @@ const Footer = ()  => {
 
   return(
 
-    <Container className='mt-5'>
+    <Container className='footer-container' id='contacts'>
 
       <Row>
         <Col className='col-xl-8 col-md-12'>

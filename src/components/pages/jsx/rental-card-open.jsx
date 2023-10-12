@@ -28,7 +28,7 @@ const RentalCardOpen = ({modalRentalOpen, trash}) => {
   const {modalRental, setModalRental} = modalRentalOpen
   const {counterTrash, setCounterTrash} = trash
 
-  console.log(counterTrash)
+
 
 
   const params = useParams()

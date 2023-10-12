@@ -8,7 +8,8 @@ import { Container, Row, Col } from "react-bootstrap"
 
 // Rotert
 
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
+
 
 // img
 
@@ -36,10 +37,11 @@ const Header = ({trash}) => {
         </Col>
 
         <Col className="header-box col-5 d-flex flex-xl-row flex-sm-column justify-content-start">
-            <Link className="header-menu-items">О нас</Link>
-            <Link className="header-menu-items">Услуги</Link>
-            <Link className="header-menu-items">Аренда техники</Link>
-            <Link className="header-menu-items">Контакты</Link>
+            <Link to='about' spy={true} smooth={true} offset={10} duration={500} className="header-menu-items">О нас</Link>
+            <Link to='service' spy={true} smooth={true} offset={10} duration={500} className="header-menu-items">Услуги</Link>
+            <Link to='rental' spy={true} smooth={true} offset={140} duration={500} className="header-menu-items">Аренда техники</Link>
+            <Link to='team' spy={true} smooth={true} offset={10} duration={500} className="header-menu-items">Команда</Link>
+            <Link to='contacts' spy={true} smooth={true} offset={10} duration={500} className="header-menu-items">Контакты</Link>
         </Col>
 
         <Col className="header-box justify-content-end col-4">

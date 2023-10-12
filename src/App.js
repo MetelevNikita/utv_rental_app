@@ -22,7 +22,6 @@ import Footer from './components/footer/footer'
 //
 
 
-import RentalAllCard from './components/pages/jsx/rental-all-card'
 import RentalCardOpen from './components/pages/jsx/rental-card-open'
 import Trash from './components/pages/jsx/trash'
 
@@ -77,12 +76,11 @@ const App = () => {
                   <Route path='/' element={<>
                       <AboutUs></AboutUs>
                       <Services></Services>
-                      <Rental modalRentalOpen={{modalRental, setModalRental}}></Rental>
+                      <Rental modalRentalOpen={{modalRental, setModalRental}} trash={{counterTrash, setCounterTrash}}></Rental>
                       <Team></Team>
                       </>}>
                     </Route>
 
-                    <Route path='/rental' element={<RentalAllCard />}></Route>
                     <Route path='/rental/:id' element={<RentalCardOpen trash={{counterTrash, setCounterTrash}} modalRentalOpen={{modalRental, setModalRental}}/>}></Route>
                     <Route path='/trash' element={<Trash modalCreateOpen={{modalRental, setModalRental}}></Trash>}></Route>
                 </Routes>

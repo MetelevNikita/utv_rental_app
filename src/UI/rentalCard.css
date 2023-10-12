@@ -13,11 +13,12 @@
 
 .rental-card-title {
   color: #FFF;
-  font-size: 22px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: 130%;
   letter-spacing: 0.66px;
+  margin-bottom: 20px;
 
   /*  */
 
@@ -27,18 +28,19 @@
 }
 
 .rental-card-line-top {
+  margin-top: 30px;
   margin-bottom: 14px
 
 }
 
 .rental-card-subtitle {
   color: rgba(169, 169, 169, 0.60);
-  font-size: 18px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 130%;
 
-  max-height: 70px;
+  min-height: 110px;
   max-width: 378px;
   margin-bottom: 16px;
 }
@@ -52,6 +54,7 @@
 
   max-height: 29px;
   max-width: 375px;
+  margin-top: 10px;
   margin-bottom: 11px;
 }
 

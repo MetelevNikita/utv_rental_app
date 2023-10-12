@@ -8,16 +8,24 @@ import MyButton from '../../UI/myButton'
 
 import { useState } from 'react'
 
+// redux
+
+import { useDispatch, useSelector } from 'react-redux'
+
 
 const ModalRental = ({modalRentalOpen}) => {
-  const {modalRental, setModalRental} = modalRentalOpen
-  console.log(modalRental)
 
+  const {modalRental, setModalRental} = modalRentalOpen
 
   const [modalName, setModalName] = useState('')
   const [modalPhone, setModalPhone] = useState('')
   const [modalText, setModalText] = useState('')
   const [modalRentalChk, setModalRentalChk] = useState(false)
+
+
+  const trashStore = useSelector(state => state.addTrash.trash)
+
+
 
 
   const modalRentalMessage = () => {
@@ -54,7 +62,7 @@ const ModalRental = ({modalRentalOpen}) => {
 
         <div className="modal-top-title-box">
 
-                <div className="modal-rental-title">готовы создатьпроект вместе с нами?</div>
+                <div className="modal-rental-title">Форма заказа</div>
                 <button className="close-modal-rental" onClick={() => {setModalRental(false)}}>&#10006;</button>
 
                 </div>
@@ -72,6 +80,15 @@ const ModalRental = ({modalRentalOpen}) => {
                   <textarea className='modal-rental-area-input' name="text" id="" placeholder='text' value={modalText} onChange={(e) => {setModalText(e.target.value)}}></textarea>
 
                 </div>
+
+
+                <ul className='trash-modal-list'>
+
+                  <div className='trash-modal-title'>Ваш заказ</div>
+
+                  {(trashStore.length < 1) ? <li>Список пуст</li> : trashStore.map((item) => { return <li className='trash-modal-list-item'>{item.title}</li>})}
+
+                </ul>
 
 
                 <div className="modal-rental-submit-box">

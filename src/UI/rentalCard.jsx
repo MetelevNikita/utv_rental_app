@@ -3,13 +3,42 @@ import './../UI/rentalCard.css'
 //
 
 import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import { rentalData } from '../servers/rentalData'
 
 // components
 
 import MyButton from './myButton'
 
+// redux
 
-const RentalCard = ({img, title, subtitle, quantity, price, id}) => {
+import { useDispatch, useSelector } from 'react-redux'
+import { addTrash } from '../store/trash-slice'
+
+//
+
+
+const RentalCard = ({img, title, subtitleShort, quantity, price, id, addGetTrash}) => {
+
+  const {counterTrash, setCounterTrash} = addGetTrash
+
+
+  const dispatch = useDispatch()
+
+
+
+  const addToTrash = () => {
+
+    dispatch(addTrash(rentalData[id]))
+    setCounterTrash(counterTrash + 1)
+
+  }
+
+
+
+
+
+
 
 
 
@@ -21,7 +50,7 @@ const RentalCard = ({img, title, subtitle, quantity, price, id}) => {
 
       <hr className='rental-card-line-top'/>
 
-      <div className="rental-card-subtitle">{subtitle}</div>
+      <div className="rental-card-subtitle">{subtitleShort}</div>
       <div className="rental-card-quantity">Количество: {quantity}шт.</div>
 
       <hr className='rental-card-line-bottom'/>
@@ -29,6 +58,8 @@ const RentalCard = ({img, title, subtitle, quantity, price, id}) => {
       <div className="rental-card-price">Цена: {price} руб</div>
 
       <Link to={`/rental/${id}`}><MyButton>Посмотреть</MyButton></Link>
+      <MyButton style={{marginLeft: 10 + 'px'}} onClick={() => {addToTrash()}}>Добавить в корзину</MyButton>
+
 
 
 
