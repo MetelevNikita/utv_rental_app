@@ -20,8 +20,7 @@ const AboutUs = () => {
   const arrOfPartners = [logo1, logo2, logo3]
 
   return(
-    <Container id='about'>
-
+      <>
       <Row>
         <Col className="col-12">
           <div className="about-title-box">
@@ -35,35 +34,27 @@ const AboutUs = () => {
 
 
       <Row>
-        <Col className="col-12 d-flex flex-xl-row flex-sm-column">
 
+        <Col md={3} sm={12} xs={12}><AboutInfo title={'c 2015'} subtitle={'года на рынке'} /></Col>
+        <Col md={3} sm={12} xs={12}><AboutInfo title={'1 000'} subtitle={'проделанных проектов'} /></Col>
+        <Col md={3} sm={12} xs={12}><AboutInfo title={'c 2015'} subtitle={'сотрудников'} /></Col>
 
-              <AboutInfo title={'c 2015'} subtitle={'года на рынке'} />
-              <AboutInfo title={'1 000'} subtitle={'проделанных проектов'} />
-              <AboutInfo title={'c 2015'} subtitle={'сотрудников'} />
-
-
-        </Col>
       </Row>
 
 
-      <Row>
-        <Col className='col-12 d-flex flex-xl-row flex-sm-column'>
+      <Row className='mt-4'>
+
 
           <div className="about-partners-title">Нам доверяют:</div>
 
           {arrOfPartners.map((logo, index) => {
-            return <img key={index+1} className='logo-partners' src={logo} alt={logo} />
+            return <Col md={2} sm={12} xs={12} className='mt-2'> <img key={index+1} className='logo-partners' src={logo} alt={logo} /></Col>
           })}
 
-        </Col>
       </Row>
 
+      </>
 
-
-
-
-    </Container>
   )
 }
 

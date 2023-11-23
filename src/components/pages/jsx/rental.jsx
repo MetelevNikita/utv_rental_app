@@ -23,10 +23,12 @@ const Rental = ({modalRentalOpen, trash}) => {
 
 
   return(
-    <Container id='rental'>
+
+    <>
+
       <Row>
         <Col>
-        <div className="rental-title">оборудование для съeмок</div>
+        <div className="rental-title">техника</div>
         <div className="rental-subtitle">АэроЮнион Вертолетная Компания» официальный дилер Robinson Helicopter Company в России специализируется на продаже и обслуживании новых и ресурсных вертолетов.</div>
         </Col>
       </Row>
@@ -56,7 +58,10 @@ const Rental = ({modalRentalOpen, trash}) => {
         })}
 
       </Row>
-    </Container>
+
+
+    </>
+
 
   )
 }

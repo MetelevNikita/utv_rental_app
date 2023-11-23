@@ -49,73 +49,92 @@ const Footer = ()  => {
 
   return(
 
-    <Container className='footer-container' id='contacts'>
+    <Row>
 
-      <Row>
-        <Col className='col-xl-8 col-md-12'>
-        <div className="footer-title">Напишите нам</div>
-        <div className="footer-subtitle">Готовы создать уникальный проект? Давайте сделаем его вместе!</div>
+        <Row>
+              <Col md={12} sm={12} xs={12} className='col-xl-8 col-md-12'>
 
-
-          <Row>
-            <Col className='d-flex'>
-                  <div className="input-box-left">
-                    <input className='footer-input' type="text" placeholder='Имя' value={name} onChange={(e) => {setName(e.target.value)}}/>
-                    <input className='footer-input' type="text" placeholder='Телефон' value={phone} onChange={(e) => {setPhone(e.target.value)}}/>
-                  </div>
-              </Col>
-
-              <Col className='d-flex'>
-
-                  <div className="input-box-right">
-                      <input className='footer-input' type="text" placeholder='E-mail' value={email} onChange={(e) => {setEmail(e.target.value)}}/>
-                      <input className='footer-input' type="text" placeholder='Сообщение' value={text} onChange={(e) => {setText(e.target.value)}}/>
-                  </div>
+                <div className="footer-title">Напишите нам</div>
+                <div className="footer-subtitle">Готовы создать уникальный проект? Давайте сделаем его вместе!</div>
 
               </Col>
-          </Row>
+        </Row>
+
+      <Col className='d-flex flex-column'>
+
+        <Row>
+            <Col md={6} sm={6} xs={12}>
+                <div className="input-box-left">
+                  <input className='footer-input' type="text" placeholder='Имя' value={name} onChange={(e) => {setName(e.target.value)}}/>
+                  <input className='footer-input' type="text" placeholder='Телефон' value={phone} onChange={(e) => {setPhone(e.target.value)}}/>
+                </div>
+            </Col>
+
+            <Col md={6} sm={6} xs={12}>
+
+                <div className="input-box-right">
+                    <input className='footer-input' type="text" placeholder='E-mail' value={email} onChange={(e) => {setEmail(e.target.value)}}/>
+                    <input className='footer-input' type="text" placeholder='Сообщение' value={text} onChange={(e) => {setText(e.target.value)}}/>
+                </div>
+
+            </Col>
+        </Row>
 
 
-
-        <div className="input-bottom-box">
+        <Row className='mb-4'>
+        <Col md={6} sm={6} xs={12} className='mt-4'>
           <input className='input-bottom-chk' type="checkbox" name="" id="" />
           <span className='input-bottom-chk-title'>Я согласен с политикой конфиденциальности</span>
+        </Col>
 
+
+        <Col md={6} sm={6} xs={12} className='mt-4'>
           <button className='input-bottom-btn'>Отправить заявку</button>
-        </div>
-
-
-
-
         </Col>
+        </Row>
+
+      </Col>
 
 
-        <Col className='col-xl-4 col-md-4'>
+      <Col>
 
-        <div className="footer-contacts">КОНТАКТЫ</div>
+        <Row className='d-flex justify-content-center mt-xs-4'>
+
+                <Col md={6} sm={12} xs={12} >
+                  <div className="footer-contacts">КОНТАКТЫ</div>
+                  <div className="contact-box">
+                      <img className='contact-img' src={icon_phone} alt="icon-phone" />
+                      <div className="contact-title">+7 (000) 000-00-00</div>
+                  </div>
+
+                  <div className="contact-box">
+                      <img className='contact-img' src={icon_mail} alt="icon-mail" />
+                      <div className="contact-title">vr-project.ru</div>
+                  </div>
+
+                  <div className="contact-box">
+                      <img className='contact-img' src={icon_location} alt="icon-location" />
+                      <div className="contact-title">г.Уфа, улица Бакалинская 64/4</div>
+                  </div>
+
+                </Col>
+
+        </Row>
+
+      </Col>
 
 
-        <div className="contact-box">
-            <img className='contact-img' src={icon_phone} alt="icon-phone" />
-            <div className="contact-title">+7 (000) 000-00-00</div>
-        </div>
 
-        <div className="contact-box">
-            <img className='contact-img' src={icon_mail} alt="icon-mail" />
-            <div className="contact-title">vr-project.ru</div>
-        </div>
 
-        <div className="contact-box">
-            <img className='contact-img' src={icon_location} alt="icon-location" />
-            <div className="contact-title">г.Уфа, улица Бакалинская 64/4</div>
-        </div>
-
-        </Col>
-      </Row>
+    </Row>
 
 
 
-    </Container>
+
+
+
+
+
 
   )
 }

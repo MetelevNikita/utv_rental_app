@@ -6,9 +6,10 @@ import './header.css'
 import { Container, Row, Col } from "react-bootstrap"
 
 
-// Rotert
+//
 
 import { Link } from 'react-router-dom'
+
 
 
 // img
@@ -28,41 +29,32 @@ const Header = ({trash}) => {
 
 
   return(
-    <Container className='header-container'>
-      <Row>
+      <Row className='d-flex justify-content-between mt-4 mb-4'>
 
-        <Col className="header-box justify-content-start col-3">
+        <Col md={2} sm={2} xs={4} className='d-flex'>
           <Link to={'/'}><img className="header-logo" src={logoUtv} alt="logoUtv" /></Link>
-
         </Col>
 
-        <Col className="header-box col-5 d-flex flex-xl-row flex-sm-column justify-content-start">
-            <Link to='about' spy={true} smooth={true} offset={10} duration={500} className="header-menu-items">О нас</Link>
-            <Link to='service' spy={true} smooth={true} offset={10} duration={500} className="header-menu-items">Услуги</Link>
-            <Link to='rental' spy={true} smooth={true} offset={140} duration={500} className="header-menu-items">Аренда техники</Link>
-            <Link to='team' spy={true} smooth={true} offset={10} duration={500} className="header-menu-items">Команда</Link>
-            <Link to='contacts' spy={true} smooth={true} offset={10} duration={500} className="header-menu-items">Контакты</Link>
-        </Col>
 
-        <Col className="header-box justify-content-end col-4">
+        <Col md={4} sm={4} xs={8} className='d-flex align-items-center'>
+            <Col className='d-flex justify-content-end'>
+              <Link to={'/trash'}>
+                  <div className="header-trash-box">
+                    <div className='header-trash-counter'>Количество: {counterTrash}</div>
+                    <img className='header-trash-img' src={trashIcon} alt="trashicon" />
+                  </div>
+                </Link>
+            </Col>
 
-          <Link to={'/trash'}>
-            <div className="header-trash-box">
-              <div className='header-trash-counter'>Количество: {counterTrash}</div>
-              <img className='header-trash-img' src={trashIcon} alt="trashicon" />
-            </div>
-          </Link>
-
-
-
-          <div className="hedaer-contact-box">
-            <div className="hedaer-contanct-title">Позвоните нам</div>
-            <div className="hedaer-contanct-phone">8 (800) 000-00-00</div>
-          </div>
+            <Col md={8} sm={8} xs={8} className='d-flex justify-content-end'>
+              <div className="hedaer-contact-box">
+                <div className="hedaer-contanct-title">Позвоните нам</div>
+                <div className="hedaer-contanct-phone">8 (800) 000-00-00</div>
+              </div>
+            </Col>
         </Col>
 
       </Row>
-    </Container>
   )
 }
 

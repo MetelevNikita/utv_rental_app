@@ -23,8 +23,6 @@ const Video = ({modalCreateOpen}) => {
 
 
   return(
-
-    <Container>
       <Row>
         <Col className='col-12 d-flex flex-column  justify-content-center'>
 
@@ -45,9 +43,6 @@ const Video = ({modalCreateOpen}) => {
             </div>
         </Col>
       </Row>
-    </Container>
-
-
 
   )
 }

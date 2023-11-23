@@ -19,17 +19,13 @@ const Services = () => {
 
 
   return(
-    <Container id='service'>
+    <>
       <Row>
         <Col className="col-12">
-
             <div className="services-title">НАЗВАНИЕ УСЛУГИ</div>
-
             <div className="services-subtitle">
             АэроЮнион Вертолетная Компания» официальный дилер Robinson Helicopter Company в России специализируется на продаже и обслуживании новых и ресурсных вертолетов.
             </div>
-
-
         </Col>
       </Row>
 
@@ -44,17 +40,16 @@ const Services = () => {
 
 
       <Row>
-
           {serviceData.map((card, id) => {
             if(card.cotegory === service) {
-              return <Col key={id} className='col-xl-4 col-md-4 col-sm-12 col-xs-12'><ServiceCard img={card.img} title={card.title} subtitle={card.subtitle} date={card.date}></ServiceCard></Col>
+              return <Col key={id} md={4} sm={12} xs={12} className='col-xl-4 col-md-4 col-sm-12 col-xs-12'><ServiceCard img={card.img} title={card.title} subtitle={card.subtitle} date={card.date}></ServiceCard></Col>
             } else {
               <div>Нет подобной котегории</div>
             }
           })}
-
       </Row>
-    </Container>
+    </>
+
   )
 }
 

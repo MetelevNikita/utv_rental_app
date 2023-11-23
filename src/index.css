@@ -2,9 +2,6 @@
 
 
 .html, body {
-  width: 1920px;
-  height: 100vh;
   background-image: url('./asset/BG\ final.png');
-  overflow-x: hidden;
 }
 

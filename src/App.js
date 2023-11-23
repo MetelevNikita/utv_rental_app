@@ -44,20 +44,11 @@ import { Provider } from 'react-redux'
 
 
 
-
-
-
-
-
-
 const App = () => {
 
   const [modalCreate, setModalCreate] = useState(false)
   const [modalRental, setModalRental] = useState(false)
-
   const [counterTrash, setCounterTrash] = useState(0)
-
-
 
 
 
@@ -66,8 +57,10 @@ const App = () => {
     <Provider store={rentalStore}>
 
 
-        <div className="App">
+
               <Container>
+
+              <div className="App">
 
                       <Header trash={{counterTrash, setCounterTrash}}></Header>
                       <Video modalCreateOpen={{modalCreate, setModalCreate}}></Video>
@@ -92,10 +85,10 @@ const App = () => {
                   {(modalCreate !== false) ? <ModalCreate modalCreateOpen={{modalCreate, setModalCreate}}/> : <></>}
                   {(modalRental !== false) ? <ModalRental modalRentalOpen={{modalRental, setModalRental}}></ModalRental> : <></>}
 
-
+                  </div>
               </Container>
 
-            </div>
+
 
     </Provider>
 

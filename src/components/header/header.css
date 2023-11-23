@@ -7,8 +7,7 @@
 
 
 .header-box {
-  display: flex;
-  align-items: center;
+
 }
 
 /* left */
@@ -22,12 +21,10 @@
 .header-menu {}
 
 .header-menu-items {
-  color: #FFF;
-font-family: Montserrat;
+
+color: #FFF;
 font-size: 17px;
-font-style: normal;
 font-weight: 400;
-line-height: normal;
 margin-left: 20px;
 cursor: pointer;
 text-decoration: none;
@@ -36,12 +33,9 @@ text-decoration: none;
 
 /* right */
 
-.hedaer-contact-box {
-  margin-left: 40px;
-}
 
 .hedaer-contanct-title {
-  text-align: right;
+  text-align: center;
   color: #00B0E1;
   font-size: 16px;
   font-style: normal;
@@ -50,6 +44,7 @@ text-decoration: none;
 }
 
 .hedaer-contanct-phone {
+  text-align: center;
 
 }
 
@@ -59,11 +54,13 @@ text-decoration: none;
 }
 
 .header-trash-counter {
+  font-size: 12px;
   margin-right: 10px;
   color: white;
 }
 
 .header-trash-img {
   width: 20px;
+  height: 20px;
 
 }
