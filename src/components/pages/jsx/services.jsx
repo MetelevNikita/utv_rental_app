@@ -30,19 +30,18 @@ const Services = () => {
       </Row>
 
 
-      <Row>
-        <Col className='mb-5'>
-        <MyButton value={'Конфернция'} onClick={(e) => {setService(e.target.value)}}>Конфернция</MyButton>
-        <MyButton style={{marginLeft: 17 + 'px'}} value={'Концерт'} onClick={(e) => {setService(e.target.value)}}>Концерт</MyButton>
-        <MyButton style={{marginLeft: 17 + 'px'}} value={'Спорт'} onClick={(e) => {setService(e.target.value)}}>Спорт</MyButton>
-        </Col>
+      <Row className='mb-5'>
+        <Col className='mb-3' md={2} sm={12} xs={12}><MyButton style={{marginRight: 17 + 'px', width: 200 + 'px'}} value={'Конфернция'} onClick={(e) => {setService(e.target.value)}}>Конфернция</MyButton></Col>
+        <Col className='mb-3' md={2} sm={12} xs={12}><MyButton style={{marginRight: 17 + 'px', width: 200 + 'px'}} value={'Концерт'} onClick={(e) => {setService(e.target.value)}}>Концерт</MyButton></Col>
+        <Col className='mb-3' md={2} sm={12} xs={12}><MyButton style={{marginRight: 17 + 'px', width: 200 + 'px'}} value={'Спорт'} onClick={(e) => {setService(e.target.value)}}>Спорт</MyButton></Col>
+
       </Row>
 
 
       <Row>
           {serviceData.map((card, id) => {
             if(card.cotegory === service) {
-              return <Col key={id} md={4} sm={12} xs={12} className='col-xl-4 col-md-4 col-sm-12 col-xs-12'><ServiceCard img={card.img} title={card.title} subtitle={card.subtitle} date={card.date}></ServiceCard></Col>
+              return <Col key={id} md={4} sm={12} xs={12} className='mb-3'><ServiceCard img={card.img} title={card.title} subtitle={card.subtitle} date={card.date}></ServiceCard></Col>
             } else {
               <div>Нет подобной котегории</div>
             }

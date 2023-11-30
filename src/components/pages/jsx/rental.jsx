@@ -33,20 +33,18 @@ const Rental = ({modalRentalOpen, trash}) => {
         </Col>
       </Row>
 
-      <Row>
-        <Col className='d-flex justify-content-between flex-xl-row flex-md-row flex-sm-column mb-5 '>
 
-        <div className="rental-button-left">
+      <Row className='mb-4'>
+        <Col md={2} sm={12} xs={12} className='mb-2'><MyButton style={{width: 150 + 'px'}} value={'Камеры'} onClick={(e) => {setRental(e.target.value)}}>Камеры</MyButton></Col>
+        <Col md={2} sm={12} xs={12} className='mb-2'><MyButton style={{width: 150 + 'px'}} value={'Свет'} onClick={(e) => {setRental(e.target.value)}}>Свет</MyButton></Col>
+        <Col md={2} sm={12} xs={12} className='mb-2'><MyButton style={{width: 150 + 'px'}} value={'Звук'} onClick={(e) => {setRental(e.target.va1ue)}}>Звук</MyButton></Col>
+        <Col md={2} sm={12} xs={12} className='mb-2'><MyButton style={{width: 150 + 'px'}} value={'Операторская техника'} onClick={(e) => {setRental(e.target.value)}}>техника</MyButton></Col>
 
-        <MyButton style={{marginRight: 21 + 'px', marginBottom: 20 + 'px'}} value={'Камеры'} onClick={(e) => {setRental(e.target.value)}}>Камеры</MyButton>
-        <MyButton style={{marginRight: 21 + 'px', marginBottom: 20 + 'px'}} value={'Свет'} onClick={(e) => {setRental(e.target.value)}}>Свет</MyButton>
-        <MyButton style={{marginRight: 21 + 'px', marginBottom: 20 + 'px'}} value={'Звук'} onClick={(e) => {setRental(e.target.value)}}>Звук</MyButton>
-        <MyButton  value={'Операторская техника'} onClick={(e) => {setRental(e.target.value)}}>Операторская техника</MyButton>
-
-        </div>
-
-        </Col>
       </Row>
+
+
+
+
 
       <Row>
 

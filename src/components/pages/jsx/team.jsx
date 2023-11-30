@@ -25,15 +25,11 @@ const Team = () => {
 
   return(
 
-    <Container id='team'>
-
       <Row>
         <Col className='col-12 mt-5 mb-5'>
 
         <div className="team-title">наша команда</div>
         <div className="team-subtitle">наши специалисты</div>
-
-
 
         <ScrollCarousel autoplay autoplaySpeed={8}>
           {teamData.map((card) => {
@@ -42,11 +38,8 @@ const Team = () => {
         </ScrollCarousel>
 
 
-
-
         </Col>
       </Row>
-    </Container>
 
 
   )

@@ -40,45 +40,49 @@ const RentalCardOpen = ({modalRentalOpen, trash}) => {
     dispatch(addTrash(rentalData[id]))
     setCounterTrash(counterTrash + 1)
 
-
   }
 
 
 
   return(
-    <Container className="open-card-container">
-
-      <Row>
+    <>
 
 
-              <Col className='col-xl-6 col-md-6 col-sm-12'>
+      <Row className=''>
 
-                <img src={currentCard.img} alt="card-img" />
+        <Col mb={6} sm={6} xs={12} className='mb-4'>
 
-              </Col>
+          <img className='card-open-img' src={currentCard.img} alt="card-img" />
 
-              <Col className='col-xl-6 col-md-6 col-sm-12'>
+        </Col>
 
-                <div className="card-open-title">{currentCard.title}</div>
-                <div className="card-open-subtitle">{currentCard.subtitleLong}</div>
+        <Col mb={6} sm={6} xs={12} className='mb-5'>
 
-                <hr className='card-open-line'/>
+          <div className="card-open-title">{currentCard.title}</div>
+          <div className="card-open-subtitle">{currentCard.subtitleLong}</div>
 
-                <div className="card-open-quantity">Количество: {currentCard.quantity}</div>
-                <div className="card-open-price">Цена: {currentCard.price}</div>
+          <hr className='card-open-line'/>
 
-              </Col>
-      </Row>
+          <div className="card-open-quantity">Количество: {currentCard.quantity}</div>
+          <div className="card-open-price">Цена: {currentCard.price}</div>
 
-
-      <Row>
-        <Col className='col-12 mt-5'>
-          <MyButton onClick = {() => {addToTrash()}}>Добавить в корзину</MyButton>
-          <MyButton style={{marginLeft: 20 + 'px'}} onClick={() => {setModalRental(true)}}>Задайте вопрос</MyButton>
         </Col>
       </Row>
 
-    </Container>
+
+      <Row className='mb-4'>
+
+        <Col mb={2} sm={2} xs={12} className='mb-3'><MyButton style={{marginRight: 20 + 'px'}} onClick = {() => {addToTrash()}}>Добавить в корзину</MyButton></Col>
+        <Col mb={2} sm={2} xs={12} className='mb-3'><MyButton onClick={() => {setModalRental(true)}}>Задайте вопрос</MyButton></Col>
+
+      </Row>
+
+
+
+    </>
+
+
+
   )
 }
 

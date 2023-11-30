@@ -3,9 +3,14 @@ import './../css/modal_rental.css'
 // components
 
 import MyButton from '../../UI/myButton'
+import MyCheckBox from '../../UI/myCheckBox'
+import MyInput from '../../UI/myInput'
+import MyTextArea from '../../UI/myTextArea'
+
 
 //
 
+import { Row, Col } from 'react-bootstrap'
 import { useState } from 'react'
 
 // redux
@@ -60,26 +65,32 @@ const ModalRental = ({modalRentalOpen}) => {
         <div className="modal-rental-box">
 
 
-        <div className="modal-top-title-box">
+                  <Row className='mt-5'>
 
-                <div className="modal-rental-title">Форма заказа</div>
-                <button className="close-modal-rental" onClick={() => {setModalRental(false)}}>&#10006;</button>
+                    <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-start md-3'><div className="modal-rental-title">Форма заказа</div></Col>
+                    <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-end align-items-md-start md-5'><button className="modal-rental-close" onClick={() => {setModalRental(false)}}>&#10006;</button></Col>
 
-                </div>
-
-
-                <div className="modal-rental-subtitle">Оставьте информацию и наш специалист перезвонит Вам.</div>
+                  </Row>
 
 
-                <div className="modal-inputs-box">
+                  <Row>
 
-                  <input className='modal-rental-input' type="text" name="name" id="" placeholder='name' value={modalName} onChange={(e) => {setModalName(e.target.value)}}/>
+                    <Col><div className="modal-rental-subtitle">Оставьте информацию и наш специалист перезвонит Вам.</div></Col>
 
-                  <input className='modal-rental-input' type="tel" name="phone" id="" placeholder='phone' value={modalPhone} onChange={(e) => {setModalPhone(e.target.value)}}/>
+                  </Row>
 
-                  <textarea className='modal-rental-area-input' name="text" id="" placeholder='text' value={modalText} onChange={(e) => {setModalText(e.target.value)}}></textarea>
 
-                </div>
+
+
+                  <Row className='d-flex flex-column'>
+
+                      <Col md={4} sm={4} xs={12}><MyInput style={{marginBottom: 20 + 'px', width: 900 + 'px'}} placeholder='name' value={modalName} onChange={(e) => {setModalName(e.target.value)}}></MyInput></Col>
+                      <Col md={4} sm={4} xs={12}><MyInput style={{marginBottom: 20 + 'px', width: 900 + 'px'}} placeholder='phone' value={modalPhone} onChange={(e) => {setModalPhone(e.target.value)}}></MyInput></Col>
+                      <Col md={4} sm={4} xs={12}><MyTextArea style={{marginBottom: 20 + 'px', width: 900 + 'px'}} placeholder='text' value={modalText} onChange={(e) => {setModalText(e.target.value)}}></MyTextArea></Col>
+
+                  </Row>
+
+
 
 
                 <ul className='trash-modal-list'>
@@ -90,13 +101,14 @@ const ModalRental = ({modalRentalOpen}) => {
 
                 </ul>
 
+                  <Row className='mb-5'>
 
-                <div className="modal-rental-submit-box">
-                <input className='modal-rental-chk' type="checkbox" name="" id="" onChange={() => {setModalRentalChk(prev => !prev)}} checked={modalRentalChk}/>
-                <div className='modal-rental-chk-text'>Я согласен с политикой конфиденциальности</div>
+                    <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-start md-3'><MyCheckBox title={'Я согласен с политикой конфиденциальности'} checked={modalRentalChk} onChange={() => {setModalRentalChk(prev => !prev)}}></MyCheckBox></Col>
+                    <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-end align-items-md-start md-5'><MyButton style={{marginLeft: 150 + 'px'}} onClick={() => {modalRentalMessage()}}>Отправить</MyButton></Col>
 
-                <MyButton style={{marginLeft: 150 + 'px'}} onClick={() => {modalRentalMessage()}}>Отправить</MyButton>
-                </div>
+                  </Row>
+
+
 
 
 

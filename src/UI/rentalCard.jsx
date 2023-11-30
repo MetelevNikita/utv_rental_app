@@ -5,6 +5,7 @@ import './../UI/rentalCard.css'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { rentalData } from '../servers/rentalData'
+import { Col } from 'react-bootstrap'
 
 // components
 
@@ -57,8 +58,9 @@ const RentalCard = ({img, title, subtitleShort, quantity, price, id, addGetTrash
 
       <div className="rental-card-price">Цена: {price} руб</div>
 
-      <Link to={`/rental/${id}`}><MyButton>Посмотреть</MyButton></Link>
-      <MyButton style={{marginLeft: 10 + 'px'}} onClick={() => {addToTrash()}}>Добавить в корзину</MyButton>
+      <Col md={6} sm={12} xs={12} className='mb-2'><Link style={{marginRight: 10 + 'px'}} to={`/rental/${id}`}><MyButton>Посмотреть</MyButton></Link></Col>
+      <Col md={6} sm={12} xs={12} className='mb-2'><MyButton onClick={() => {addToTrash()}}>Добавить в корзину</MyButton></Col>
+
 
 
 

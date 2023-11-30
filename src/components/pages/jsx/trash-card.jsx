@@ -15,24 +15,25 @@ const TrashCard = (props) => {
 
 
   return (
-    <Container>
-      <Row>
 
-        <Col className='col-xl-12 col-md-12 col-sm-12 d-flex mt-3'>
+    <Row className='mb-4'>
 
-            <img className='trash-card-img' src={props.img} alt="" />
+      <Col md={2} sm={4} xs={12}>
+        <img className='trash-card-img' src={props.img} alt="" />
+      </Col>
 
-            <div className="trash-card-info-box">
+      <Col md={4} sm={4} xs={12}>
+        <div className="trash-card-info-box">
 
-              <div className="trash-card-title">{props.title}</div>
-              <hr className='trash-card-line'/>
-              <div className="trash-card-price">Цена: {props.price} $</div>
+          <div className="trash-card-title">{props.title}</div>
+          <hr className='trash-card-line'/>
+          <div className="trash-card-price">Цена: {props.price} $</div>
 
-            </div>
+        </div>
+      </Col>
 
-        </Col>
-      </Row>
-    </Container>
+    </Row>
+
   )
  }
 

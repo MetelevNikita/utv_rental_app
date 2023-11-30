@@ -1,9 +1,16 @@
 
 import './../css/modal_create.css'
 
+//
+
+import { Col, Row } from 'react-bootstrap'
+
 // components
 
 import MyButton from '../../UI/myButton'
+import MyInput from '../../UI/myInput'
+import MyTextArea from '../../UI/myTextArea'
+import MyCheckBox from '../../UI/myCheckBox'
 import ModalSubmit from './modal_submit'
 
 //
@@ -11,16 +18,19 @@ import ModalSubmit from './modal_submit'
 
 import { useState } from 'react'
 
-const ModalCreate = ({modalCreateOpen}) => {
+const ModalCreate = ({modalCreateOpen, modalSubmitOpen}) => {
 
   const {modalCreate, setModalCreate} = modalCreateOpen
+  console.log(modalSubmitOpen)
+
+  const {modalSubmit, setModalSubmit} = modalSubmitOpen
+
+  console.log(modalSubmit)
+
+
+
+
   const [modalCreateChk, setModalCreateChk] = useState(false)
-  const [modalSubmit, setModalSubmit] = useState(false)
-
-
-
-
-
 
 
   const [name, setName] = useState('')
@@ -54,75 +64,74 @@ const ModalCreate = ({modalCreateOpen}) => {
       setPhone('')
       setText('')
       setModalCreate(false)
+      setModalSubmit(true)
+
 
 
   }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   return(
-
-      <div className="modal-create-bg">
+    <Row className='d-flex justify-content-center'>
+      <Col md={3} sm={12} xs={12}>
+           <div className="modal-create-bg">
 
             <div className="modal-create-container">
                 <div className="modal-create-box">
 
 
+                  <Row className='mt-5'>
 
-                  <div className="modal-top-title-box">
+                      <Col md={9} className='d-flex justify-content-md-start md-3'><div className="modal-create-title">готовы создатьпроект вместе с нами?</div></Col>
+                      <Col md={3} className='d-flex justify-content-md-end align-items-md-start md-5'><button className="modal-create-close" onClick={() => {setModalCreate(false)}}>&#10006;</button></Col>
 
-                      <div className="modal-create-title">готовы создатьпроект вместе с нами?</div>
-                      <button className="clase-modal-create" onClick={() => {setModalCreate(false)}}>&#10006;</button>
+                  </Row>
+
+
+                  <Row>
+                    <Col><div className="modal-create-subtitle">Оставьте информацию и наш специалист перезвонит Вам.</div></Col>
+                  </Row>
+
+
+
+
+                    <Row className='mt-5'>
+
+                        <MyInput style={{marginBottom: 20 + 'px'}} type={'text'} placeholder='name' value={name} onChange={(e) => {setName(e.target.value)}}></MyInput>
+                        <MyInput style={{marginBottom: 20 + 'px'}} type={'phone'} placeholder='phone' value={phone} onChange={(e) => {setPhone(e.target.value)}}></MyInput>
+                        <MyInput style={{marginBottom: 20 + 'px'}} type={'email'} placeholder='email' value={email} onChange={(e) => {setEmail(e.target.value)}}></MyInput>
+                        <MyTextArea style={{marginBottom: 20 + 'px'}} value={text} onChange={(e) => {setText(e.target.value)}}></MyTextArea>
+
+                    </Row>
+
+
+
+                    <Row className='mt-2 mb-5'>
+
+                      <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-start mb-3'><MyCheckBox title={'Я согласен с политикой конфиденциальности'} onChange={() => {setModalCreateChk(prev => !prev)}} checked={modalCreateChk}></MyCheckBox></Col>
+                      <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-end mb-3'><MyButton onClick={() => {modalCreateMessage()}}>Отправить</MyButton></Col>
+
+                    </Row>
+
+
+
+
+
+
 
                   </div>
+              </div>
 
-
-                  <div className="modal-create-subtitle">Оставьте информацию и наш специалист перезвонит Вам.</div>
-
-
-                  <div className="modal-inputs-box">
-
-                        <input className='modal-create-input' type="text" name="name" id="" placeholder='name' value={name} onChange={(e) => {setName(e.target.value)}}/>
-
-                        <input className='modal-create-input' type="tel" name="phone" id="" placeholder='phone' value={phone} onChange={(e) => {setPhone(e.target.value)}}/>
-
-                        <input className='modal-create-input' type="email" name="email" id="" placeholder='email' value={email} onChange={(e) => {setEmail(e.target.value)}}/>
-
-                        <textarea className='modal-create-area-input' name="text" id="" placeholder='text' value={text} onChange={(e) => {setText(e.target.value)}}></textarea>
-
-                  </div>
-
-
-                  <div className="modal-create-submit-box">
-                    <input className='modal-create-chk' type="checkbox" name="" id="" onChange={() => {setModalCreateChk(prev => !prev)}} checked={modalCreateChk}/>
-                    <div className='modal-create-chk-text'>Я согласен с политикой конфиденциальности</div>
-
-                    <MyButton style={{marginLeft: 150 + 'px'}} onClick={() => {modalCreateMessage()}}>Отправить</MyButton>
-                  </div>
-
-
-                </div>
             </div>
 
-      </div>
+
+
+      </Col>
+
+    </Row>
+
+
 
 
 

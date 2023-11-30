@@ -15,8 +15,22 @@ import icon_location from './../../asset/footer_icons/Location_icon.svg'
 
 import { useState } from 'react'
 
+// components
+
+import MyButton from '../../UI/myButton'
+import MyCheckBox from '../../UI/myCheckBox'
+
+
+//
+
 
 const Footer = ()  => {
+
+  const [activeChk, setActiveChk] = useState(false)
+
+  console.log(activeChk)
+
+
 
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
@@ -25,26 +39,31 @@ const Footer = ()  => {
 
   const createMessage = () => {
 
-    const message = {
-      name: name,
-      phone: phone,
-      email: email,
-      text: text
+
+    if(activeChk) {
+      const message = {
+        name: name,
+        phone: phone,
+        email: email,
+        text: text
+      }
+
+
+      setName('')
+      setPhone('')
+      setEmail('')
+      setText('')
+
+
+      console.log(message)
+      return message
+
+    } else {
+      alert('согласитесь с условиями')
     }
 
 
-    setName('')
-    setPhone('')
-    setEmail('')
-    setText('')
-
-
-
-
-    return message
   }
-
-
 
 
   return(
@@ -83,13 +102,12 @@ const Footer = ()  => {
 
         <Row className='mb-4'>
         <Col md={6} sm={6} xs={12} className='mt-4'>
-          <input className='input-bottom-chk' type="checkbox" name="" id="" />
-          <span className='input-bottom-chk-title'>Я согласен с политикой конфиденциальности</span>
+          <MyCheckBox title={'Я согласен с политикой конфиденциальности'} checked={activeChk} onChange={() => {setActiveChk(prev => !prev)}}></MyCheckBox>
         </Col>
 
 
         <Col md={6} sm={6} xs={12} className='mt-4'>
-          <button className='input-bottom-btn'>Отправить заявку</button>
+          <MyButton onClick={() => {createMessage()}}>Отправить заявку</MyButton>
         </Col>
         </Row>
 

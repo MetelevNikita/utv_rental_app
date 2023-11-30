@@ -33,25 +33,30 @@ const Trash = ({modalCreateOpen}) => {
 
   return(
 
-    <Container className='trash-container'>
+    <>
+
       <Row>
-        <Col className='col-12'>
+
 
           {(selector.length < 1) ? <div className='trash-empty'>Корзина пуста</div> :  selector.map((card) => {
-            return <TrashCard img={card.img} title={card.title} price={card.price}></TrashCard>
+            return  <TrashCard img={card.img} title={card.title} price={card.price}></TrashCard>
           })}
-        </Col>
+
       </Row>
 
-      <Row>
-        <Col className='col-12 mt-5 d-flex align-items-center'>
+      <Row className='mt-5 mb-5 d-flex align-items-center'>
 
 
-            <div>Сумма: {sum} $</div>
-            <MyButton onClick={() => {setModalRental(true)}} style={{marginLeft: 20 + 'px'}}>Оформить заказ</MyButton>
-        </Col>
+          <Col md={2} sm={5} xs={12} className='mb-3'><MyButton onClick={() => {setModalRental(true)}}>Оформить заказ</MyButton></Col>
+          <Col md={2} sm={5} xs={12} className='mb-3'><div>Сумма: {sum} $</div></Col>
+
       </Row>
-    </Container>
+
+
+
+    </>
+
+
 
   )
 }

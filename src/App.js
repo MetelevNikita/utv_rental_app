@@ -48,6 +48,7 @@ const App = () => {
 
   const [modalCreate, setModalCreate] = useState(false)
   const [modalRental, setModalRental] = useState(false)
+  const [modalSubmit, setModalSubmit] = useState(false)
   const [counterTrash, setCounterTrash] = useState(0)
 
 
@@ -82,8 +83,9 @@ const App = () => {
                       <Footer></Footer>
 
 
-                  {(modalCreate !== false) ? <ModalCreate modalCreateOpen={{modalCreate, setModalCreate}}/> : <></>}
+                  {(modalCreate !== false) ? <ModalCreate modalSubmitOpen={{modalSubmit, setModalSubmit}} modalCreateOpen={{modalCreate, setModalCreate}}/> : <></>}
                   {(modalRental !== false) ? <ModalRental modalRentalOpen={{modalRental, setModalRental}}></ModalRental> : <></>}
+                  {(modalSubmit !== false) ? <ModalSubmit modalSubmitOpen={{modalSubmit, setModalSubmit}}></ModalSubmit> : <></>}
 
                   </div>
               </Container>
