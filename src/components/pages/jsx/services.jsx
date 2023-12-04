@@ -15,7 +15,12 @@ import { serviceData } from '../../../servers/serviceData'
 
 const Services = () => {
 
+  const serviceMenu = ['Конфернция', 'Концерт', 'Спорт']
+
   const [service, setService] = useState('Конфернция')
+  const [click, setClick] = useState(false)
+
+
 
 
   return(
@@ -29,11 +34,11 @@ const Services = () => {
         </Col>
       </Row>
 
-
       <Row className='mb-5'>
-        <Col className='mb-3' md={2} sm={12} xs={12}><MyButton style={{marginRight: 17 + 'px', width: 200 + 'px'}} value={'Конфернция'} onClick={(e) => {setService(e.target.value)}}>Конфернция</MyButton></Col>
-        <Col className='mb-3' md={2} sm={12} xs={12}><MyButton style={{marginRight: 17 + 'px', width: 200 + 'px'}} value={'Концерт'} onClick={(e) => {setService(e.target.value)}}>Концерт</MyButton></Col>
-        <Col className='mb-3' md={2} sm={12} xs={12}><MyButton style={{marginRight: 17 + 'px', width: 200 + 'px'}} value={'Спорт'} onClick={(e) => {setService(e.target.value)}}>Спорт</MyButton></Col>
+
+        {serviceMenu.map((item) => {
+          return <Col className='mb-3' md={2} sm={12} xs={12}><MyButton className={(service === item) ? 'myBtn myBtn-click' : 'myBtn'} style={{marginRight: 17 + 'px', width: 200 + 'px'}} value={item} onClick={(e) => {setService(e.target.value)}}>{item}</MyButton></Col>
+        })}
 
       </Row>
 

@@ -3,6 +3,7 @@ import './video.css'
 //
 
 import video from './../asset/showreel.webm'
+import video2 from './../asset/final7.mp4'
 
 // bootstap
 
@@ -24,11 +25,11 @@ const Video = ({modalCreateOpen}) => {
 
   return(
       <Row>
-        <Col className='col-12 d-flex flex-column  justify-content-center'>
+        <Col className='col-12 d-flex flex-column  justify-content-start'>
 
             <video className='video-bg' muted autoPlay loop>
                 <source
-                  src={video}
+                  src={video2}
                   type="video/mp4"
                 />
             </video>

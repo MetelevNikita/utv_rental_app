@@ -84,3 +84,20 @@
   height: 52px;
   flex-shrink: 0;
 }
+
+
+/* btn */
+
+.myBtn-click {
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  background: linear-gradient(260deg, #00B0E1 10.52%, #1E4FC6 91.43%);
+
+}
+
+.myBtn:active {
+
+  transform: scale(1.05);
+  transition: all 0.05s ease;
+
+}

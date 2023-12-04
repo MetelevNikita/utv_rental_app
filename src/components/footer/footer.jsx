@@ -28,10 +28,6 @@ const Footer = ()  => {
 
   const [activeChk, setActiveChk] = useState(false)
 
-  console.log(activeChk)
-
-
-
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
@@ -40,7 +36,17 @@ const Footer = ()  => {
   const createMessage = () => {
 
 
-    if(activeChk) {
+    if(name === ''  && phone === '' && email === '' && text === '') {
+      alert('заполните все поля')
+      return
+    }
+
+
+    if(activeChk === false) {
+      alert('согласитесь с условиями')
+      return
+    }
+
       const message = {
         name: name,
         phone: phone,
@@ -54,13 +60,8 @@ const Footer = ()  => {
       setEmail('')
       setText('')
 
-
-      console.log(message)
       return message
 
-    } else {
-      alert('согласитесь с условиями')
-    }
 
 
   }

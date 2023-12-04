@@ -18,7 +18,21 @@ import { rentalData } from '../../../servers/rentalData'
 
 const Rental = ({modalRentalOpen, trash}) => {
 
+
+  const rentalMenu = ['Камеры', 'Свет', 'Звук' , 'Операторская техника']
+
   const [rental, setRental] = useState('Камеры')
+  const [click ,setClick] = useState(false)
+  const [desClick, setDesClick] = useState(true)
+
+  console.log(click)
+
+
+  const clickHandler = (e) => {
+
+    setRental(e)
+    setClick(true)
+  }
 
 
 
@@ -35,18 +49,17 @@ const Rental = ({modalRentalOpen, trash}) => {
 
 
       <Row className='mb-4'>
-        <Col md={2} sm={12} xs={12} className='mb-2'><MyButton style={{width: 150 + 'px'}} value={'Камеры'} onClick={(e) => {setRental(e.target.value)}}>Камеры</MyButton></Col>
-        <Col md={2} sm={12} xs={12} className='mb-2'><MyButton style={{width: 150 + 'px'}} value={'Свет'} onClick={(e) => {setRental(e.target.value)}}>Свет</MyButton></Col>
-        <Col md={2} sm={12} xs={12} className='mb-2'><MyButton style={{width: 150 + 'px'}} value={'Звук'} onClick={(e) => {setRental(e.target.va1ue)}}>Звук</MyButton></Col>
-        <Col md={2} sm={12} xs={12} className='mb-2'><MyButton style={{width: 150 + 'px'}} value={'Операторская техника'} onClick={(e) => {setRental(e.target.value)}}>техника</MyButton></Col>
+
+        {rentalMenu.map((item) => {
+          console.log(item)
+          return <Col md={2} sm={12} xs={12} className='mb-2'><MyButton className={(rental === item) ? 'myBtn myBtn-click' : 'myBtn'} style={{minWidth: 150 + 'px'}} value={item} onClick={(e) => {clickHandler(e.target.value)}}>{item}</MyButton></Col>
+        })}
 
       </Row>
 
 
 
-
-
-      <Row>
+      <Row className='mb-4 mt-4'>
 
         {rentalData.map((card, id) => {
 

@@ -23,6 +23,7 @@ const Trash = ({modalCreateOpen}) => {
   const {modalRental, setModalRental} = modalCreateOpen
 
   const selector = useSelector(state => state.addTrash.trash)
+  console.log(selector)
 
   let sum = 0
 
@@ -47,7 +48,7 @@ const Trash = ({modalCreateOpen}) => {
       <Row className='mt-5 mb-5 d-flex align-items-center'>
 
 
-          <Col md={2} sm={5} xs={12} className='mb-3'><MyButton onClick={() => {setModalRental(true)}}>Оформить заказ</MyButton></Col>
+          <Col md={2} sm={5} xs={12} className='mb-3'><MyButton className={'myBtn'} onClick={() => {setModalRental(true)}}>Оформить заказ</MyButton></Col>
           <Col md={2} sm={5} xs={12} className='mb-3'><div>Сумма: {sum} $</div></Col>
 
       </Row>

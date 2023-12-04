@@ -18,3 +18,35 @@
   letter-spacing: 0.9px;
   margin-bottom: 63px;
 }
+
+
+/* btn */
+
+
+.myBtn {
+  width: max-content;
+  height: max-content;
+  color: white;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+.myBtn-click {
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  background: linear-gradient(260deg, #00B0E1 10.52%, #1E4FC6 91.43%);
+
+}
+
+.myBtn:active {
+
+  transform: scale(1.05);
+  transition: all 0.05s ease;
+
+}
+

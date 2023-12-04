@@ -21,11 +21,8 @@ import { useState } from 'react'
 const ModalCreate = ({modalCreateOpen, modalSubmitOpen}) => {
 
   const {modalCreate, setModalCreate} = modalCreateOpen
-  console.log(modalSubmitOpen)
-
   const {modalSubmit, setModalSubmit} = modalSubmitOpen
 
-  console.log(modalSubmit)
 
 
 
@@ -43,6 +40,11 @@ const ModalCreate = ({modalCreateOpen, modalSubmitOpen}) => {
 
   const modalCreateMessage = () => {
 
+    if (name === '' && email === '' && phone === '' && text === '' ) {
+      alert('заполните все поля')
+      return
+    }
+
     if (modalCreateChk === false) {
       alert('примите условия соглашения')
       return
@@ -57,6 +59,7 @@ const ModalCreate = ({modalCreateOpen, modalSubmitOpen}) => {
       }
 
       console.log(message)
+      console.log('click')
 
 
       setName('')
@@ -65,8 +68,7 @@ const ModalCreate = ({modalCreateOpen, modalSubmitOpen}) => {
       setText('')
       setModalCreate(false)
       setModalSubmit(true)
-
-
+      setModalCreateChk(false)
 
   }
 

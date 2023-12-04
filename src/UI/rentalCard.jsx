@@ -30,16 +30,10 @@ const RentalCard = ({img, title, subtitleShort, quantity, price, id, addGetTrash
 
   const addToTrash = () => {
 
-    dispatch(addTrash(rentalData[id]))
+    dispatch(addTrash(rentalData[id - 1]))
     setCounterTrash(counterTrash + 1)
 
   }
-
-
-
-
-
-
 
 
 
@@ -58,8 +52,8 @@ const RentalCard = ({img, title, subtitleShort, quantity, price, id, addGetTrash
 
       <div className="rental-card-price">Цена: {price} руб</div>
 
-      <Col md={6} sm={12} xs={12} className='mb-2'><Link style={{marginRight: 10 + 'px'}} to={`/rental/${id}`}><MyButton>Посмотреть</MyButton></Link></Col>
-      <Col md={6} sm={12} xs={12} className='mb-2'><MyButton onClick={() => {addToTrash()}}>Добавить в корзину</MyButton></Col>
+      <Col md={6} sm={12} xs={12} className='mb-2'><Link style={{marginRight: 10 + 'px'}} to={`/rental/${id}`}><MyButton className={'myBtn'}>Посмотреть</MyButton></Link></Col>
+      <Col md={6} sm={12} xs={12} className='mb-2'><MyButton className={'myBtn'} onClick={() => {addToTrash()}}>Добавить в корзину</MyButton></Col>
 
 
 
