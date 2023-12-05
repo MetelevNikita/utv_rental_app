@@ -18,26 +18,39 @@ import MyButton from '../../../UI/myButton'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { addTrash } from '../../../store/trash-slice'
+import { useEffect, useState } from 'react'
 
 
 const RentalCardOpen = ({modalRentalOpen, trash}) => {
 
+  const params = useParams()
+  const id = params.id
   const dispatch = useDispatch()
 
 
   const {modalRental, setModalRental} = modalRentalOpen
   const {counterTrash, setCounterTrash} = trash
 
+  const [singleCard, setSingleCard] = useState([])
+  const rentalBase = useSelector((state => state.addRental.rental))
 
 
 
-  const params = useParams()
-  const id = params.id - 1
-  const currentCard = rentalData[id]
+  const currentCard = (rentalBase.length < 1) ? [] : rentalBase.filter((item) => {
+    return item.id === id
+
+  })
+
+
+
+
+
+
+
 
   const addToTrash = () => {
 
-    dispatch(addTrash(rentalData[id]))
+    dispatch(addTrash(currentCard[0].rentalCard))
     setCounterTrash(counterTrash + 1)
 
   }
@@ -52,28 +65,28 @@ const RentalCardOpen = ({modalRentalOpen, trash}) => {
 
         <Col mb={6} sm={6} xs={12} className='mb-4'>
 
-          <img className='card-open-img' src={currentCard.img} alt="card-img" />
+          <img className='card-open-img' src={currentCard[0].rentalCard.img} alt="card-img" />
 
         </Col>
 
         <Col mb={6} sm={6} xs={12} className='mb-5'>
 
-          <div className="card-open-title">{currentCard.title}</div>
-          <div className="card-open-subtitle">{currentCard.subtitleLong}</div>
+          <div className="card-open-title">{currentCard[0].rentalCard.title}</div>
+          <div className="card-open-subtitle">{currentCard[0].rentalCard.subtitleLong}</div>
 
           <hr className='card-open-line'/>
 
-          <div className="card-open-quantity">Количество: {currentCard.quantity}</div>
-          <div className="card-open-price">Цена: {currentCard.price}</div>
+          <div className="card-open-quantity">Количество: {currentCard[0].rentalCard.quantity}</div>
+          <div className="card-open-price">Цена: {currentCard[0].rentalCard.price}</div>
 
         </Col>
       </Row>
 
 
-      <Row className='mb-4'>
+      <Row className='mb-5'>
 
-        <Col mb={2} sm={2} xs={12} className='mb-3'><MyButton style={{marginRight: 20 + 'px'}} onClick = {() => {addToTrash()}}>Добавить в корзину</MyButton></Col>
-        <Col mb={2} sm={2} xs={12} className='mb-3'><MyButton onClick={() => {setModalRental(true)}}>Задайте вопрос</MyButton></Col>
+        <Col mb={2} sm={2} xs={12} className='mb-3'><MyButton className={'myBtn'} style={{marginRight: 20 + 'px'}} onClick = {() => {addToTrash()}}>Добавить в корзину</MyButton></Col>
+        <Col mb={2} sm={2} xs={12} className='mb-3'><MyButton className={'myBtn'} onClick={() => {setModalRental(true)}}>Задайте вопрос</MyButton></Col>
 
       </Row>
 

@@ -3,6 +3,6 @@
 
 .html, body {
   background-image: url('./asset/BG\ final.png');
-  background-size: contain;
+  background-size: cover;
 }
 

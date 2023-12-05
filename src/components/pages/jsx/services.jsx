@@ -36,8 +36,8 @@ const Services = () => {
 
       <Row className='mb-5'>
 
-        {serviceMenu.map((item) => {
-          return <Col className='mb-3' md={2} sm={12} xs={12}><MyButton className={(service === item) ? 'myBtn myBtn-click' : 'myBtn'} style={{marginRight: 17 + 'px', width: 200 + 'px'}} value={item} onClick={(e) => {setService(e.target.value)}}>{item}</MyButton></Col>
+        {serviceMenu.map((item, index) => {
+          return <Col key={index} className='mb-3' md={2} sm={12} xs={12}><MyButton className={(service === item) ? 'myBtn myBtn-click' : 'myBtn'} style={{marginRight: 17 + 'px', width: 200 + 'px'}} value={item} onClick={(e) => {setService(e.target.value)}}>{item}</MyButton></Col>
         })}
 
       </Row>

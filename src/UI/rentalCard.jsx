@@ -3,9 +3,8 @@ import './../UI/rentalCard.css'
 //
 
 import { Link } from 'react-router-dom'
+import { Row, Col } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
-import { rentalData } from '../servers/rentalData'
-import { Col } from 'react-bootstrap'
 
 // components
 
@@ -15,6 +14,7 @@ import MyButton from './myButton'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { addTrash } from '../store/trash-slice'
+import { useEffect, useState } from 'react'
 
 //
 
@@ -25,12 +25,19 @@ const RentalCard = ({img, title, subtitleShort, quantity, price, id, addGetTrash
 
 
   const dispatch = useDispatch()
+  const rentalBase = useSelector((state) => state.addRental.rental)
+
+  const currentCard = (rentalBase.length < 1) ? [] : rentalBase.filter((item) => {
+    return item.id === id
+
+  })
+
 
 
 
   const addToTrash = () => {
 
-    dispatch(addTrash(rentalData[id - 1]))
+    dispatch(addTrash(currentCard[0].rentalCard))
     setCounterTrash(counterTrash + 1)
 
   }
@@ -52,8 +59,18 @@ const RentalCard = ({img, title, subtitleShort, quantity, price, id, addGetTrash
 
       <div className="rental-card-price">Цена: {price} руб</div>
 
-      <Col md={6} sm={12} xs={12} className='mb-2'><Link style={{marginRight: 10 + 'px'}} to={`/rental/${id}`}><MyButton className={'myBtn'}>Посмотреть</MyButton></Link></Col>
+
+      <Row className={'d-flex'}>
+
+
+      <Col md={5} sm={12} xs={12} className='mb-2'><Link style={{marginRight: 10 + 'px'}} to={`/rental/${id}`}><MyButton className={'myBtn'}>Посмотреть</MyButton></Link></Col>
       <Col md={6} sm={12} xs={12} className='mb-2'><MyButton className={'myBtn'} onClick={() => {addToTrash()}}>Добавить в корзину</MyButton></Col>
+
+
+
+
+      </Row>
+
 
 
 

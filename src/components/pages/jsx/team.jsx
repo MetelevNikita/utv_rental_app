@@ -32,8 +32,8 @@ const Team = () => {
         <div className="team-subtitle">наши специалисты</div>
 
         <ScrollCarousel autoplay autoplaySpeed={8}>
-          {teamData.map((card) => {
-            return <TeamCard img={card.img} name={card.name} profession={card.profession}></TeamCard>
+          {teamData.map((card, index) => {
+            return <TeamCard key={index} img={card.img} name={card.name} profession={card.profession}></TeamCard>
           })}
         </ScrollCarousel>
 
