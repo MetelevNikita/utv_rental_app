@@ -7,6 +7,7 @@ import { Container, Col, Row } from "react-bootstrap"
 // redux
 
 import { useDispatch, useSelector } from 'react-redux'
+import { deleteTrash } from '../../../store/trash-slice'
 
 
 // components
@@ -21,9 +22,16 @@ import MyButton from '../../../UI/myButton'
 const Trash = ({modalCreateOpen}) => {
 
   const {modalRental, setModalRental} = modalCreateOpen
+  const dispatch = useDispatch()
 
   const trashCards = useSelector(state => state.addTrash.trash)
   console.log(trashCards)
+
+
+  const selector = useSelector(state => state)
+  console.log(selector)
+
+
 
   let sum = 0
 
@@ -31,6 +39,10 @@ const Trash = ({modalCreateOpen}) => {
     return sum += Number(card.price)
   })
 
+
+  const deleteTrashCardHandler = (e) => {
+    dispatch(deleteTrash(e))
+  }
 
   return(
 
@@ -40,7 +52,7 @@ const Trash = ({modalCreateOpen}) => {
 
 
           {(trashCards.length < 1) ? <div className='trash-empty'>Корзина пуста</div> :  trashCards.map((card) => {
-            return  <TrashCard img={card.img} title={card.title} price={card.price}></TrashCard>
+            return  <TrashCard img={card.img} title={card.title} price={card.price} onClick={() => {deleteTrashCardHandler(card.title)}}></TrashCard>
           })}
 
       </Row>

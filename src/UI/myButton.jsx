@@ -1,4 +1,3 @@
-import './../UI/myButton.css'
 
 const MyButton = ({children, ...props}) => {
 

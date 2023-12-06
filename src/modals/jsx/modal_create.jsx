@@ -24,9 +24,6 @@ const ModalCreate = ({modalCreateOpen, modalSubmitOpen}) => {
   const {modalSubmit, setModalSubmit} = modalSubmitOpen
 
 
-
-
-
   const [modalCreateChk, setModalCreateChk] = useState(false)
 
 
@@ -34,6 +31,30 @@ const ModalCreate = ({modalCreateOpen, modalSubmitOpen}) => {
   const [phone, setPhone] = useState()
   const [email, setEmail] = useState()
   const [text, setText] = useState('')
+
+
+
+  const messageTG = ` ЗАЯВКА С САЙТА \n \n Имя ${name} \n Телефон ${phone} \n Email ${email} \n Сообщение ${text}`
+
+
+  const sendToTelegram = () => {
+
+    const TOKEN_API = '6300640727:AAEfkGCzf4alOlm7vRDiFkgvYixyUeggxz0'
+    const CHAT_ID = '-4033081603'
+    const URL = `https://api.telegram.org/bot${TOKEN_API}/sendMessage`
+
+
+    fetch(URL, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({chat_id: CHAT_ID, text: messageTG})
+
+    }).then(responce => responce.json())
+      .then(data => console.log(data))
+  }
+
 
 
 
@@ -59,7 +80,9 @@ const ModalCreate = ({modalCreateOpen, modalSubmitOpen}) => {
       }
 
       console.log(message)
-      console.log('click')
+
+
+      sendToTelegram()
 
 
       setName('')
@@ -112,7 +135,7 @@ const ModalCreate = ({modalCreateOpen, modalSubmitOpen}) => {
                     <Row className='mt-2 mb-5'>
 
                       <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-start mb-3'><MyCheckBox title={'Я согласен с политикой конфиденциальности'} onChange={() => {setModalCreateChk(prev => !prev)}} checked={modalCreateChk}></MyCheckBox></Col>
-                      <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-end mb-3'><MyButton onClick={() => {modalCreateMessage()}}>Отправить</MyButton></Col>
+                      <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-end mb-3'><MyButton className={'myBtn'} onClick={() => {modalCreateMessage()}}>Отправить</MyButton></Col>
 
                     </Row>
 

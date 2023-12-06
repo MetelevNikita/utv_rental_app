@@ -13,7 +13,6 @@ import { Link } from 'react-router-dom'
 
 import RentalCard from '../../../UI/rentalCard'
 import MyButton from '../../../UI/myButton'
-import { rentalData } from '../../../servers/rentalData'
 
 //
 
@@ -62,7 +61,7 @@ const Rental = ({modalRentalOpen, trash}) => {
       <Row className='mb-4'>
 
         {rentalMenu.map((item, index) => {
-          return <Col key={index} md={2} sm={12} xs={12} className='mb-2'><MyButton className={(rental === item) ? 'myBtn myBtn-click' : 'myBtn'} style={{minWidth: 150 + 'px'}} value={item} onClick={(e) => {setRental(e.target.value)}}>{item}</MyButton></Col>
+          return <Col key={index} md={2} sm={6} xs={12} className='mb-2'><MyButton className={(rental === item) ? 'myBtn myBtn-click' : 'myBtn'} style={{minWidth: 150 + 'px'}} value={item} onClick={(e) => {setRental(e.target.value)}}>{item}</MyButton></Col>
         })}
 
       </Row>

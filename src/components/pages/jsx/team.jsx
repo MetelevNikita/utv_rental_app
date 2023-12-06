@@ -8,20 +8,40 @@ import img3 from './../../../asset/team-card-test.png'
 
 import { Container, Col, Row } from 'react-bootstrap'
 
+// redux
+
+import { useSelector, useDispatch } from 'react-redux'
+import { getFireStoreTeam } from '../../../store/team-slice'
+
 
 // components
 
 import TeamCard from '../../../UI/teamCard'
 import MyButton from '../../../UI/myButton'
-import { teamData } from '../../../servers/teamData'
 
 //
 
-
 import ScrollCarousel from 'scroll-carousel-react'
+import { useEffect } from 'react'
 
 
 const Team = () => {
+
+
+  const teamBase = useSelector((state) => state.addTeam.team)
+  const dispatch = useDispatch()
+
+
+  useEffect(() => {
+    dispatch(getFireStoreTeam())
+  }, [dispatch])
+
+
+
+  const teamPerson = teamBase.map((item) => {
+    return item.team
+  })
+  console.log(teamPerson)
 
   return(
 
@@ -31,9 +51,10 @@ const Team = () => {
         <div className="team-title">наша команда</div>
         <div className="team-subtitle">наши специалисты</div>
 
-        <ScrollCarousel autoplay autoplaySpeed={8}>
-          {teamData.map((card, index) => {
-            return <TeamCard key={index} img={card.img} name={card.name} profession={card.profession}></TeamCard>
+
+        <ScrollCarousel autoplay autoplaySpeed={5}>
+          {teamPerson.map((card, index) => {
+            return <Col><TeamCard key={index} img={card.img} name={card.name} profession={card.profession}></TeamCard></Col>
           })}
         </ScrollCarousel>
 

@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 // firestore
 
 import db from './../fireabaseApp'
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs} from "firebase/firestore";
 
 
 
@@ -23,6 +23,11 @@ export const getFireStore = createAsyncThunk(
     return rentalDB
   }
 )
+
+
+
+
+
 
 const rentalSlice = createSlice({
   name: 'rental',

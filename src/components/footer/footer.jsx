@@ -108,7 +108,7 @@ const Footer = ()  => {
 
 
         <Col md={6} sm={6} xs={12} className='mt-4'>
-          <MyButton onClick={() => {createMessage()}}>Отправить заявку</MyButton>
+          <MyButton className={'myBtn'} onClick={() => {createMessage()}}>Отправить заявку</MyButton>
         </Col>
         </Row>
 

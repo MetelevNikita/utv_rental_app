@@ -1,3 +1,4 @@
+import MyButton from '../../../UI/myButton'
 import './../css/trash-card.css'
 
 // bootstrap
@@ -7,11 +8,6 @@ import { Container, Col, Row } from 'react-bootstrap'
 
 
 const TrashCard = (props) => {
-
-
-
-
-
 
 
   return (
@@ -28,6 +24,9 @@ const TrashCard = (props) => {
           <div className="trash-card-title">{props.title}</div>
           <hr className='trash-card-line'/>
           <div className="trash-card-price">Цена: {props.price} $</div>
+
+
+          <MyButton className={'myBtn'} {...props}>Удалить</MyButton>
 
         </div>
       </Col>

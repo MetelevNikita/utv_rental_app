@@ -4,7 +4,10 @@
 
 }
 
-.chk-title {}
+.chk-title {
+  display: flex;
+  align-items: center;
+}
 
 .chk-checkbox {
   margin-right: 20px;

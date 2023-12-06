@@ -7,7 +7,6 @@ import { Container, Row, Col } from "react-bootstrap"
 //
 
 import { useParams } from "react-router-dom"
-import { rentalData } from "../../../servers/rentalData"
 
 // components
 
@@ -41,6 +40,8 @@ const RentalCardOpen = ({modalRentalOpen, trash}) => {
 
   })
 
+  console.log(currentCard)
+
 
 
 
@@ -60,7 +61,6 @@ const RentalCardOpen = ({modalRentalOpen, trash}) => {
   return(
     <>
 
-
       <Row className=''>
 
         <Col mb={6} sm={6} xs={12} className='mb-4'>
@@ -72,12 +72,15 @@ const RentalCardOpen = ({modalRentalOpen, trash}) => {
         <Col mb={6} sm={6} xs={12} className='mb-5'>
 
           <div className="card-open-title">{currentCard[0].rentalCard.title}</div>
-          <div className="card-open-subtitle">{currentCard[0].rentalCard.subtitleLong}</div>
+          <div className="card-open-subtitle">{currentCard[0].rentalCard.subtitlLong}</div>
 
           <hr className='card-open-line'/>
 
-          <div className="card-open-quantity">Количество: {currentCard[0].rentalCard.quantity}</div>
-          <div className="card-open-price">Цена: {currentCard[0].rentalCard.price}</div>
+          <Row>
+            <Col><div className="card-open-quantity">Количество: {currentCard[0].rentalCard.quantity}</div></Col>
+            <Col><div className="card-open-price">Цена: {currentCard[0].rentalCard.price}</div></Col>
+          </Row>
+
 
         </Col>
       </Row>
@@ -89,7 +92,6 @@ const RentalCardOpen = ({modalRentalOpen, trash}) => {
         <Col mb={2} sm={2} xs={12} className='mb-3'><MyButton className={'myBtn'} onClick={() => {setModalRental(true)}}>Задайте вопрос</MyButton></Col>
 
       </Row>
-
 
 
     </>

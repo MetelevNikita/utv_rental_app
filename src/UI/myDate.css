@@ -1,0 +1,27 @@
+.myDate {
+  border: 1px solid white;
+  border-radius: 10px;
+
+  /*  */
+
+  height: 60px;
+  padding-left: 10px;
+  color: grey;
+  padding-right: 10px;
+
+}
+
+input[type=date]::-webkit-calendar-picker-indicator{
+
+  filter: invert(2);
+
+}
+
+.myDate-title {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: grey;
+}
