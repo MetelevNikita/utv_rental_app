@@ -19,9 +19,12 @@ import { useEffect, useState } from 'react'
 //
 
 
-const RentalCard = ({img, title, subtitleShort, quantity, price, id, addGetTrash}) => {
+const RentalCard = ({img, title, subtitleShort, quantity, price, id, addGetTrash, addGetQuantity}) => {
 
   const {counterTrash, setCounterTrash} = addGetTrash
+  let {counterQuantity, setCounterQuantity} = addGetQuantity
+
+
 
 
   const dispatch = useDispatch()
@@ -43,6 +46,29 @@ const RentalCard = ({img, title, subtitleShort, quantity, price, id, addGetTrash
   }
 
 
+  const counterQuantityPlus = () => {
+
+    console.log(counterQuantity)
+
+    setCounterQuantity(() => {
+      return counterQuantity++
+    })
+  }
+
+
+  const counterQuantityMinus = () => {
+
+    console.log(counterQuantity)
+
+    setCounterQuantity(() => {
+      return counterQuantity--
+    })
+  }
+
+
+
+
+
 
   return(
     <div className="rental-card-container" id={id}>
@@ -53,6 +79,16 @@ const RentalCard = ({img, title, subtitleShort, quantity, price, id, addGetTrash
       <hr className='rental-card-line-top'/>
 
       <div className="rental-card-subtitle">{subtitleShort}</div>
+
+
+      <div className="rental-card-quantity-container">
+      <button className="rental-card-quantity-counterMinus" onClick={counterQuantityMinus}>-</button>
+      <div className="rental-card-quantity-counterText">{counterQuantity}</div>
+      <button className="rental-card-quantity-counterPlus" onClick={counterQuantityPlus}>+</button>
+      </div>
+
+
+
       <div className="rental-card-quantity">Количество: {quantity}шт.</div>
 
       <hr className='rental-card-line-bottom'/>

@@ -13,17 +13,22 @@ import MyDate from '../../UI/myDate'
 
 import { Row, Col } from 'react-bootstrap'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // redux
 
 import { useDispatch, useSelector } from 'react-redux'
 import { setFireStore } from '../../store/archiveSlice'
 import trashSlice from '../../store/trash-slice'
+import { clearTrash } from '../../store/trash-slice'
 
 
-const ModalRental = ({modalRentalOpen}) => {
+const ModalRental = ({modalRentalOpen, trash}) => {
 
   const {modalRental, setModalRental} = modalRentalOpen
+  const {counterTrash, setCounterTrash} = trash
+
+  console.log(counterTrash)
 
   const [modalName, setModalName] = useState('')
   const [modalPhone, setModalPhone] = useState('')
@@ -33,8 +38,6 @@ const ModalRental = ({modalRentalOpen}) => {
   const [modalRentalChk, setModalRentalChk] = useState(false)
 
   const dispatch = useDispatch()
-  const selector = useSelector((state) => state)
-  console.log(selector)
 
 
   const trashStore = useSelector(state => state.addTrash.trash)
@@ -42,13 +45,23 @@ const ModalRental = ({modalRentalOpen}) => {
   const selectedTrash = trashStore.map((item) => {return item.title})
   let sum = 0
   const selectedPrice = trashStore.map((item) => {return sum += Number(item.price)})
-  console.log(selectedPrice)
+
+
+  const navigate= useNavigate()
+
+
+
 
   const messageTG = ` ЗАЯВКА НА ОБОРУДОВАНИЕ \n \n Имя ${modalName} \n Телефон ${modalPhone} \n Сообщение ${modalText} \n Дата бронирования ${modalDateStart} - ${modalDateEnd} \n Оборудование ${selectedTrash.join(', ')} на сумму ${selectedPrice}$`
 
   const archive = {
 
-    modalName, modalPhone, modalText, modalDateStart, modalDateEnd
+    modalName,
+    modalPhone,
+    modalText,
+    modalDateStart,
+    modalDateEnd,
+    selectedTrash
 
   }
 
@@ -88,14 +101,6 @@ const ModalRental = ({modalRentalOpen}) => {
       return
     }
 
-    const message = {
-      name: modalName,
-      phone: modalPhone,
-      text: modalText
-    }
-
-
-
     sendToTelegram()
     dispatch(setFireStore(archive))
 
@@ -107,11 +112,13 @@ const ModalRental = ({modalRentalOpen}) => {
     setModalDateEnd('')
 
     setModalRental(false)
-    window.location.reload()
+    setCounterTrash(0)
+    dispatch(clearTrash([]))
+    navigate('/')
 
-
-    return message
   }
+
+
 
 
   return(

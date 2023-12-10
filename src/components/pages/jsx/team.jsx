@@ -41,7 +41,7 @@ const Team = () => {
   const teamPerson = teamBase.map((item) => {
     return item.team
   })
-  console.log(teamPerson)
+
 
   return(
 

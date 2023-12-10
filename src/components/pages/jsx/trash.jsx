@@ -28,7 +28,7 @@ const Trash = ({modalCreateOpen}) => {
   console.log(trashCards)
 
 
-  const selector = useSelector(state => state)
+  const selector = useSelector(state => state.addArchive.archive)
   console.log(selector)
 
 

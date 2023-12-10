@@ -13,8 +13,11 @@ export const setFireStore = createAsyncThunk(
 
     const docRef = await addDoc(collection(db, 'archive'), archive)
 
-    const newArchiveCard = {id: docRef.id, archive}
-    return newArchiveCard
+    const newCard = {id: docRef.id, archive}
+
+    console.log(newCard)
+
+    return newCard
   }
 )
 
@@ -28,8 +31,8 @@ export const setFireStore = createAsyncThunk(
 
 
   extraReducers: (builder) => {
-    builder.addCase(setFireStore, (state, action) => {
-      state.archive = action.payload
+    builder.addCase(setFireStore.fulfilled, (state, action) => {
+      state.archive.push(action.payload)
     })
   }
 })

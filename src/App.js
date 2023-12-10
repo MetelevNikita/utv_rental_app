@@ -50,6 +50,7 @@ const App = () => {
   const [modalRental, setModalRental] = useState(false)
   const [modalSubmit, setModalSubmit] = useState(false)
   const [counterTrash, setCounterTrash] = useState(0)
+  const [counterQuantity, setCounterQuantity] = useState(0)
 
 
 
@@ -70,7 +71,7 @@ const App = () => {
                   <Route path='/' element={<>
                       <AboutUs></AboutUs>
                       <Services></Services>
-                      <Rental modalRentalOpen={{modalRental, setModalRental}} trash={{counterTrash, setCounterTrash}}></Rental>
+                      <Rental modalRentalOpen={{modalRental, setModalRental}} quantity={{counterQuantity, setCounterQuantity}} trash={{counterTrash, setCounterTrash}}></Rental>
                       <Team></Team>
                       </>}>
                     </Route>
@@ -84,7 +85,7 @@ const App = () => {
 
 
                   {(modalCreate !== false) ? <ModalCreate modalSubmitOpen={{modalSubmit, setModalSubmit}} modalCreateOpen={{modalCreate, setModalCreate}}/> : <></>}
-                  {(modalRental !== false) ? <ModalRental modalRentalOpen={{modalRental, setModalRental}}></ModalRental> : <></>}
+                  {(modalRental !== false) ? <ModalRental trash={{counterTrash, setCounterTrash}} modalRentalOpen={{modalRental, setModalRental}}></ModalRental> : <></>}
                   {(modalSubmit !== false) ? <ModalSubmit modalSubmitOpen={{modalSubmit, setModalSubmit}}></ModalSubmit> : <></>}
 
                   </div>
