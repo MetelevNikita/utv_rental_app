@@ -22,7 +22,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 
 
-const Rental = ({modalRentalOpen, trash, quantity}) => {
+const Rental = ({modalRentalOpen, trash}) => {
 
 
   const rentalMenu = ['Камеры', 'Свет', 'Звук' , 'Операторская техника']
@@ -39,10 +39,6 @@ const Rental = ({modalRentalOpen, trash, quantity}) => {
   useEffect(() => {
     dispatch(getFireStore())
   }, [])
-
-
-
-
 
 
 
@@ -70,7 +66,7 @@ const Rental = ({modalRentalOpen, trash, quantity}) => {
       <Row className='mb-4 mt-4'>
         {rentalBase.rental.map((item, index) => {
           if(item.rentalCard.category === rental) {
-            return <Col key={index} className='col-xl-4 col-md-4 col-sm-12 col-xs-12'><RentalCard modalRentalButton={modalRentalOpen} addGetQuantity={quantity} addGetTrash={trash} id={item.id} img={item.rentalCard.img} title={item.rentalCard.title} subtitleShort={item.rentalCard.subtitlShort} price={item.rentalCard.price} quantity={item.rentalCard.quantity}></RentalCard></Col>
+            return <Col key={index} className='col-xl-4 col-md-4 col-sm-12 col-xs-12'><RentalCard modalRentalButton={modalRentalOpen} addGetTrash={trash} id={item.id} img={item.rentalCard.img} title={item.rentalCard.title} subtitleShort={item.rentalCard.subtitlShort} price={item.rentalCard.price} quantity={item.rentalCard.quantity} counterQuantityTitle={item.rentalCard.counterQuantity}></RentalCard></Col>
           }
         })}
       </Row>

@@ -106,15 +106,24 @@
 
 
 .rental-card-quantity-container {
+
+  display: flex;
+  align-items: center;
+}
+
+
+.rental-card-quantity-box {
   display:  flex;
   flex-direction: row;
   justify-content: center;
   border: 1px solid rgb(255, 255, 255);
   width: 150px;
   height: 100%;
-  padding: 10px;
+  padding: 5px;
   border-radius: 30px;
+  margin-left: 40px;
 }
+
 
 .rental-card-quantity-counterMinus {
   font-size: 26px;

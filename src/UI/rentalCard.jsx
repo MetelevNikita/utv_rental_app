@@ -19,10 +19,17 @@ import { useEffect, useState } from 'react'
 //
 
 
-const RentalCard = ({img, title, subtitleShort, quantity, price, id, addGetTrash, addGetQuantity}) => {
+const RentalCard = ({img, title, subtitleShort, quantity, price, id, counterQuantityTitle, addGetTrash}) => {
 
-  const {counterTrash, setCounterTrash} = addGetTrash
-  let {counterQuantity, setCounterQuantity} = addGetQuantity
+const {counterTrash, setCounterTrash} = addGetTrash
+
+let [counterQuntity, setCounterQuantity] = useState(0)
+
+
+
+
+
+
 
 
 
@@ -30,42 +37,42 @@ const RentalCard = ({img, title, subtitleShort, quantity, price, id, addGetTrash
   const dispatch = useDispatch()
   const rentalBase = useSelector((state) => state.addRental.rental)
 
+
+
   const currentCard = (rentalBase.length < 1) ? [] : rentalBase.filter((item) => {
     return item.id === id
-
   })
 
+
+  console.log(currentCard)
 
 
 
   const addToTrash = () => {
-
-    dispatch(addTrash(currentCard[0].rentalCard))
+    dispatch(addTrash({title: title, card: currentCard[0].rentalCard, counterQuantity: counterQuntity}))
     setCounterTrash(counterTrash + 1)
+  }
+
+
+  const addQuantityPlus = () => {
+
+    console.log('click')
+    if(counterQuntity > quantity) {
+      return
+    }
+      setCounterQuantity(counterQuntity++)
 
   }
 
 
-  const counterQuantityPlus = () => {
 
-    console.log(counterQuantity)
-
-    setCounterQuantity(() => {
-      return counterQuantity++
-    })
+  const addQuantityMinus = () => {
+    if(counterQuntity !== 0) {
+      setCounterQuantity(counterQuntity = counterQuntity - 1)
+    } else {
+      return
+    }
   }
-
-
-  const counterQuantityMinus = () => {
-
-    console.log(counterQuantity)
-
-    setCounterQuantity(() => {
-      return counterQuantity--
-    })
-  }
-
-
 
 
 
@@ -81,15 +88,26 @@ const RentalCard = ({img, title, subtitleShort, quantity, price, id, addGetTrash
       <div className="rental-card-subtitle">{subtitleShort}</div>
 
 
+
+
+
       <div className="rental-card-quantity-container">
-      <button className="rental-card-quantity-counterMinus" onClick={counterQuantityMinus}>-</button>
-      <div className="rental-card-quantity-counterText">{counterQuantity}</div>
-      <button className="rental-card-quantity-counterPlus" onClick={counterQuantityPlus}>+</button>
+
+          <div className='rental-card-quantity-title'>Выберите количество</div>
+
+          <div className="rental-card-quantity-box">
+            <button className="rental-card-quantity-counterMinus" onClick={addQuantityMinus}>-</button>
+            <div className="rental-card-quantity-counterText">{counterQuntity}</div>
+            <button className="rental-card-quantity-counterPlus" onClick={addQuantityPlus}>+</button>
+          </div>
+
       </div>
 
 
 
-      <div className="rental-card-quantity">Количество: {quantity}шт.</div>
+
+
+      <div className="rental-card-quantity">Наличие: {quantity}шт.</div>
 
       <hr className='rental-card-line-bottom'/>
 

@@ -51,8 +51,9 @@ const Trash = ({modalCreateOpen}) => {
       <Row>
 
 
-          {(trashCards.length < 1) ? <div className='trash-empty'>Корзина пуста</div> :  trashCards.map((card) => {
-            return  <TrashCard img={card.img} title={card.title} price={card.price} onClick={() => {deleteTrashCardHandler(card.title)}}></TrashCard>
+          {(trashCards.length < 1) ? <div className='trash-empty'>Корзина пуста</div> :  trashCards.map((card, index) => {
+            console.log(card)
+            return  <TrashCard key={index} img={card.card.img} title={card.card.title} price={card.card.price} counterQuantity={card.counterQuantity} onClick={() => {deleteTrashCardHandler(card.title)}}></TrashCard>
           })}
 
       </Row>
