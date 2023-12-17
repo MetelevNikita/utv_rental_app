@@ -39,6 +39,7 @@ import { useState } from 'react'
 
 import { rentalStore } from './store/rental-store'
 import { Provider } from 'react-redux'
+import ModalRentalSubmit from './modals/jsx/modal_rental_submit'
 
 
 
@@ -49,6 +50,7 @@ const App = () => {
   const [modalCreate, setModalCreate] = useState(false)
   const [modalRental, setModalRental] = useState(false)
   const [modalSubmit, setModalSubmit] = useState(false)
+  const [modalRentalSubmit, setModalRentalSubmit] = useState(false)
   const [counterTrash, setCounterTrash] = useState(0)
 
 
@@ -70,13 +72,13 @@ const App = () => {
                   <Route path='/' element={<>
                       <AboutUs></AboutUs>
                       <Services></Services>
-                      <Rental modalRentalOpen={{modalRental, setModalRental}} trash={{counterTrash, setCounterTrash}}></Rental>
+                      <Rental modalRentalSubmitOpen={{modalRentalSubmit, setModalRentalSubmit}} modalRentalOpen={{modalRental, setModalRental}} trash={{counterTrash, setCounterTrash}}></Rental>
                       <Team></Team>
                       </>}>
                     </Route>
 
                     <Route path='/rental/:id' element={<RentalCardOpen trash={{counterTrash, setCounterTrash}} modalRentalOpen={{modalRental, setModalRental}}/>}></Route>
-                    <Route path='/trash' element={<Trash modalCreateOpen={{modalRental, setModalRental}}></Trash>}></Route>
+                    <Route path='/trash' element={<Trash counter={{counterTrash, setCounterTrash}} modalCreateOpen={{modalRental, setModalRental}}></Trash>}></Route>
                 </Routes>
 
 
@@ -86,6 +88,7 @@ const App = () => {
                   {(modalCreate !== false) ? <ModalCreate modalSubmitOpen={{modalSubmit, setModalSubmit}} modalCreateOpen={{modalCreate, setModalCreate}}/> : <></>}
                   {(modalRental !== false) ? <ModalRental trash={{counterTrash, setCounterTrash}} modalRentalOpen={{modalRental, setModalRental}}></ModalRental> : <></>}
                   {(modalSubmit !== false) ? <ModalSubmit modalSubmitOpen={{modalSubmit, setModalSubmit}}></ModalSubmit> : <></>}
+                  {(modalRentalSubmit !== false) ? <ModalRentalSubmit modalRentalSubmitClose={{modalRentalSubmit, setModalRentalSubmit}}></ModalRentalSubmit> : <></>}
 
                   </div>
               </Container>

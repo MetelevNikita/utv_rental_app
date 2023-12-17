@@ -7,6 +7,7 @@ import { Container, Row, Col } from "react-bootstrap"
 //
 
 import { useParams } from "react-router-dom"
+import { Navigate } from 'react-router-dom'
 
 // components
 
@@ -24,7 +25,10 @@ const RentalCardOpen = ({modalRentalOpen, trash}) => {
 
   const params = useParams()
   const id = params.id
+
   const dispatch = useDispatch()
+
+  let [counterQuntity, setCounterQuantity] = useState(0)
 
 
   const {modalRental, setModalRental} = modalRentalOpen
@@ -35,12 +39,18 @@ const RentalCardOpen = ({modalRentalOpen, trash}) => {
 
 
 
+
+
+
   const currentCard = (rentalBase.length < 1) ? [] : rentalBase.filter((item) => {
     return item.id === id
 
   })
 
-  console.log(currentCard)
+  console.log(currentCard.length)
+
+
+
 
 
 
@@ -50,12 +60,42 @@ const RentalCardOpen = ({modalRentalOpen, trash}) => {
 
 
   const addToTrash = () => {
+    if(counterQuntity < 1) {
+      return alert('Добавьте хотя бы одну позицию')
+    }
 
-    dispatch(addTrash(currentCard[0].rentalCard))
+    dispatch(addTrash({title: currentCard[0].rentalCard.title, card: currentCard[0].rentalCard, counterQuantity: counterQuntity}))
     setCounterTrash(counterTrash + 1)
 
   }
 
+
+  const addQuantityPlus = () => {
+
+    console.log('click')
+    if(counterQuntity > currentCard[0].rentalCard.quantity) {
+      return
+    }
+      setCounterQuantity(counterQuntity++)
+
+  }
+
+  const addQuantityMinus = () => {
+    if(counterQuntity !== 0) {
+      setCounterQuantity(counterQuntity = counterQuntity - 1)
+    } else {
+      return
+    }
+  }
+
+
+
+
+
+
+  if(currentCard.length < 1) {
+    return <Navigate to="/" replace={true}></Navigate>
+  }
 
 
   return(
@@ -75,6 +115,20 @@ const RentalCardOpen = ({modalRentalOpen, trash}) => {
           <div className="card-open-subtitle">{currentCard[0].rentalCard.subtitlLong}</div>
 
           <hr className='card-open-line'/>
+
+          <div className="rental-card-quantity-container">
+
+              <div className='rental-card-quantity-title'>Выберите количество</div>
+
+                  <div className="rental-card-quantity-box">
+                    <button className="rental-card-quantity-counterMinus" onClick={addQuantityMinus}>-</button>
+                    <div className="rental-card-quantity-counterText">{counterQuntity}</div>
+                    <button className="rental-card-quantity-counterPlus" onClick={addQuantityPlus}>+</button>
+                  </div>
+
+          </div>
+
+
 
           <Row>
             <Col><div className="card-open-quantity">Количество: {currentCard[0].rentalCard.quantity}</div></Col>

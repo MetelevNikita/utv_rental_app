@@ -19,60 +19,60 @@ import { useEffect, useState } from 'react'
 //
 
 
-const RentalCard = ({img, title, subtitleShort, quantity, price, id, counterQuantityTitle, addGetTrash}) => {
+const RentalCard = ({img, title, subtitleShort, quantity, price, id, counterQuantityTitle, addGetTrash, modalRentalSubmitButton}) => {
 
 const {counterTrash, setCounterTrash} = addGetTrash
+const {modalRentalSubmit, setModalRentalSubmit} = modalRentalSubmitButton
 
 let [counterQuntity, setCounterQuantity] = useState(0)
 
+const dispatch = useDispatch()
+const rentalBase = useSelector((state) => state.addRental.rental)
 
 
 
+const currentCard = (rentalBase.length < 1) ? [] : rentalBase.filter((item) => {
+  return item.id === id
+})
+
+
+console.log(currentCard)
 
 
 
+const addToTrash = () => {
 
-
-
-  const dispatch = useDispatch()
-  const rentalBase = useSelector((state) => state.addRental.rental)
-
-
-
-  const currentCard = (rentalBase.length < 1) ? [] : rentalBase.filter((item) => {
-    return item.id === id
-  })
-
-
-  console.log(currentCard)
-
-
-
-  const addToTrash = () => {
-    dispatch(addTrash({title: title, card: currentCard[0].rentalCard, counterQuantity: counterQuntity}))
-    setCounterTrash(counterTrash + 1)
+  if(counterQuntity < 1) {
+    return alert('Добавьте хотя бы одну позицию')
   }
+  dispatch(addTrash({title: title, card: currentCard[0].rentalCard, counterQuantity: counterQuntity}))
+  setCounterTrash(counterTrash + 1)
+  setModalRentalSubmit(true)
+}
 
 
-  const addQuantityPlus = () => {
+const addQuantityPlus = () => {
 
-    console.log('click')
-    if(counterQuntity > quantity) {
-      return
-    }
-      setCounterQuantity(counterQuntity++)
-
+  console.log('click')
+  if(counterQuntity > quantity) {
+    return
   }
+    setCounterQuantity(counterQuntity++)
+
+}
 
 
 
-  const addQuantityMinus = () => {
-    if(counterQuntity !== 0) {
-      setCounterQuantity(counterQuntity = counterQuntity - 1)
-    } else {
-      return
-    }
+const addQuantityMinus = () => {
+  if(counterQuntity !== 0) {
+    setCounterQuantity(counterQuntity = counterQuntity - 1)
+  } else {
+    return
   }
+}
+
+
+
 
 
 

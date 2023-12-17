@@ -19,17 +19,20 @@ import MyButton from '../../../UI/myButton'
 
 
 
-const Trash = ({modalCreateOpen}) => {
+const Trash = ({modalCreateOpen, counter}) => {
 
   const {modalRental, setModalRental} = modalCreateOpen
+  let {counterTrash, setCounterTrash} = counter
+
+  console.log(counterTrash)
+
+
+
   const dispatch = useDispatch()
 
   const trashCards = useSelector(state => state.addTrash.trash)
-  console.log(trashCards)
-
-
   const selector = useSelector(state => state.addArchive.archive)
-  console.log(selector)
+
 
 
 
@@ -42,6 +45,7 @@ const Trash = ({modalCreateOpen}) => {
 
   const deleteTrashCardHandler = (e) => {
     dispatch(deleteTrash(e))
+    setCounterTrash(counterTrash-1)
   }
 
   return(
@@ -52,7 +56,6 @@ const Trash = ({modalCreateOpen}) => {
 
 
           {(trashCards.length < 1) ? <div className='trash-empty'>Корзина пуста</div> :  trashCards.map((card, index) => {
-            console.log(card)
             return  <TrashCard key={index} img={card.card.img} title={card.card.title} price={card.card.price} counterQuantity={card.counterQuantity} onClick={() => {deleteTrashCardHandler(card.title)}}></TrashCard>
           })}
 
