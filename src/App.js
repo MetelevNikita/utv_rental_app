@@ -10,7 +10,7 @@ import { Routes, Router, Route } from 'react-router-dom'
 
 // components
 
-
+import Preloader from './components/pages/jsx/preloader'
 import Header from './components/header/header'
 import Video from './UI/video'
 import AboutUs from './components/pages/jsx/aboutUs'
@@ -33,13 +33,14 @@ import ModalRental from './modals/jsx/modal_rental'
 
 //
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // redux
 
 import { rentalStore } from './store/rental-store'
 import { Provider } from 'react-redux'
 import ModalRentalSubmit from './modals/jsx/modal_rental_submit'
+
 
 
 
@@ -54,44 +55,58 @@ const App = () => {
   const [counterTrash, setCounterTrash] = useState(0)
 
 
+  const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    setIsLoading(true)
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 3000)
+  }, [])
+
+
 
   return(
 
     <Provider store={rentalStore}>
 
+      <Container>
+
+        {
+
+          isLoading ? <Preloader></Preloader> :
+
+            <div className="App">
+
+                    <Header trash={{counterTrash, setCounterTrash}}></Header>
+                    <Video modalCreateOpen={{modalCreate, setModalCreate}}></Video>
+
+              <Routes>
+                <Route path='/' element={<>
+                    <AboutUs></AboutUs>
+                    <Services></Services>
+                    <Rental modalRentalSubmitOpen={{modalRentalSubmit, setModalRentalSubmit}} modalRentalOpen={{modalRental, setModalRental}} trash={{counterTrash, setCounterTrash}}></Rental>
+                    <Team></Team>
+                    </>}>
+                  </Route>
+
+                  <Route path='/rental/:id' element={<RentalCardOpen trash={{counterTrash, setCounterTrash}} modalRentalOpen={{modalRental, setModalRental}}/>}></Route>
+                  <Route path='/trash' element={<Trash counter={{counterTrash, setCounterTrash}} modalCreateOpen={{modalRental, setModalRental}}></Trash>}></Route>
+              </Routes>
 
 
-              <Container>
-
-              <div className="App">
-
-                      <Header trash={{counterTrash, setCounterTrash}}></Header>
-                      <Video modalCreateOpen={{modalCreate, setModalCreate}}></Video>
-
-                <Routes>
-                  <Route path='/' element={<>
-                      <AboutUs></AboutUs>
-                      <Services></Services>
-                      <Rental modalRentalSubmitOpen={{modalRentalSubmit, setModalRentalSubmit}} modalRentalOpen={{modalRental, setModalRental}} trash={{counterTrash, setCounterTrash}}></Rental>
-                      <Team></Team>
-                      </>}>
-                    </Route>
-
-                    <Route path='/rental/:id' element={<RentalCardOpen trash={{counterTrash, setCounterTrash}} modalRentalOpen={{modalRental, setModalRental}}/>}></Route>
-                    <Route path='/trash' element={<Trash counter={{counterTrash, setCounterTrash}} modalCreateOpen={{modalRental, setModalRental}}></Trash>}></Route>
-                </Routes>
+                    <Footer></Footer>
 
 
-                      <Footer></Footer>
+                {(modalCreate !== false) ? <ModalCreate modalSubmitOpen={{modalSubmit, setModalSubmit}} modalCreateOpen={{modalCreate, setModalCreate}}/> : <></>}
+                {(modalRental !== false) ? <ModalRental trash={{counterTrash, setCounterTrash}} modalRentalOpen={{modalRental, setModalRental}}></ModalRental> : <></>}
+                {(modalSubmit !== false) ? <ModalSubmit modalSubmitOpen={{modalSubmit, setModalSubmit}}></ModalSubmit> : <></>}
+                {(modalRentalSubmit !== false) ? <ModalRentalSubmit modalRentalSubmitClose={{modalRentalSubmit, setModalRentalSubmit}}></ModalRentalSubmit> : <></>}
 
+                </div>
 
-                  {(modalCreate !== false) ? <ModalCreate modalSubmitOpen={{modalSubmit, setModalSubmit}} modalCreateOpen={{modalCreate, setModalCreate}}/> : <></>}
-                  {(modalRental !== false) ? <ModalRental trash={{counterTrash, setCounterTrash}} modalRentalOpen={{modalRental, setModalRental}}></ModalRental> : <></>}
-                  {(modalSubmit !== false) ? <ModalSubmit modalSubmitOpen={{modalSubmit, setModalSubmit}}></ModalSubmit> : <></>}
-                  {(modalRentalSubmit !== false) ? <ModalRentalSubmit modalRentalSubmitClose={{modalRentalSubmit, setModalRentalSubmit}}></ModalRentalSubmit> : <></>}
-
-                  </div>
-              </Container>
+        }
+      </Container>
 
 
 

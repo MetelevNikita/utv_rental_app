@@ -3,7 +3,7 @@ import './video.css'
 //
 
 import video from './../asset/showreel.webm'
-import video2 from './../asset/final7.mp4'
+
 
 // bootstap
 
@@ -29,7 +29,7 @@ const Video = ({modalCreateOpen}) => {
 
             <video className='video-bg' muted autoPlay loop>
                 <source
-                  src={video2}
+                  src={video}
                   type="video/mp4"
                 />
             </video>
