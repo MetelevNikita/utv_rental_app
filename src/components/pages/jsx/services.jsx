@@ -1,7 +1,7 @@
 import './../css/services.css'
 
 
-import { Container, Row, Col } from "react-bootstrap"
+import { Row, Col } from "react-bootstrap"
 import { useState } from 'react'
 
 //components
@@ -18,7 +18,6 @@ const Services = () => {
   const serviceMenu = ['Конфернция', 'Концерт', 'Спорт']
 
   const [service, setService] = useState('Конфернция')
-  const [click, setClick] = useState(false)
 
 
 
@@ -27,9 +26,12 @@ const Services = () => {
     <>
       <Row>
         <Col className="col-12">
-            <div className="services-title">НАЗВАНИЕ УСЛУГИ</div>
+            <div className="services-title">Наши услуги включают в себя:</div>
             <div className="services-subtitle">
-            АэроЮнион Вертолетная Компания» официальный дилер Robinson Helicopter Company в России специализируется на продаже и обслуживании новых и ресурсных вертолетов.
+              — Организацию и проведение прямых трансляций в интернете<br></br>
+              — Разработку индивидуальных решений для каждого клиента<br></br>
+              — Использование новейших технологий и оборудования<br></br>
+              — Предоставление возможности взаимодействия с аудиторией через чат и другие интерактивные функции
             </div>
         </Col>
       </Row>

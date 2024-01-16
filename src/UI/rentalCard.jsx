@@ -4,7 +4,7 @@ import './../UI/rentalCard.css'
 
 import { Link } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap'
-import { useParams } from 'react-router-dom'
+
 
 // components
 
@@ -14,7 +14,7 @@ import MyButton from './myButton'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { addTrash } from '../store/trash-slice'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 //
 

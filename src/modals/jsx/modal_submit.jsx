@@ -2,7 +2,6 @@ import './../css/modal_submit.css'
 
 //
 
-
 import { Col, Row } from 'react-bootstrap'
 
 const ModalSubmit = ({modalSubmitOpen}) => {

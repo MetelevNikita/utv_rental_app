@@ -2,7 +2,7 @@ import './../css/rental-card-open.css'
 
 //
 
-import { Container, Row, Col } from "react-bootstrap"
+import { Row, Col } from "react-bootstrap"
 
 //
 
@@ -18,7 +18,7 @@ import MyButton from '../../../UI/myButton'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { addTrash } from '../../../store/trash-slice'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 
 const RentalCardOpen = ({modalRentalOpen, trash}) => {
@@ -34,13 +34,7 @@ const RentalCardOpen = ({modalRentalOpen, trash}) => {
   const {modalRental, setModalRental} = modalRentalOpen
   const {counterTrash, setCounterTrash} = trash
 
-  const [singleCard, setSingleCard] = useState([])
   const rentalBase = useSelector((state => state.addRental.rental))
-
-
-
-
-
 
   const currentCard = (rentalBase.length < 1) ? [] : rentalBase.filter((item) => {
     return item.id === id
@@ -48,14 +42,6 @@ const RentalCardOpen = ({modalRentalOpen, trash}) => {
   })
 
   console.log(currentCard.length)
-
-
-
-
-
-
-
-
 
 
 

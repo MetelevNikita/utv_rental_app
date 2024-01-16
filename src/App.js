@@ -2,11 +2,11 @@ import './App.css'
 
 // bootstrap
 
-import { Container, Col, Row } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 
 // Router
 
-import { Routes, Router, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 // components
 

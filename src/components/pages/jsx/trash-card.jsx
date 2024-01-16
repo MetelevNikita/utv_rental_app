@@ -3,7 +3,7 @@ import './../css/trash-card.css'
 
 // bootstrap
 
-import { Container, Col, Row } from 'react-bootstrap'
+import { Col, Row } from 'react-bootstrap'
 
 
 

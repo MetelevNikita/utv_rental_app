@@ -11,7 +11,6 @@ import MyButton from '../../UI/myButton'
 import MyInput from '../../UI/myInput'
 import MyTextArea from '../../UI/myTextArea'
 import MyCheckBox from '../../UI/myCheckBox'
-import ModalSubmit from './modal_submit'
 
 //
 

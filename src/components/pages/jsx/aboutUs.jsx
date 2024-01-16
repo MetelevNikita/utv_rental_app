@@ -1,6 +1,6 @@
 import './../css/aboutUs.css'
 
-import { Container, Col, Row } from "react-bootstrap"
+import { Col, Row } from "react-bootstrap"
 
 // components
 
@@ -28,7 +28,9 @@ const AboutUs = () => {
               <div className="about-title">РАБОТАЕМ НА КАЧЕСТВО</div>
           </div>
 
-          <div className="about-subtitile">Текст о компании, цели и достижения за время работы, опыт работы и награды сколько человек в команде, уровень работы и ее описание, возможно указать перечень работ или список и т д</div>
+          <div className="about-subtitile">Наша компания занимается прямыми трансляциями в интернет для коммерческих организаций. <br></br> <br></br>
+
+            Мы предоставляем возможность проведения прямых трансляций для корпоративных клиентов, которые хотят увеличить свою аудиторию и расширить свой бизнес.</div>
         </Col>
       </Row>
 
@@ -48,7 +50,7 @@ const AboutUs = () => {
           <div className="about-partners-title">Нам доверяют:</div>
 
           {arrOfPartners.map((logo, index) => {
-            return <Col key={index+1} md={2} sm={12} xs={12} className='mt-2'> <img key={index+1} className='logo-partners' src={logo} alt={logo} /></Col>
+            return <Col key={index+1} md={2} sm={12} xs={12} className='mt-2'> <div className='logo-partners-box'><img key={index+1} className='logo-partners' src={logo} alt={logo} /></div></Col>
           })}
 
       </Row>

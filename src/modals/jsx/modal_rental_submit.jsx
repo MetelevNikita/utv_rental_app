@@ -2,7 +2,7 @@ import './../css/modal_rental_submit.css'
 
 //
 
-import { Container, Col, Row } from "react-bootstrap"
+import { Col, Row } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
 
 // components

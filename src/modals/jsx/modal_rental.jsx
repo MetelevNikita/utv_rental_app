@@ -19,7 +19,6 @@ import { useNavigate } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { setFireStore } from '../../store/archiveSlice'
-import trashSlice from '../../store/trash-slice'
 import { clearTrash } from '../../store/trash-slice'
 
 
