@@ -69,7 +69,7 @@ const Rental = ({modalRentalOpen, modalRentalSubmitOpen, trash}) => {
       <Row className='mt-4'>
         {rentalBase.rental.map((item, index) => {
           if(item.rentalCard.category === rental) {
-            return <Col key={index} className='col-xl-4 col-md-4 col-sm-12 col-xs-12'><RentalCard modalRentalSubmitButton={{modalRentalSubmit, setModalRentalSubmit}} modalRentalButton={modalRentalOpen} addGetTrash={trash} id={item.id} img={item.rentalCard.img} title={item.rentalCard.title} subtitleShort={item.rentalCard.subtitlShort} price={item.rentalCard.price} quantity={item.rentalCard.quantity} counterQuantityTitle={item.rentalCard.counterQuantity}></RentalCard></Col>
+            return <Col key={index} className='col-xl-4 col-md-4 col-sm-12 col-xs-12 rental-card rental-card-animation'><RentalCard modalRentalSubmitButton={{modalRentalSubmit, setModalRentalSubmit}} modalRentalButton={modalRentalOpen} addGetTrash={trash} id={item.id} img={item.rentalCard.img} title={item.rentalCard.title} subtitleShort={item.rentalCard.subtitlShort} price={item.rentalCard.price} quantity={item.rentalCard.quantity} counterQuantityTitle={item.rentalCard.counterQuantity}></RentalCard></Col>
           }
         })}
       </Row>

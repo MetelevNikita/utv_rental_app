@@ -48,7 +48,7 @@ const Services = () => {
       <Row>
           {serviceData.map((card, id) => {
             if(card.cotegory === service) {
-              return <Col key={id} md={4} sm={12} xs={12} className='mb-3'><ServiceCard img={card.img} title={card.title} subtitle={card.subtitle} date={card.date}></ServiceCard></Col>
+              return <Col key={id} md={4} sm={12} xs={12} className='mb-3 service-card service-card-animation'><ServiceCard img={card.img} title={card.title} subtitle={card.subtitle} date={card.date}></ServiceCard></Col>
             } else {
               <div>Нет подобной котегории</div>
             }
