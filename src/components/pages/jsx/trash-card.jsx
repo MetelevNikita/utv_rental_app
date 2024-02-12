@@ -26,7 +26,7 @@ const TrashCard = (props) => {
           <div className="trash-card-title">{props.title}</div>
           <hr className='trash-card-line'/>
           <div className='trash-card-quantity'>Количество: {props.counterQuantity}</div>
-          <div className="trash-card-price">Цена: {props.price} $</div>
+          <div className="trash-card-price">Цена: {props.price} &#8381;</div>
 
 
           <MyButton className={'myBtn'} {...props}>Удалить</MyButton>

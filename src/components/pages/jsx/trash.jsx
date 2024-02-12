@@ -67,7 +67,7 @@ const Trash = ({modalCreateOpen, counter}) => {
       <Row className='mt-5 mb-5 d-flex align-items-center'>
 
           <Col md={2} sm={5} xs={12} className='mb-3'><MyButton className={'myBtn'} onClick={() => {setModalRental(true)}}>Оформить заказ</MyButton></Col>
-          <Col md={2} sm={5} xs={12} className='mb-3'><div>Сумма: {sum}$</div></Col>
+          <Col md={2} sm={5} xs={12} className='mb-3'><div>Сумма: {sum} &#8381;</div></Col>
 
       </Row>
 

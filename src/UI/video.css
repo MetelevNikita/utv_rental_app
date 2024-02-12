@@ -22,8 +22,8 @@
 }
 
 .video-title-box {
-  width: 600px;
-  height: 110px;
+  width: max-content;
+  height: max-content;
   overflow: hidden;
 }
 
@@ -47,9 +47,8 @@
 
 
 .video-subtitle-box {
-
-  width: 600px;
-  height: 60px;
+  width: max-content;
+  height: max-content;
   overflow: hidden;
 
 }
@@ -69,8 +68,17 @@
   animation: slide-subtitle-in 2s ease-out;
 }
 
+.video-btn-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .video-btn {
-  width: 237px;
+  width: max-content;
+  padding-left: 20px;
+  padding-right: 20px;
   height: 52px;
   flex-shrink: 0;
   border-radius: 67px;

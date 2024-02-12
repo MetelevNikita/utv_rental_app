@@ -4,6 +4,7 @@ import './../css/preloader.css'
 
 
 import { useState } from 'react'
+import { Col, Row } from 'react-bootstrap'
 
 
 //
@@ -17,15 +18,18 @@ const Preloader = () => {
 
   return (
 
-    <div className={fade}>
+
+    <Col className={fade}>
 
 
-        <div className="preloader-blur"></div>
-        <img className='preloader-logo' src={preloaderGif} alt="preloader" />
-        <div className="preloader-bg"></div>
+      <div className="preloader-blur"></div>
+
+      <Col md={12} sm={12}><img className='ratio ratio-16x9 preloader-logo' src={preloaderGif} alt="preloader" /></Col>
+      <div className="preloader-bg"></div>
 
 
-    </div>
+    </Col>
+
 
 
 
