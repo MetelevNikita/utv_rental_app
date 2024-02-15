@@ -27,7 +27,7 @@ const Rental = ({modalRentalOpen, modalRentalSubmitOpen, trash}) => {
    const {modalRentalSubmit, setModalRentalSubmit} = modalRentalSubmitOpen
 
 
-    const rentalMenu = ['Камеры', 'Свет', 'Звук' , 'Операторская техника']
+    const rentalMenu = ['Камеры', 'Свет', 'Звук' , 'Штативы', 'Техника для трансляций']
 
     const [rental, setRental] = useState('Камеры')
 
@@ -43,6 +43,8 @@ const Rental = ({modalRentalOpen, modalRentalSubmitOpen, trash}) => {
     dispatch(getFireStore())
   }, [])
 
+  console.log(rental)
+
 
 
   return(
@@ -57,7 +59,7 @@ const Rental = ({modalRentalOpen, modalRentalSubmitOpen, trash}) => {
       </Row>
 
 
-      <Row className='mt-4'>
+      <Row className='mt-4' md={12}>
 
         {rentalMenu.map((item, index) => {
           return <Col key={index} md={2} sm={6} xs={12} className='mb-4'><MyButton className={(rental === item) ? 'myBtn myBtn-click' : 'myBtn'} style={{minWidth: 150 + 'px'}} value={item} onClick={(e) => {setRental(e.target.value)}}>{item}</MyButton></Col>

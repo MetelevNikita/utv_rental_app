@@ -8,16 +8,18 @@ import AboutInfo from "../../../UI/aboutInfo"
 
 // img
 
-import logo1 from './../../../asset/logo_partners/Gazprom.svg'
-import logo2 from './../../../asset/logo_partners/MegaFon.svg'
-import logo3 from './../../../asset/logo_partners/MegaFon2.svg'
+import logo1 from './../../../asset/logo_partners/logo 1.svg'
+import logo2 from './../../../asset/logo_partners/logo 2.svg'
+import logo3 from './../../../asset/logo_partners/logo 3.svg'
+import logo5 from './../../../asset/logo_partners/logo 5.svg'
+import logo6 from './../../../asset/logo_partners/logo 6.svg'
 
 
 
 
 const AboutUs = () => {
 
-  const arrOfPartners = [logo1, logo2, logo3]
+  const arrOfPartners = [logo1, logo2, logo3, logo5, logo6]
 
   return(
       <>
@@ -50,7 +52,7 @@ const AboutUs = () => {
           <div className="about-partners-title">Нам доверяют:</div>
 
           {arrOfPartners.map((logo, index) => {
-            return <Col key={index+1} md={2} sm={12} xs={12} className='mt-2'> <div className='logo-partners-box'><img key={index+1} className='logo-partners' src={logo} alt={logo} /></div></Col>
+            return <Col key={index+1} md={2} sm={12} xs={12} className='d-flex justify-content-center mt-4'> <div className='logo-partners-box'><img key={index+1} className='logo-partners' src={logo} alt={logo} /></div></Col>
           })}
 
       </Row>

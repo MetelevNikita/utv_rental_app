@@ -22,9 +22,7 @@ const Preloader = () => {
     <Col className={fade}>
 
 
-      <div className="preloader-blur"></div>
-
-      <Col md={12} sm={12}><img className='ratio ratio-16x9 preloader-logo' src={preloaderGif} alt="preloader" /></Col>
+      <Col md={12} sm={12}><img className='preloader-logo' src={preloaderGif} alt="preloader" /></Col>
       <div className="preloader-bg"></div>
 
 

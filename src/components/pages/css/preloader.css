@@ -2,26 +2,15 @@
 
 .preloader-logo {
   overflow: hidden;
-  position: fixed;
+  position: absolute;
   left: 50%;
-  top: 0;
+  top: 0%;
   transform: translate(-50%);
 
 }
 
 
-.preloader-blur {
 
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.253);
-  position: fixed;
-  left: 0;
-  top: 600;
-  z-index: 1;
-  backdrop-filter: blur(0.5px);
-
-}
 
 
 .preloader-fade {
