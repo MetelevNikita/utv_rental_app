@@ -50,7 +50,7 @@ const Team = () => {
 
         <ScrollCarousel autoplay autoplaySpeed={5}>
           {teamPerson.map((card, index) => {
-            return <Col><TeamCard key={index} img={card.img} name={card.name} profession={card.profession}></TeamCard></Col>
+            return <Col key={index}><TeamCard img={card.img} name={card.name} profession={card.profession}></TeamCard></Col>
           })}
         </ScrollCarousel>
 

@@ -39,7 +39,6 @@ const Rental = ({modalRentalOpen, modalRentalSubmitOpen, trash}) => {
     dispatch(getFireStore())
   }, [])
 
-  console.log(rental)
 
 
 
