@@ -36,8 +36,6 @@ const currentCard = (rentalBase.length < 1) ? [] : rentalBase.filter((item) => {
 })
 
 
-console.log(currentCard)
-
 
 
 const addToTrash = () => {

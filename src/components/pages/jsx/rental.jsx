@@ -24,19 +24,15 @@ import { useSelector, useDispatch } from 'react-redux'
 const Rental = ({modalRentalOpen, modalRentalSubmitOpen, trash}) => {
 
 
-   const {modalRentalSubmit, setModalRentalSubmit} = modalRentalSubmitOpen
-
-
-    const rentalMenu = ['Камеры', 'Свет', 'Звук' , 'Штативы', 'Техника для трансляций']
-
-    const [rental, setRental] = useState('Камеры')
+  const {modalRentalSubmit, setModalRentalSubmit} = modalRentalSubmitOpen
+  const rentalMenu = ['Камеры', 'Свет', 'Звук' , 'Штативы', 'Техника для трансляций']
+  const [rental, setRental] = useState('Камеры')
 
 
 
   const rentalBase = useSelector((state => state.addRental))
   const dispatch = useDispatch()
 
-  console.log(rentalBase)
 
 
   useEffect(() => {

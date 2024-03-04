@@ -24,12 +24,9 @@ const Trash = ({modalCreateOpen, counter}) => {
   const {modalRental, setModalRental} = modalCreateOpen
   let {counterTrash, setCounterTrash} = counter
 
-  console.log(counterTrash)
-
 
 
   const dispatch = useDispatch()
-
   const trashCards = useSelector(state => state.addTrash.trash)
 
 
@@ -37,7 +34,6 @@ const Trash = ({modalCreateOpen, counter}) => {
   let sum = 0
 
   trashCards.map((item) => {
-    console.log(item.card.price)
     return sum += Number(item.card.price)
   })
 

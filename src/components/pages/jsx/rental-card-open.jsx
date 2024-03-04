@@ -29,8 +29,6 @@ const RentalCardOpen = ({modalRentalOpen, trash}) => {
   const dispatch = useDispatch()
 
   let [counterQuntity, setCounterQuantity] = useState(0)
-
-
   const {modalRental, setModalRental} = modalRentalOpen
   const {counterTrash, setCounterTrash} = trash
 
@@ -41,7 +39,6 @@ const RentalCardOpen = ({modalRentalOpen, trash}) => {
 
   })
 
-  console.log(currentCard.length)
 
 
 
