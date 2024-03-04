@@ -18,10 +18,5 @@ input[type=date]::-webkit-calendar-picker-indicator{
 }
 
 .myDate-title {
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   color: grey;
 }

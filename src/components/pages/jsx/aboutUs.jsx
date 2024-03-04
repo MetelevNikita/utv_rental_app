@@ -37,19 +37,21 @@ const AboutUs = () => {
       </Row>
 
 
-      <Row>
+      <Row md={12}>
 
-        <Col md={3} sm={12} xs={12}><AboutInfo title={'c 2015'} subtitle={'года на рынке'} /></Col>
-        <Col md={3} sm={12} xs={12}><AboutInfo title={'1 000'} subtitle={'проделанных проектов'} /></Col>
-        <Col md={3} sm={12} xs={12}><AboutInfo title={'c 2015'} subtitle={'сотрудников'} /></Col>
+        <Col className='d-flex justify-content-md-start justify-content-center' md={3} sm={12} xs={12}><AboutInfo title={'c 2015'} subtitle={'года на рынке'} /></Col>
+        <Col className='d-flex justify-content-md-start justify-content-center' md={3} sm={12} xs={12}><AboutInfo title={'1 000'} subtitle={'проделанных проектов'} /></Col>
+        <Col className='d-flex justify-content-md-start justify-content-center' md={3} sm={12} xs={12}><AboutInfo title={'c 2015'} subtitle={'сотрудников'} /></Col>
 
       </Row>
 
 
-      <Row className='mt-4'>
+      <Row md={12} className='mt-4'>
+              <Col className='d-flex justify-content-md-start justify-content-center'><div>Нам доверяют:</div></Col>
+      </Row>
 
 
-          <div className="about-partners-title">Нам доверяют:</div>
+      <Row md={12} className='mt-4'>
 
           {arrOfPartners.map((logo, index) => {
             return <Col key={index+1} md={2} sm={12} xs={12} className='d-flex justify-content-center mt-4'> <div className='logo-partners-box'><img key={index+1} className='logo-partners' src={logo} alt={logo} /></div></Col>

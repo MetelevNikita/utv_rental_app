@@ -36,10 +36,10 @@ const Services = () => {
         </Col>
       </Row>
 
-      <Row className='mb-5'>
+      <Row md={12} className='mb-5'>
 
         {serviceMenu.map((item, index) => {
-          return <Col key={index} className='mb-3' md={2} sm={12} xs={12}><MyButton className={(service === item) ? 'myBtn myBtn-click' : 'myBtn'} style={{marginRight: 17 + 'px', width: 200 + 'px'}} value={item} onClick={(e) => {setService(e.target.value)}}>{item}</MyButton></Col>
+          return <Col key={index} className='d-flex justify-content-center mb-3' md={2} sm={12} xs={12}><MyButton className={(service === item) ? 'myBtn myBtn-click' : 'myBtn'} style={{marginRight: 17 + 'px', width: 200 + 'px'}} value={item} onClick={(e) => {setService(e.target.value)}}>{item}</MyButton></Col>
         })}
 
       </Row>

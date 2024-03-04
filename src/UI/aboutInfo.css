@@ -1,11 +1,10 @@
 .about-info-container {
-  width: max-content;
   height: max-content;
-  margin-right: 95px;
-  margin-bottom: 50px;
+
 }
 
 .about-info-title {
+  text-align: center;
   color: #00B0E1;
   font-size: 48px;
   font-style: normal;
@@ -14,6 +13,7 @@
 }
 
 .about-info-line {
+
 
 }
 

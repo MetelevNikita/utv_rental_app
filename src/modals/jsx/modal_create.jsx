@@ -113,25 +113,25 @@ const ModalCreate = ({modalCreateOpen, modalSubmitOpen}) => {
                   </Row>
 
 
-                  <Row>
+                  <Row className='mt-2 mb-2'>
                     <Col><div className="modal-create-subtitle">Оставьте информацию и наш специалист перезвонит Вам.</div></Col>
                   </Row>
 
 
 
 
-                    <Row className='mt-5'>
+                    <Row className='mt-2'>
 
-                        <MyInput style={{marginBottom: 20 + 'px'}} type={'text'} placeholder='name' value={name} onChange={(e) => {setName(e.target.value)}}></MyInput>
-                        <MyInput style={{marginBottom: 20 + 'px'}} type={'phone'} placeholder='phone' value={phone} onChange={(e) => {setPhone(e.target.value)}}></MyInput>
-                        <MyInput style={{marginBottom: 20 + 'px'}} type={'email'} placeholder='email' value={email} onChange={(e) => {setEmail(e.target.value)}}></MyInput>
-                        <MyTextArea style={{marginBottom: 20 + 'px'}} value={text} onChange={(e) => {setText(e.target.value)}}></MyTextArea>
+                        <MyInput style={{marginBottom: 10 + 'px'}} type={'text'} placeholder='name' value={name} onChange={(e) => {setName(e.target.value)}}></MyInput>
+                        <MyInput style={{marginBottom: 10 + 'px'}} type={'phone'} placeholder='phone' value={phone} onChange={(e) => {setPhone(e.target.value)}}></MyInput>
+                        <MyInput style={{marginBottom: 10 + 'px'}} type={'email'} placeholder='email' value={email} onChange={(e) => {setEmail(e.target.value)}}></MyInput>
+                        <MyTextArea style={{marginBottom: 10 + 'px'}} value={text} onChange={(e) => {setText(e.target.value)}}></MyTextArea>
 
                     </Row>
 
 
 
-                    <Row className='mt-2 mb-5'>
+                    <Row className='mt-1 mb-5'>
 
                       <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-start mb-3'><MyCheckBox title={'Я согласен с политикой конфиденциальности'} onChange={() => {setModalCreateChk(prev => !prev)}} checked={modalCreateChk}></MyCheckBox></Col>
                       <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-end mb-3'><MyButton className={'myBtn'} onClick={() => {modalCreateMessage()}}>Отправить</MyButton></Col>

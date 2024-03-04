@@ -16,7 +16,7 @@
 
 
 .modal-rental-container {
-  width: max-content;
+
   border-radius: 67px;
   background: #0F0F0F;
   box-shadow: 0px 4px 82px 0px rgba(4, 115, 145, 0.49);
@@ -28,8 +28,8 @@
 }
 
 .modal-rental-box {
-  padding-right: 55px;
-  padding-left: 55px;
+
+  padding: 30px;
 
 }
 
@@ -37,9 +37,6 @@
 
 
 .modal-rental-title {
-  max-width: 450px;
-  max-height: 84px;
-
   color: #FFF;
   font-size: 32px;
   font-style: normal;
@@ -49,10 +46,6 @@
 }
 
 .modal-rental-subtitle {
-  margin-top: 17px;
-  width: 499px;
-  height: 86px;
-
   color: rgba(169, 169, 169, 0.60);
   font-size: 18px;
   font-style: normal;
@@ -69,8 +62,6 @@
 }
 
 .modal-rental-input {
-  margin-bottom: 22px;
-  max-width: 602px;
   height: 52px;
   flex-shrink: 0;
   padding-left: 10px;
@@ -83,7 +74,6 @@
 .modal-rental-area-input {
   padding-left: 10px;
   padding-top: 10px;
-  width: 602px;
   height: 126px;
   flex-shrink: 0;
 
@@ -102,7 +92,6 @@
 .modal-rental-chk {}
 
 .modal-rental-chk-text {
-  max-width: 280px;
   height: 36px;
   margin-left: 10px;
 }

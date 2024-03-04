@@ -121,71 +121,66 @@ const ModalRental = ({modalRentalOpen, trash}) => {
 
 
   return(
-    <div className="modal-rental-bg">
+
+    <Row className='d-flex justify-content-center'>
+
+      <Col md={3} sm={12} xs={12}>
+
+
+      <div className="modal-rental-bg">
       <div className="modal-rental-container">
         <div className="modal-rental-box">
+          <Row className='mt-5'>
+            <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-start mb-2'><div className="modal-rental-title">Форма заказа</div></Col>
+            <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-end align-items-md-start mb-2'><button className="modal-rental-close" onClick={() => {setModalRental(false)}}>&#10006;</button></Col>
+          </Row>
+
+          <Row>
+            <Col><div className="modal-rental-subtitle mb-4">Оставьте информацию и наш специалист перезвонит Вам.</div></Col>
+          </Row>
+
+          <Row className='d-flex flex-column'>
+              <Col><MyInput style={{marginBottom: 20 + 'px', width: 100 + '%'}} placeholder='name' value={modalName} onChange={(e) => {setModalName(e.target.value)}}></MyInput></Col>
+              <Col><MyInput style={{marginBottom: 20 + 'px', width: 100 + '%'}} placeholder='phone' value={modalPhone} onChange={(e) => {setModalPhone(e.target.value)}}></MyInput></Col>
+              <Col><MyTextArea style={{marginBottom: 10 + 'px', width: 100 + '%'}} placeholder='text' value={modalText} onChange={(e) => {setModalText(e.target.value)}}></MyTextArea></Col>
+
+              <Col md={12} sm={12} className='d-flex justify-content-around align-items-center'>
 
 
-                  <Row className='mt-5'>
-
-                    <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-start md-3'><div className="modal-rental-title">Форма заказа</div></Col>
-                    <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-end align-items-md-start md-5'><button className="modal-rental-close" onClick={() => {setModalRental(false)}}>&#10006;</button></Col>
-
-                  </Row>
-
-
-                  <Row>
-
-                    <Col><div className="modal-rental-subtitle">Оставьте информацию и наш специалист перезвонит Вам.</div></Col>
-
-                  </Row>
-
-
-
-
-                  <Row className='d-flex flex-column'>
-
-                      <Col md={6} sm={12} xs={12}><MyInput style={{marginBottom: 20 + 'px', width: 900 + 'px'}} placeholder='name' value={modalName} onChange={(e) => {setModalName(e.target.value)}}></MyInput></Col>
-                      <Col md={6} sm={12} xs={12}><MyInput style={{marginBottom: 20 + 'px', width: 900 + 'px'}} placeholder='phone' value={modalPhone} onChange={(e) => {setModalPhone(e.target.value)}}></MyInput></Col>
-                      <Col md={6} sm={12} xs={12}><MyTextArea style={{marginBottom: 10 + 'px', width: 900 + 'px'}} placeholder='text' value={modalText} onChange={(e) => {setModalText(e.target.value)}}></MyTextArea></Col>
-
-                      <Row className='d-flex d-flex justify-content-center'>
-
-                      <Col md={4} sm={12} xs={12}><MyDate title={'Дата начала'} style={{width: 276 + 'px'}} value={modalDateStart} onChange={(e) => {setModalDateStart(e.target.value)}}></MyDate></Col>
-                      <Col md={4} sm={12} xs={12}><MyDate title={'Дата конца'} style={{width: 276 + 'px'}} value={modalDateEnd} onChange={(e) => {setModalDateEnd(e.target.value)}}></MyDate></Col>
-
-                      </Row>
+              <Col md={4}><MyDate title={'Дата начала'} style={{width: 100 + '%'}} value={modalDateStart} onChange={(e) => {setModalDateStart(e.target.value)}}></MyDate></Col>
+              <Col md={4}><MyDate title={'Дата конца'} style={{width: 100 + '%'}} value={modalDateEnd} onChange={(e) => {setModalDateEnd(e.target.value)}}></MyDate></Col>
 
 
 
-                  </Row>
+              </Col>
 
 
 
-
-                <ul className='trash-modal-list'>
-
-                  <div className='trash-modal-title'>Ваш заказ</div>
-
-                  {(trashStore.length < 1) ? <li>Список пуст</li> : trashStore.map((item) => { return <li className='trash-modal-list-item'>{item.title}</li>})}
-
-                </ul>
-
-                  <Row className='mb-5'>
-
-                    <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-start md-3'><MyCheckBox title={'Я согласен с политикой конфиденциальности'} checked={modalRentalChk} onChange={() => {setModalRentalChk(prev => !prev)}}></MyCheckBox></Col>
-                    <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-end align-items-md-start md-5'><MyButton className={'myBtn'} style={{marginLeft: 150 + 'px'}} onClick={() => {modalRentalMessage()}}>Отправить</MyButton></Col>
-
-                  </Row>
+          </Row>
 
 
+        <ul className='trash-modal-list'>
 
+          <div className='trash-modal-title'>Ваш заказ</div>
 
+          {(trashStore.length < 1) ? <li>Список пуст</li> : trashStore.map((item) => { return <li className='trash-modal-list-item'>{item.title}</li>})}
 
+        </ul>
+
+          <Row>
+
+            <Col className='d-flex justify-content-center mb-2'><MyCheckBox title={'Я согласен с политикой конфиденциальности'} checked={modalRentalChk} onChange={() => {setModalRentalChk(prev => !prev)}}></MyCheckBox></Col>
+            <Col className='d-flex justify-content-center mb-2'><MyButton className={'myBtn'} onClick={() => {modalRentalMessage()}}>Отправить</MyButton></Col>
+
+          </Row>
 
         </div>
       </div>
     </div>
+
+      </Col>
+    </Row>
+
   )
 }
 
