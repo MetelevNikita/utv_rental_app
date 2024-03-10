@@ -107,14 +107,14 @@ const ModalCreate = ({modalCreateOpen, modalSubmitOpen}) => {
 
                   <Row className='mt-5'>
 
-                      <Col md={9} className='d-flex justify-content-md-start md-3'><div className="modal-create-title">готовы создатьпроект вместе с нами?</div></Col>
-                      <Col md={3} className='d-flex justify-content-md-end align-items-md-start md-5'><button className="modal-create-close" onClick={() => {setModalCreate(false)}}>&#10006;</button></Col>
+                      <Col style={{fontSize: 22 + 'px', textTransform: 'uppercase'}} md={10} className='d-flex justify-content-md-start md-3'>готовы создать проект вместе с нами?</Col>
+                      <Col md={2} className='d-flex justify-content-md-end align-items-md-start md-5'><button className="modal-create-close" onClick={() => {setModalCreate(false)}}>&#10006;</button></Col>
 
                   </Row>
 
 
                   <Row className='mt-2 mb-2'>
-                    <Col><div className="modal-create-subtitle">Оставьте информацию и наш специалист перезвонит Вам.</div></Col>
+                    <Col style={{fontSize: 12 + 'px', color: 'grey'}}>Оставьте информацию и наш специалист перезвонит вам.</Col>
                   </Row>
 
 

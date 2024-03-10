@@ -41,6 +41,10 @@ import { rentalStore } from './store/rental-store'
 import { Provider } from 'react-redux'
 import ModalRentalSubmit from './modals/jsx/modal_rental_submit'
 
+// animation
+
+import { animated, useSpring } from 'react-spring'
+
 
 
 

@@ -122,61 +122,58 @@ const ModalRental = ({modalRentalOpen, trash}) => {
 
   return(
 
-    <Row className='d-flex justify-content-center'>
+    <Row className='d-flex justify-content-center modal-rental-bg'>
 
-      <Col md={3} sm={12} xs={12}>
+      <Col md={6} sm={12} xs={12} className="modal-rental-container">
 
 
-      <div className="modal-rental-bg">
-      <div className="modal-rental-container">
         <div className="modal-rental-box">
           <Row className='mt-5'>
-            <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-start mb-2'><div className="modal-rental-title">Форма заказа</div></Col>
+            <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-start mb-2' style={{fontSize: 16 + 'px'}}>Форма заказа</Col>
             <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-end align-items-md-start mb-2'><button className="modal-rental-close" onClick={() => {setModalRental(false)}}>&#10006;</button></Col>
           </Row>
 
-          <Row>
-            <Col><div className="modal-rental-subtitle mb-4">Оставьте информацию и наш специалист перезвонит Вам.</div></Col>
+          <Row md={12}>
+            <Col className='mt-2 mb-2' style={{color: 'grey', width: 100 + '%'}}>Оставьте информацию и наш специалист перезвонит вам</Col>
           </Row>
 
-          <Row className='d-flex flex-column'>
+          <Row md={12} className='d-flex flex-column'>
+
               <Col><MyInput style={{marginBottom: 20 + 'px', width: 100 + '%'}} placeholder='name' value={modalName} onChange={(e) => {setModalName(e.target.value)}}></MyInput></Col>
               <Col><MyInput style={{marginBottom: 20 + 'px', width: 100 + '%'}} placeholder='phone' value={modalPhone} onChange={(e) => {setModalPhone(e.target.value)}}></MyInput></Col>
               <Col><MyTextArea style={{marginBottom: 10 + 'px', width: 100 + '%'}} placeholder='text' value={modalText} onChange={(e) => {setModalText(e.target.value)}}></MyTextArea></Col>
 
               <Col md={12} sm={12} className='d-flex justify-content-around align-items-center'>
 
-
-              <Col md={4}><MyDate title={'Дата начала'} style={{width: 100 + '%'}} value={modalDateStart} onChange={(e) => {setModalDateStart(e.target.value)}}></MyDate></Col>
-              <Col md={4}><MyDate title={'Дата конца'} style={{width: 100 + '%'}} value={modalDateEnd} onChange={(e) => {setModalDateEnd(e.target.value)}}></MyDate></Col>
-
-
+                  <Col md={4}><MyDate title={'Дата начала'} style={{width: 100 + '%'}} value={modalDateStart} onChange={(e) => {setModalDateStart(e.target.value)}}></MyDate></Col>
+                  <Col md={4}><MyDate title={'Дата конца'} style={{width: 100 + '%'}} value={modalDateEnd} onChange={(e) => {setModalDateEnd(e.target.value)}}></MyDate></Col>
 
               </Col>
 
+          </Row>
 
+          <Row md={12} className='mt-4'>
+
+            <ul className='trash-modal-list'>
+
+              <Col>Ваш заказ</Col>
+
+            {(trashStore.length < 1) ? <li>Список пуст</li> : trashStore.map((item) => { return <li className='trash-modal-list-item'>{item.title}</li>})}
+
+            </ul>
 
           </Row>
 
 
-        <ul className='trash-modal-list'>
 
-          <div className='trash-modal-title'>Ваш заказ</div>
+          <Row md={12}>
 
-          {(trashStore.length < 1) ? <li>Список пуст</li> : trashStore.map((item) => { return <li className='trash-modal-list-item'>{item.title}</li>})}
-
-        </ul>
-
-          <Row>
-
-            <Col className='d-flex justify-content-center mb-2'><MyCheckBox title={'Я согласен с политикой конфиденциальности'} checked={modalRentalChk} onChange={() => {setModalRentalChk(prev => !prev)}}></MyCheckBox></Col>
-            <Col className='d-flex justify-content-center mb-2'><MyButton className={'myBtn'} onClick={() => {modalRentalMessage()}}>Отправить</MyButton></Col>
+            <Col md={6} className='d-flex justify-content-center mb-4'><MyCheckBox title={'Я согласен с политикой конфиденциальности'} checked={modalRentalChk} onChange={() => {setModalRentalChk(prev => !prev)}}></MyCheckBox></Col>
+            <Col md={6} className='d-flex justify-content-center mb-4'><MyButton className={'myBtn'} onClick={() => {modalRentalMessage()}}>Отправить</MyButton></Col>
 
           </Row>
 
         </div>
-      </div>
-    </div>
 
       </Col>
     </Row>
