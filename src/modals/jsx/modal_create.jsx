@@ -106,9 +106,6 @@ const ModalCreate = ({modalAnimation, modalSubmitAnimation}) => {
   return(
     <Row>
 
-    <Col style={{position: 'fixed', top: '0', left: '0', zIndex: '1', background: 'black', opacity: '0.2'}}></Col>
-
-
       <Col md={4} className='d-flex flex-column justify-content-center' style={{height: "max-content", background: "#0F0F0F", position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex: "1", paddingLeft: "50px", paddingRight: "50px", borderRadius: "10px"}}>
 
         <Row className='mt-5'>
