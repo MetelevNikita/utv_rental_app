@@ -24,8 +24,11 @@ import MyCheckBox from '../../UI/myCheckBox'
 //
 
 
-const Footer = ()  => {
+const Footer = ({ modalSubmitAnimation })  => {
 
+
+
+  const {modalSubmit, apiSubmit} = modalSubmitAnimation
   const [activeChk, setActiveChk] = useState(false)
 
   const [name, setName] = useState('')
@@ -34,7 +37,6 @@ const Footer = ()  => {
   const [text, setText] = useState('')
 
   const createMessage = () => {
-
 
     if(name === ''  && phone === '' && email === '' && text === '') {
       alert('заполните все поля')
@@ -60,11 +62,20 @@ const Footer = ()  => {
       setEmail('')
       setText('')
 
-      return message
+      apiSubmit.start({
+        from: {opacity: 0, transform:'scale(0)'},
+        to: {opacity: 1, transform:'scale(1)'}
+      })
 
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
 
-
+      })
   }
+
+
+
 
 
   return(

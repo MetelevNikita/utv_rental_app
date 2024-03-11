@@ -29,11 +29,6 @@ const Trash = ({counter, modalRentalAnimation}) => {
 
   const dispatch = useDispatch()
   const trashCards = useSelector(state => state.addTrash.trash)
-  console.log(trashCards)
-
-  trashCards.map((card) => {
-    console.log(card.card)
-  })
 
 
 

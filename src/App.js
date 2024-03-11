@@ -120,7 +120,7 @@ const App = () => {
               </Routes>
 
 
-                    <Footer></Footer>
+                    <Footer modalSubmitAnimation={{modalSubmit, apiSubmit}}></Footer>
 
 
                 {/* modals */}

@@ -20,10 +20,20 @@ import trashIcon from './../../asset/icon trash.png'
 //
 
 import { useState } from 'react'
+import { onScroll } from '@react-spring/shared'
 
 const Header = ({trash}) => {
 
   const {counterTrash, setCounterTrash} = trash
+
+
+  const Scroll = () => {
+    window.scrollTo({
+      top: 600,
+      behavior: 'smooth'
+
+    })
+  }
 
 
 
@@ -42,7 +52,7 @@ const Header = ({trash}) => {
 
               <Col md={12} className='d-flex justify-content-end flex-md-row flex-column'>
                   <Col className='d-flex flex-row align-items-center justify-content-center'>
-                    <Link to={'/trash'} className='d-flex'>
+                    <Link to={'/trash'} onClick={() => {Scroll()}} className='d-flex'>
                           <div className='header-trash-counter'>Количество: {counterTrash}</div>
                           <img className='header-trash-img' src={trashIcon} alt="trashicon" />
                       </Link>
@@ -55,14 +65,7 @@ const Header = ({trash}) => {
               </Col>
 
 
-
-
-
         </Col>
-
-
-
-
       </Row>
   )
 }

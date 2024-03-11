@@ -176,7 +176,7 @@ const ModalRental = ({trash, modalRentalAnimation, modalSubmitAnimation}) => {
           <Row md={12} className='mt-2'>
             <ul className='trash-modal-list'>
             <Col>Ваш заказ</Col>
-            {(trashStore.length < 1) ? <li style={{fontSize: "10px"}}>Список пуст</li> : trashStore.map((item) => { return <li style={{fontSize: "10px"}} className='trash-modal-list-item'>{item.title}</li>})}
+            {(trashStore.length < 1) ? <li style={{fontSize: "10px"}}>Список пуст</li> : trashStore.map((item) => { return <li key={item.id} style={{fontSize: "10px"}} className='trash-modal-list-item'>{item.title}</li>})}
             </ul>
           </Row>
 
