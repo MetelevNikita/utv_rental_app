@@ -15,11 +15,10 @@ import { Col, Row } from 'react-bootstrap'
 
 
 
-const Video = ({modalCreateOpen}) => {
+const Video = ({ modalAnimation }) => {
 
 
-
-  const {modalCreate, setModalCreate} = modalCreateOpen
+const {api} = modalAnimation
 
 
 
@@ -50,7 +49,7 @@ const Video = ({modalCreateOpen}) => {
 
 
             <Col md={12} className='video-btn-box'>
-            <button className='video-btn' onClick={() => {setModalCreate(prev => !prev)}}>Отправить заявку</button>
+            <button className='video-btn' onClick={() => {api.start({from: {opacity: 0, transform: 'scale(0)'}, to: {opacity: 1, transform: 'scale(1)'}})}}>Отправить заявку</button>
             </Col>
 
     </Row>

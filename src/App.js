@@ -30,6 +30,7 @@ import Trash from './components/pages/jsx/trash'
 import ModalCreate from './modals/jsx/modal_create'
 import ModalSubmit from './modals/jsx/modal_submit'
 import ModalRental from './modals/jsx/modal_rental'
+import ModalRentalSubmit from './modals/jsx/modal_rental_submit'
 
 //
 
@@ -39,7 +40,13 @@ import { useEffect, useState } from 'react'
 
 import { rentalStore } from './store/rental-store'
 import { Provider } from 'react-redux'
-import ModalRentalSubmit from './modals/jsx/modal_rental_submit'
+
+
+// animation
+
+import { animated, useSpring } from 'react-spring'
+
+
 
 
 
@@ -48,10 +55,6 @@ import ModalRentalSubmit from './modals/jsx/modal_rental_submit'
 
 const App = () => {
 
-  const [modalCreate, setModalCreate] = useState(false)
-  const [modalRental, setModalRental] = useState(false)
-  const [modalSubmit, setModalSubmit] = useState(false)
-  const [modalRentalSubmit, setModalRentalSubmit] = useState(false)
   const [counterTrash, setCounterTrash] = useState(0)
 
 
@@ -63,6 +66,26 @@ const App = () => {
       setIsLoading(false)
     }, 3000)
   }, [])
+
+
+  const [modalOpen, api] = useSpring(() => ({
+    from: {opacity: 0,transform: 'scale(0)'}
+  }))
+
+  const [modalRentalOpen, apiRental] = useSpring(() => ({
+    from: {opacity: 0,transform: 'scale(0)'}
+  }))
+
+
+  const [modalSubmitRentalOpen, apiSubmitRental] = useSpring(() => ({
+    from: {opacity: 0,transform: 'scale(0)'}
+  }))
+
+
+  const [modalSubmit, apiSubmit] = useSpring(() => ({
+    from: { opacity: 0, transform:'scale(0)' },
+  }))
+
 
 
 
@@ -79,29 +102,39 @@ const App = () => {
             <div className="App">
 
                     <Header trash={{counterTrash, setCounterTrash}}></Header>
-                    <Video modalCreateOpen={{modalCreate, setModalCreate}}></Video>
+                    <Video modalAnimation={{modalOpen, api}}></Video>
 
               <Routes>
-                <Route path='/' element={<>
+                <Route path='/' element={
+                    <>
                     <AboutUs></AboutUs>
                     <Services></Services>
-                    <Rental modalRentalSubmitOpen={{modalRentalSubmit, setModalRentalSubmit}} modalRentalOpen={{modalRental, setModalRental}} trash={{counterTrash, setCounterTrash}}></Rental>
+                    <Rental trash={{counterTrash, setCounterTrash}} modalRentalAnimation={{modalRentalOpen, apiRental}} modalRentalSubmitAnimation={{modalSubmitRentalOpen, apiSubmitRental}}></Rental>
                     <Team></Team>
-                    </>}>
+                    </>
+                  }>
                   </Route>
 
-                  <Route path='/rental/:id' element={<RentalCardOpen trash={{counterTrash, setCounterTrash}} modalRentalOpen={{modalRental, setModalRental}}/>}></Route>
-                  <Route path='/trash' element={<Trash counter={{counterTrash, setCounterTrash}} modalCreateOpen={{modalRental, setModalRental}}></Trash>}></Route>
+                  <Route path='/rental/:id' element={<RentalCardOpen trash={{counterTrash, setCounterTrash}}/>}></Route>
+                  <Route path='/trash' element={<Trash counter={{counterTrash, setCounterTrash}} modalRentalAnimation={{modalRentalOpen, apiRental}}></Trash>}></Route>
               </Routes>
 
 
                     <Footer></Footer>
 
 
-                {(modalCreate !== false) ? <ModalCreate modalSubmitOpen={{modalSubmit, setModalSubmit}} modalCreateOpen={{modalCreate, setModalCreate}}/> : <></>}
-                {(modalRental !== false) ? <ModalRental trash={{counterTrash, setCounterTrash}} modalRentalOpen={{modalRental, setModalRental}}></ModalRental> : <></>}
-                {(modalSubmit !== false) ? <ModalSubmit modalSubmitOpen={{modalSubmit, setModalSubmit}}></ModalSubmit> : <></>}
-                {(modalRentalSubmit !== false) ? <ModalRentalSubmit modalRentalSubmitClose={{modalRentalSubmit, setModalRentalSubmit}}></ModalRentalSubmit> : <></>}
+                {/* modals */}
+
+
+                <animated.div style={{position: 'fixed' , top:'0', left:'0', width: '100%', height: '100%',  transform: "translate(-50%, -50%)", ...modalOpen}}><ModalCreate modalAnimation={{modalOpen, api}} modalSubmitAnimation={{modalSubmit, apiSubmit}}></ModalCreate></animated.div>
+
+
+                <animated.div style={{position: 'fixed' , top:'0', left:'0', width: '100%', height: '100%',  transform: "translate(-50%, -50%)", ...modalRentalOpen}}><ModalRental trash={{counterTrash, setCounterTrash}} modalRentalAnimation={{modalRentalOpen, apiRental}} modalSubmitAnimation={{modalSubmit, apiSubmit}}></ModalRental ></animated.div>
+
+                <animated.div style={{position: 'fixed' , top:'0', left:'0', width: '100%', height: '100%',  transform: "translate(-50%, -50%)", ...modalSubmit}}><ModalSubmit modalSubmitAnimation={{modalSubmit, apiSubmit}}></ModalSubmit></animated.div>
+
+
+                <animated.div style={{position: 'fixed' , top:'0', left:'0', width: '100%', height: '100%',  transform: "translate(-50%, -50%)", ...modalSubmitRentalOpen}}><ModalRentalSubmit modalRentalSubmitAnimation={{modalSubmitRentalOpen, apiSubmitRental}}></ModalRentalSubmit></animated.div>
 
                 </div>
 

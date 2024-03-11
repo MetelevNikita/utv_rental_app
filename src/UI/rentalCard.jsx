@@ -19,10 +19,12 @@ import { useState } from 'react'
 //
 
 
-const RentalCard = ({img, title, subtitleShort, quantity, price, id, counterQuantityTitle, addGetTrash, modalRentalSubmitButton}) => {
+const RentalCard = ({img, title, subtitleShort, quantity, price, id, counterQuantityTitle, addGetTrash, modalRentalButton}) => {
 
 const {counterTrash, setCounterTrash} = addGetTrash
-const {modalRentalSubmit, setModalRentalSubmit} = modalRentalSubmitButton
+
+const {modalSubmitRentalOpen, apiSubmitRental} = modalRentalButton
+
 
 let [counterQuntity, setCounterQuantity] = useState(0)
 
@@ -45,7 +47,18 @@ const addToTrash = () => {
   }
   dispatch(addTrash({title: title, card: currentCard[0].rentalCard, counterQuantity: counterQuntity}))
   setCounterTrash(counterTrash + 1)
-  setModalRentalSubmit(true)
+
+  apiSubmitRental.start({
+    from: {
+      opacity: 0,
+      transform:'scale(0)'
+    },
+    to: {
+      opacity: 1,
+      transform:'scale(1)'
+    }
+  })
+
 }
 
 
@@ -84,9 +97,6 @@ const addQuantityMinus = () => {
       <hr className='rental-card-line-top'/>
 
       <div className="rental-card-subtitle">{subtitleShort}</div>
-
-
-
 
 
       <div className="rental-card-quantity-container">

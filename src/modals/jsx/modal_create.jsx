@@ -17,11 +17,11 @@ import MyCheckBox from '../../UI/myCheckBox'
 
 import { useState } from 'react'
 
-const ModalCreate = ({modalCreateOpen, modalSubmitOpen}) => {
+const ModalCreate = ({modalAnimation, modalSubmitAnimation}) => {
 
-  const {modalCreate, setModalCreate} = modalCreateOpen
-  const {modalSubmit, setModalSubmit} = modalSubmitOpen
 
+  const {modalOpen, api} = modalAnimation
+  const {modalSubmit, apiSubmit} = modalSubmitAnimation
 
   const [modalCreateChk, setModalCreateChk] = useState(false)
 
@@ -70,7 +70,6 @@ const ModalCreate = ({modalCreateOpen, modalSubmitOpen}) => {
       return
     }
 
-
        const message = {
         name: name,
         phone: phone,
@@ -78,7 +77,6 @@ const ModalCreate = ({modalCreateOpen, modalSubmitOpen}) => {
         text: text
       }
 
-      console.log(message)
 
 
       sendToTelegram()
@@ -88,78 +86,67 @@ const ModalCreate = ({modalCreateOpen, modalSubmitOpen}) => {
       setEmail('')
       setPhone('')
       setText('')
-      setModalCreate(false)
-      setModalSubmit(true)
       setModalCreateChk(false)
+
+      api.start({
+        from: {opacity: 1, transform: 'scale(1)'},
+        to: {opacity: 0, transform: 'scale(0)'}
+      })
+
+
+      apiSubmit.start({
+        from: {opacity: 0, transform: 'scale(0)'},
+        to: {opacity: 1, transform: 'scale(1)'}
+      })
 
   }
 
 
 
   return(
-    <Row className='d-flex justify-content-center'>
-      <Col md={3} sm={12} xs={12}>
-           <div className="modal-create-bg">
+    <Row>
 
-            <div className="modal-create-container">
-                <div className="modal-create-box">
+    <Col style={{position: 'fixed', top: '0', left: '0', zIndex: '1', background: 'black', opacity: '0.2'}}></Col>
 
 
-                  <Row className='mt-5'>
+      <Col md={4} className='d-flex flex-column justify-content-center' style={{height: "max-content", background: "#0F0F0F", position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex: "1", paddingLeft: "50px", paddingRight: "50px", borderRadius: "10px"}}>
 
-                      <Col md={9} className='d-flex justify-content-md-start md-3'><div className="modal-create-title">готовы создатьпроект вместе с нами?</div></Col>
-                      <Col md={3} className='d-flex justify-content-md-end align-items-md-start md-5'><button className="modal-create-close" onClick={() => {setModalCreate(false)}}>&#10006;</button></Col>
+        <Row className='mt-5'>
+            <Col style={{fontSize: 22 + 'px', textTransform: 'uppercase'}} md={10} className='d-flex justify-content-md-start md-3'>готовы создать проект вместе с нами?</Col>
+            <Col md={2} className='d-flex justify-content-md-end align-items-md-start md-5'><button className="modal-create-close" onClick={() => {api.start({
+              from: {
+                opacity: 1,
+                transform: 'scale(1)',
+              },
+              to: {
+                opacity: 0,
+                transform: 'scale(0)',
+              },
 
-                  </Row>
-
-
-                  <Row className='mt-2 mb-2'>
-                    <Col><div className="modal-create-subtitle">Оставьте информацию и наш специалист перезвонит Вам.</div></Col>
-                  </Row>
-
-
-
-
-                    <Row className='mt-2'>
-
-                        <MyInput style={{marginBottom: 10 + 'px'}} type={'text'} placeholder='name' value={name} onChange={(e) => {setName(e.target.value)}}></MyInput>
-                        <MyInput style={{marginBottom: 10 + 'px'}} type={'phone'} placeholder='phone' value={phone} onChange={(e) => {setPhone(e.target.value)}}></MyInput>
-                        <MyInput style={{marginBottom: 10 + 'px'}} type={'email'} placeholder='email' value={email} onChange={(e) => {setEmail(e.target.value)}}></MyInput>
-                        <MyTextArea style={{marginBottom: 10 + 'px'}} value={text} onChange={(e) => {setText(e.target.value)}}></MyTextArea>
-
-                    </Row>
+            })}}>&#10006;</button></Col>
+        </Row>
 
 
+        <Row className='mt-2 mb-2'>
+          <Col style={{fontSize: 12 + 'px', color: 'grey'}}>Оставьте информацию и наш специалист перезвонит вам.</Col>
+        </Row>
 
-                    <Row className='mt-1 mb-5'>
-
-                      <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-start mb-3'><MyCheckBox title={'Я согласен с политикой конфиденциальности'} onChange={() => {setModalCreateChk(prev => !prev)}} checked={modalCreateChk}></MyCheckBox></Col>
-                      <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-end mb-3'><MyButton className={'myBtn'} onClick={() => {modalCreateMessage()}}>Отправить</MyButton></Col>
-
-                    </Row>
-
-
-
-
-
+          <Row className='mt-2'>
+            <MyInput style={{marginBottom: 10 + 'px'}} type={'text'} placeholder='name' value={name} onChange={(e) => {setName(e.target.value)}}></MyInput>
+            <MyInput style={{marginBottom: 10 + 'px'}} type={'phone'} placeholder='phone' value={phone} onChange={(e) => {setPhone(e.target.value)}}></MyInput>
+            <MyInput style={{marginBottom: 10 + 'px'}} type={'email'} placeholder='email' value={email} onChange={(e) => {setEmail(e.target.value)}}></MyInput>
+            <MyTextArea style={{marginBottom: 10 + 'px'}} value={text} onChange={(e) => {setText(e.target.value)}}></MyTextArea>
+          </Row>
 
 
-                  </div>
-              </div>
-
-            </div>
-
+          <Row className='mt-1 mb-5'>
+            <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-start mb-3'><MyCheckBox title={'Я согласен с политикой конфиденциальности'} onChange={() => {setModalCreateChk(prev => !prev)}} checked={modalCreateChk}></MyCheckBox></Col>
+            <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-end mb-3'><MyButton className={'myBtn'} onClick={() => {modalCreateMessage()}}>Отправить</MyButton></Col>
+          </Row>
 
 
       </Col>
-
     </Row>
-
-
-
-
-
-
 
 
   )

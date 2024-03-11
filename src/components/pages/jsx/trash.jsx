@@ -19,9 +19,10 @@ import MyButton from '../../../UI/myButton'
 
 
 
-const Trash = ({modalCreateOpen, counter}) => {
+const Trash = ({counter, modalRentalAnimation}) => {
 
-  const {modalRental, setModalRental} = modalCreateOpen
+
+  const {modalRentalOpen, apiRental} = modalRentalAnimation
   let {counterTrash, setCounterTrash} = counter
 
 
@@ -62,7 +63,9 @@ const Trash = ({modalCreateOpen, counter}) => {
 
       <Row md={12} className='mt-5 mb-5 d-flex flex-column'>
 
-          <Col md={6} sm={12} xs={12} className='mb-5'><MyButton className={'myBtn'} onClick={() => {setModalRental(true)}}>Оформить заказ</MyButton></Col>
+          <Col md={6} sm={12} xs={12} className='mb-5'><MyButton className={'myBtn'} onClick={() => {apiRental.start(
+            {from: {opacity: 0, transform: 'scale(0)'}, to: {opacity: 1, transform: 'scale(1)'}
+          })}}>Оформить заказ</MyButton></Col>
           <Col style={{paddingLeft: 10 + 'px'}} md={6} sm={12} xs={12} className='mb-3'><div style={{marginLeft: 15 + 'px'}}>Сумма: {sum} &#8381;</div></Col>
 
       </Row>
