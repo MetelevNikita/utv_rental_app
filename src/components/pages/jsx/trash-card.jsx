@@ -14,14 +14,13 @@ const TrashCard = (props) => {
 
   return (
 
-    <Row className='mb-4'>
+    <Row md={12}>
 
-      <Col md={2} sm={4} xs={12}>
+      <Col md={12} sm={12} xs={12} className='mb-4 d-flex  justify-content-start align-items-center'>
         <img className='trash-card-img' src={props.img} alt="" />
       </Col>
 
-      <Col md={4} sm={4} xs={12}>
-        <div className="trash-card-info-box">
+      <Col md={12} sm={12} xs={12}>
 
           <div className="trash-card-title">{props.title}</div>
           <hr className='trash-card-line'/>
@@ -29,9 +28,9 @@ const TrashCard = (props) => {
           <div className="trash-card-price">Цена: {props.price} &#8381;</div>
 
 
-          <MyButton className={'myBtn'} {...props}>Удалить</MyButton>
+          <MyButton {...props}>Удалить</MyButton>
 
-        </div>
+
       </Col>
 
     </Row>

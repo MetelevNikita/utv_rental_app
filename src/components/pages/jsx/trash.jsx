@@ -49,10 +49,10 @@ const Trash = ({modalCreateOpen, counter}) => {
 
     <>
 
-      <Row>
+      <Row md={12}>
 
           {(trashCards.length < 1) ? <div className='trash-empty'>Корзина пуста</div> :  trashCards.map((card, index) => {
-            return  <TrashCard key={index} img={card.card.img} title={card.card.title} price={card.card.price} counterQuantity={card.counterQuantity} onClick={() => {deleteTrashCardHandler(card.title)}}></TrashCard>
+            return  <TrashCard className='d-flex justify-content-center' key={index} img={card.card.img} title={card.card.title} price={card.card.price} counterQuantity={card.counterQuantity} onClick={() => {deleteTrashCardHandler(card.title)}}></TrashCard>
           })}
 
       </Row>
@@ -60,10 +60,10 @@ const Trash = ({modalCreateOpen, counter}) => {
 
 
 
-      <Row className='mt-5 mb-5 d-flex align-items-center'>
+      <Row md={12} className='mt-5 mb-5 d-flex flex-column'>
 
-          <Col md={2} sm={5} xs={12} className='mb-3'><MyButton className={'myBtn'} onClick={() => {setModalRental(true)}}>Оформить заказ</MyButton></Col>
-          <Col md={2} sm={5} xs={12} className='mb-3'><div>Сумма: {sum} &#8381;</div></Col>
+          <Col md={6} sm={12} xs={12} className='mb-5'><MyButton className={'myBtn'} onClick={() => {setModalRental(true)}}>Оформить заказ</MyButton></Col>
+          <Col style={{paddingLeft: 10 + 'px'}} md={6} sm={12} xs={12} className='mb-3'><div style={{marginLeft: 15 + 'px'}}>Сумма: {sum} &#8381;</div></Col>
 
       </Row>
 

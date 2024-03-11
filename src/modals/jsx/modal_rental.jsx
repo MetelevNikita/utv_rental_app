@@ -130,7 +130,7 @@ const ModalRental = ({modalRentalOpen, trash}) => {
       <div className="modal-rental-bg">
       <div className="modal-rental-container">
         <div className="modal-rental-box">
-          <Row className='mt-5'>
+          <Row className='mt-2'>
             <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-start mb-2'><div className="modal-rental-title">Форма заказа</div></Col>
             <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-end align-items-md-start mb-2'><button className="modal-rental-close" onClick={() => {setModalRental(false)}}>&#10006;</button></Col>
           </Row>

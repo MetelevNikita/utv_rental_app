@@ -41,9 +41,9 @@ const ModalRentalSubmit = ({modalRentalSubmitClose}) => {
 
               <div className="modal-rental-submit-title">Карточка добавлена в корзину</div>
 
-              <Row className='d-flex justify-content-center mt-4'>
-                <Col xl={5} md={2} sm={2} xs={2} className='d-flex justify-content-center'><MyButton className={'myBtn'} onClick={() => {setModalRentalSubmit(false)}}>Продолжить</MyButton></Col>
-                <Col xl={5} md={2} sm={2} xs={2} className='d-flex justify-content-center'> <MyButton className={'myBtn'} onClick={() => {goToTrash()}}>Перейте в корзину</MyButton></Col>
+              <Row md={12} className='d-flex justify-content-center mt-4'>
+                <Col xl={5} md={12} sm={12} xs={12} className='d-flex justify-content-center mb-2'><MyButton className={'myBtn'} onClick={() => {setModalRentalSubmit(false)}}>Продолжить</MyButton></Col>
+                <Col xl={5} md={12} sm={12} xs={12} className='d-flex justify-content-center mb-2'> <MyButton className={'myBtn'} onClick={() => {goToTrash()}}>Перейте в корзину</MyButton></Col>
               </Row>
 
               </div>
