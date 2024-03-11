@@ -9,6 +9,11 @@ import { Col, Row } from 'react-bootstrap'
 
 
 
+
+
+
+
+
 const TrashCard = (props) => {
 
 
@@ -16,7 +21,7 @@ const TrashCard = (props) => {
 
     <Row md={12}>
 
-      <Col md={12} sm={12} xs={12} className='mb-4 d-flex  justify-content-start align-items-center'>
+      <Col md={12} sm={12} xs={12} className='mb-4 mt-4 d-flex  justify-content-start align-items-center'>
         <img className='trash-card-img' src={props.img} alt="" />
       </Col>
 
@@ -25,10 +30,10 @@ const TrashCard = (props) => {
           <div className="trash-card-title">{props.title}</div>
           <hr className='trash-card-line'/>
           <div className='trash-card-quantity'>Количество: {props.counterQuantity}</div>
-          <div className="trash-card-price">Цена: {props.price} &#8381;</div>
+          <div className="trash-card-price mb-4">Цена: {props.price} &#8381;</div>
 
 
-          <MyButton {...props}>Удалить</MyButton>
+          <MyButton className={'myBtn'} onClick={() => {props.del(props.title)}}>Удалить</MyButton>
 
 
       </Col>

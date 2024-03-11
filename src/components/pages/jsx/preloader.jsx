@@ -22,7 +22,7 @@ const Preloader = () => {
     <Col className={fade}>
 
 
-      <Col md={12} sm={12}><img className='preloader-logo' src={preloaderGif} alt="preloader" /></Col>
+      <Col style={{width: "100%", height: '100vh', position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}} md={12} sm={12} className='d-flex justify-content-center align-items-center'><img className='preloader-logo' src={preloaderGif} alt="preloader" /></Col>
       <div className="preloader-bg"></div>
 
 

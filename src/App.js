@@ -115,7 +115,7 @@ const App = () => {
                   }>
                   </Route>
 
-                  <Route path='/rental/:id' element={<RentalCardOpen trash={{counterTrash, setCounterTrash}}/>}></Route>
+                  <Route path='/rental/:id' element={<RentalCardOpen trash={{counterTrash, setCounterTrash}} modalRentalSubmitAnimation={{modalSubmitRentalOpen, apiSubmitRental}} modalAnimation={{modalOpen, api}}/>}></Route>
                   <Route path='/trash' element={<Trash counter={{counterTrash, setCounterTrash}} modalRentalAnimation={{modalRentalOpen, apiRental}}></Trash>}></Route>
               </Routes>
 

@@ -129,10 +129,10 @@ const ModalCreate = ({modalAnimation, modalSubmitAnimation}) => {
         </Row>
 
           <Row className='mt-2'>
-            <MyInput style={{marginBottom: 10 + 'px'}} type={'text'} placeholder='name' value={name} onChange={(e) => {setName(e.target.value)}}></MyInput>
-            <MyInput style={{marginBottom: 10 + 'px'}} type={'phone'} placeholder='phone' value={phone} onChange={(e) => {setPhone(e.target.value)}}></MyInput>
-            <MyInput style={{marginBottom: 10 + 'px'}} type={'email'} placeholder='email' value={email} onChange={(e) => {setEmail(e.target.value)}}></MyInput>
-            <MyTextArea style={{marginBottom: 10 + 'px'}} value={text} onChange={(e) => {setText(e.target.value)}}></MyTextArea>
+            <MyInput style={{marginBottom: 10 + 'px'}} type={'text'} placeholder='ФИО' value={name} onChange={(e) => {setName(e.target.value)}}></MyInput>
+            <MyInput style={{marginBottom: 10 + 'px'}} type={'phone'} placeholder='ТЕЛЕФОН' value={phone} onChange={(e) => {setPhone(e.target.value)}}></MyInput>
+            <MyInput style={{marginBottom: 10 + 'px'}} type={'email'} placeholder='ПОЧТА' value={email} onChange={(e) => {setEmail(e.target.value)}}></MyInput>
+            <MyTextArea placeholder={'СООБЩЕНИЕ'} style={{marginBottom: 10 + 'px'}} value={text} onChange={(e) => {setText(e.target.value)}}></MyTextArea>
           </Row>
 
 

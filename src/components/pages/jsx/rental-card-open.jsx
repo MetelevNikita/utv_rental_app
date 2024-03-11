@@ -19,9 +19,10 @@ import MyButton from '../../../UI/myButton'
 import { useDispatch, useSelector } from 'react-redux'
 import { addTrash } from '../../../store/trash-slice'
 import { useState } from 'react'
+import ModalRentalSubmit from '../../../modals/jsx/modal_rental_submit'
 
 
-const RentalCardOpen = ({modalRentalOpen, trash}) => {
+const RentalCardOpen = ({trash, modalRentalSubmitAnimation, modalAnimation}) => {
 
   const params = useParams()
   const id = params.id
@@ -29,7 +30,9 @@ const RentalCardOpen = ({modalRentalOpen, trash}) => {
   const dispatch = useDispatch()
 
   let [counterQuntity, setCounterQuantity] = useState(0)
-  const {modalRental, setModalRental} = modalRentalOpen
+
+  const {modalOpen, api} = modalAnimation
+  const {modalSubmitRentalOpen, apiSubmitRental} = modalRentalSubmitAnimation
   const {counterTrash, setCounterTrash} = trash
 
   const rentalBase = useSelector((state => state.addRental.rental))
@@ -49,6 +52,11 @@ const RentalCardOpen = ({modalRentalOpen, trash}) => {
 
     dispatch(addTrash({title: currentCard[0].rentalCard.title, card: currentCard[0].rentalCard, counterQuantity: counterQuntity}))
     setCounterTrash(counterTrash + 1)
+
+    apiSubmitRental.start({
+      from: {opacity: 0, transform: 'scale(0)'},
+      to: {opacity: 1, transform: 'scale(1)'}
+    })
 
   }
 
@@ -126,7 +134,7 @@ const RentalCardOpen = ({modalRentalOpen, trash}) => {
       <Row className='mb-5'>
 
         <Col mb={2} sm={2} xs={12} className='mb-3'><MyButton className={'myBtn'} style={{marginRight: 20 + 'px'}} onClick = {() => {addToTrash()}}>Добавить в корзину</MyButton></Col>
-        <Col mb={2} sm={2} xs={12} className='mb-3'><MyButton className={'myBtn'} onClick={() => {setModalRental(true)}}>Задайте вопрос</MyButton></Col>
+        <Col mb={2} sm={2} xs={12} className='mb-3'><MyButton className={'myBtn'} onClick={() => {api.start({from: {opacity: 0, transform: 'scale(0)'}, to: {opacity: 1, transform: 'scale(1)'}})}}>Задайте вопрос</MyButton></Col>
 
       </Row>
 

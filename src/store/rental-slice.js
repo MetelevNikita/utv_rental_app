@@ -12,15 +12,23 @@ export const getFireStore = createAsyncThunk(
   'rental/getFireStore',
 
   async () => {
-    const querySnapshot = await getDocs(collection(db, 'rental'))
-    const rentalDB = querySnapshot.docs.map((doc) => ({
 
-      id: doc.id,
-      rentalCard: doc.data()
-    }))
+    try {
+
+      const querySnapshot = await getDocs(collection(db, 'rental'))
+      const rentalDB = querySnapshot.docs.map((doc) => ({
+
+        id: doc.id,
+        rentalCard: doc.data()
+      }))
+      
+        return rentalDB
+
+    } catch (error) {
+      console.error(error)
+    }
 
 
-    return rentalDB
   }
 )
 

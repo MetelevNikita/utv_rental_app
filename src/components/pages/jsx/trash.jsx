@@ -29,6 +29,11 @@ const Trash = ({counter, modalRentalAnimation}) => {
 
   const dispatch = useDispatch()
   const trashCards = useSelector(state => state.addTrash.trash)
+  console.log(trashCards)
+
+  trashCards.map((card) => {
+    console.log(card.card)
+  })
 
 
 
@@ -53,7 +58,7 @@ const Trash = ({counter, modalRentalAnimation}) => {
       <Row md={12}>
 
           {(trashCards.length < 1) ? <div className='trash-empty'>Корзина пуста</div> :  trashCards.map((card, index) => {
-            return  <TrashCard className='d-flex justify-content-center' key={index} img={card.card.img} title={card.card.title} price={card.card.price} counterQuantity={card.counterQuantity} onClick={() => {deleteTrashCardHandler(card.title)}}></TrashCard>
+            return  <TrashCard className='d-flex justify-content-center' key={index} img={card.card.img} title={card.card.title} price={card.card.price} counterQuantity={card.counterQuantity} del={() => {deleteTrashCardHandler(card.card.title)}}></TrashCard>
           })}
 
       </Row>
