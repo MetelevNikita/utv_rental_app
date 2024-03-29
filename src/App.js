@@ -10,7 +10,6 @@ import { Routes, Route } from 'react-router-dom'
 
 // components
 
-import Preloader from './components/pages/jsx/preloader'
 import Header from './components/header/header'
 import Video from './UI/video'
 import AboutUs from './components/pages/jsx/aboutUs'
@@ -67,6 +66,8 @@ const App = () => {
     }, 3000)
   }, [])
 
+  // animation spring
+
 
   const [modalOpen, api] = useSpring(() => ({
     from: {opacity: 0,transform: 'scale(0)'}
@@ -87,17 +88,15 @@ const App = () => {
   }))
 
 
+  //
+
+
 
 
   return(
 
     <Provider store={rentalStore}>
-
       <Container>
-
-        {
-
-          isLoading ? <Preloader></Preloader> :
 
             <div className="App">
 
@@ -125,24 +124,15 @@ const App = () => {
 
                 {/* modals */}
 
-
                 <animated.div style={{position: 'fixed' , top:'0', left:'0', width: '100%', height: '100%',  transform: "translate(-50%, -50%)", ...modalOpen}}><ModalCreate modalAnimation={{modalOpen, api}} modalSubmitAnimation={{modalSubmit, apiSubmit}}></ModalCreate></animated.div>
-
-
                 <animated.div style={{position: 'fixed' , top:'0', left:'0', width: '100%', height: '100%',  transform: "translate(-50%, -50%)", ...modalRentalOpen}}><ModalRental trash={{counterTrash, setCounterTrash}} modalRentalAnimation={{modalRentalOpen, apiRental}} modalSubmitAnimation={{modalSubmit, apiSubmit}}></ModalRental ></animated.div>
-
                 <animated.div style={{position: 'fixed' , top:'0', left:'0', width: '100%', height: '100%',  transform: "translate(-50%, -50%)", ...modalSubmit}}><ModalSubmit modalSubmitAnimation={{modalSubmit, apiSubmit}}></ModalSubmit></animated.div>
-
-
                 <animated.div style={{position: 'fixed' , top:'0', left:'0', width: '100%', height: '100%',  transform: "translate(-50%, -50%)", ...modalSubmitRentalOpen}}><ModalRentalSubmit modalRentalSubmitAnimation={{modalSubmitRentalOpen, apiSubmitRental}}></ModalRentalSubmit></animated.div>
 
                 </div>
 
-        }
+
       </Container>
-
-
-
     </Provider>
 
   )
