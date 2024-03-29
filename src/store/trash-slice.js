@@ -16,7 +16,6 @@ export const trashSlice = createSlice({
       state.trash.push(action.payload)
     },
 
-
     deleteTrash: (state, action) => {
       state.trash = state.trash.filter((item) => {return item.title !== action.payload})
     },

@@ -5,42 +5,20 @@ import './../css/team.css'
 
 import { Col, Row } from 'react-bootstrap'
 
-// redux
-
-import { useSelector, useDispatch } from 'react-redux'
-import { getFireStoreTeam } from '../../../store/team-slice'
-
 
 // components
 
 import TeamCard from '../../../UI/teamCard'
+import TeamData from '../../../servers/teamData'
 
 //
 
 import ScrollCarousel from 'scroll-carousel-react'
-
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-
 import { useEffect } from 'react'
 
 
 const Team = () => {
 
-
-  const teamBase = useSelector((state) => state.addTeam.team)
-  const dispatch = useDispatch()
-
-
-  useEffect(() => {
-    dispatch(getFireStoreTeam())
-  }, [dispatch])
-
-
-
-  const teamPerson = teamBase.map((item) => {
-    return item.team
-  })
 
 
   return(
@@ -53,10 +31,11 @@ const Team = () => {
 
 
         <ScrollCarousel autoplay autoplaySpeed={4}>
-          {teamPerson.map((card, index) => {
-            console.log(teamPerson)
-            return <Col key={index}><TeamCard img={card.img} name={card.name} profession={card.profession}></TeamCard></Col>
+
+          {TeamData.map((card, index) => {
+            return <Col key={index}><TeamCard img={card.img} name={card.name} profession={card.prof}></TeamCard></Col>
           })}
+
         </ScrollCarousel>
 
 

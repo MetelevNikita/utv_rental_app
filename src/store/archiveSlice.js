@@ -10,17 +10,11 @@ export const setFireStore = createAsyncThunk(
 
   'archive/setFireStore',
   async (archive) => {
-
     const docRef = await addDoc(collection(db, 'archive'), archive)
-
     const newCard = {id: docRef.id, archive}
-
-    console.log(newCard)
-
     return newCard
   }
 )
-
 
 
  const archiveSlice = createSlice({

@@ -17,11 +17,10 @@ export const getFireStore = createAsyncThunk(
 
       const querySnapshot = await getDocs(collection(db, 'rental'))
       const rentalDB = querySnapshot.docs.map((doc) => ({
-
         id: doc.id,
         rentalCard: doc.data()
       }))
-      
+
         return rentalDB
 
     } catch (error) {
