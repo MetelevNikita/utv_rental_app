@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react'
+
+//
 
 import './../css/team.css'
 
@@ -9,15 +12,51 @@ import { Col, Row } from 'react-bootstrap'
 // components
 
 import TeamCard from '../../../UI/teamCard'
-import TeamData from '../../../servers/teamData'
+
+// reducer
+
+import { useSelector, useDispatch } from 'react-redux'
+import { getTeamAsync } from '../../../store/teamSlice'
+
 
 //
 
-import ScrollCarousel from 'scroll-carousel-react'
-import { useEffect } from 'react'
+
 
 
 const Team = () => {
+
+  useEffect(() => {
+    dispatch(getTeamAsync())
+  }, [])
+
+  const dispatch = useDispatch()
+  const team = useSelector(state => state.team.team)
+
+  console.log(team)
+
+
+
+  let [position, setPosition] = useState(0)
+  const [teamCards, setTeamCards] = useState([])
+
+
+
+
+
+
+  const autoSlider = () => {
+    setInterval(() => {
+      setPosition((position  -=  438))
+    }, 13000)
+
+  }
+
+
+
+
+
+
 
 
 
@@ -30,13 +69,21 @@ const Team = () => {
         <div className="team-subtitle">наши специалисты</div>
 
 
-        <ScrollCarousel autoplay autoplaySpeed={4}>
+          <Col className='d-flex' style={{overflow: 'hidden' }}>
 
-          {TeamData.map((card, index) => {
-            return <Col key={index}><TeamCard img={card.img} name={card.name} profession={card.prof}></TeamCard></Col>
-          })}
+              <Col className='d-flex' style={{position: 'relative', left: position, transition: '1s all ease'}}>
 
-        </ScrollCarousel>
+                {(team.length < 1) ? <></> : team.map((card, index) => {
+                  return <TeamCard key={index} img={card.avatar} name={card.name} profession={card.profession}></TeamCard>
+                })}
+
+              </Col>
+
+          </Col>
+
+
+
+
 
 
         </Col>

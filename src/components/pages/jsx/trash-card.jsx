@@ -6,14 +6,6 @@ import './../css/trash-card.css'
 import { Col, Row } from 'react-bootstrap'
 
 
-
-
-
-
-
-
-
-
 const TrashCard = (props) => {
 
 

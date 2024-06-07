@@ -17,17 +17,25 @@ import MyButton from '../../../UI/myButton'
 // redux
 
 import { useDispatch, useSelector } from 'react-redux'
-import { addTrash } from '../../../store/trash-slice'
-import { useState } from 'react'
+import { getProductAsync } from '../../../store/productSlice'
+import { postTrashAsync } from '../../../store/trashSlice'
+import { useEffect, useState } from 'react'
 import ModalRentalSubmit from '../../../modals/jsx/modal_rental_submit'
 
 
 const RentalCardOpen = ({trash, modalRentalSubmitAnimation, modalAnimation}) => {
 
-  const params = useParams()
-  const id = params.id
+  useEffect(() => {
+    dispatch(getProductAsync())
+  }, [])
 
   const dispatch = useDispatch()
+  const product  = useSelector((state) => state.product.product)
+
+  const params = useParams()
+  const title = params.id
+
+  console.log(title)
 
   let [counterQuntity, setCounterQuantity] = useState(0)
 
@@ -35,12 +43,13 @@ const RentalCardOpen = ({trash, modalRentalSubmitAnimation, modalAnimation}) => 
   const {modalSubmitRentalOpen, apiSubmitRental} = modalRentalSubmitAnimation
   const {counterTrash, setCounterTrash} = trash
 
-  const rentalBase = useSelector((state => state.addRental.rental))
 
-  const currentCard = (rentalBase.length < 1) ? [] : rentalBase.filter((item) => {
-    return item.id === id
 
+  const currentCard = (product.length < 1) ? [] : product.filter((item) => {
+    return item.title === title
   })
+
+  console.log(currentCard)
 
 
 
@@ -50,7 +59,7 @@ const RentalCardOpen = ({trash, modalRentalSubmitAnimation, modalAnimation}) => 
       return alert('Добавьте хотя бы одну позицию')
     }
 
-    dispatch(addTrash({title: currentCard[0].rentalCard.title, card: currentCard[0].rentalCard, counterQuantity: counterQuntity}))
+    dispatch(postTrashAsync({title: currentCard[0].rentalCard.title, card: currentCard[0].rentalCard, counterQuantity: counterQuntity}))
     setCounterTrash(counterTrash + 1)
 
     apiSubmitRental.start({
@@ -96,14 +105,14 @@ const RentalCardOpen = ({trash, modalRentalSubmitAnimation, modalAnimation}) => 
 
         <Col mb={6} sm={6} xs={12} className='mb-4'>
 
-          <img className='card-open-img' src={currentCard[0].rentalCard.img} alt="card-img" />
+          <img className='card-open-img' src={currentCard[0].image} alt="card-img" />
 
         </Col>
 
         <Col mb={6} sm={6} xs={12} className='mb-5'>
 
-          <div className="card-open-title">{currentCard[0].rentalCard.title}</div>
-          <div className="card-open-subtitle">{currentCard[0].rentalCard.subtitlLong}</div>
+          <div className="card-open-title">{currentCard[0].title}</div>
+          <div className="card-open-subtitle">{currentCard[0].description}</div>
 
           <hr className='card-open-line'/>
 
@@ -122,8 +131,8 @@ const RentalCardOpen = ({trash, modalRentalSubmitAnimation, modalAnimation}) => 
 
 
           <Row>
-            <Col><div className="card-open-quantity">Количество: {currentCard[0].rentalCard.quantity}</div></Col>
-            <Col><div className="card-open-price">Цена: {currentCard[0].rentalCard.price}</div></Col>
+            <Col><div className="card-open-quantity">Количество: {currentCard[0].quantity}</div></Col>
+            <Col><div className="card-open-price">Цена: {currentCard[0].price}</div></Col>
           </Row>
 
 

@@ -37,7 +37,7 @@ import { useEffect, useState } from 'react'
 
 // redux
 
-import { rentalStore } from './store/rental-store'
+import { store } from './store/store'
 import { Provider } from 'react-redux'
 
 
@@ -55,8 +55,6 @@ import { animated, useSpring } from 'react-spring'
 const App = () => {
 
   const [counterTrash, setCounterTrash] = useState(0)
-
-
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
@@ -95,7 +93,7 @@ const App = () => {
 
   return(
 
-    <Provider store={rentalStore}>
+    <Provider store={store}>
       <Container>
 
             <div className="App">

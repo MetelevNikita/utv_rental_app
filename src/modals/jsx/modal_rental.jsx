@@ -12,22 +12,27 @@ import MyDate from '../../UI/myDate'
 //
 
 import { Row, Col } from 'react-bootstrap'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // redux
 
 import { useDispatch, useSelector } from 'react-redux'
-import { setFireStore } from '../../store/archiveSlice'
-import { clearTrash } from '../../store/trash-slice'
+import { getTrashAsync, postTrashAsync } from '../../store/trashSlice'
 
 
 const ModalRental = ({trash, modalRentalAnimation, modalSubmitAnimation}) => {
 
+  useEffect(() => {
+    dispatch(getTrashAsync())
+  }, [])
+
+  const dispatch = useDispatch()
+  const trashCard = useSelector(state => state.trash.trash)
+
+
   const {modalRentalOpen, apiRental} = modalRentalAnimation
   const {modalSubmit, apiSubmit} = modalSubmitAnimation
-
-
   const {counterTrash, setCounterTrash} = trash
 
 
@@ -39,32 +44,24 @@ const ModalRental = ({trash, modalRentalAnimation, modalSubmitAnimation}) => {
   const [modalDateEnd, setModalDateEnd] = useState('')
   const [modalRentalChk, setModalRentalChk] = useState(false)
 
-  const dispatch = useDispatch()
 
 
-  const trashStore = useSelector(state => state.addTrash.trash)
-
-  const selectedTrash = trashStore.map((item) => {return item.title})
+  const selectedTrash = trashCard.map((item) => {return item.title})
   let sum = 0
-  const selectedPrice = trashStore.map((item) => {return sum += Number(item.price)})
+  const selectedPrice = trashCard.map((item) => {return sum += Number(item.price)})
 
 
   const navigate= useNavigate()
 
-
-
-
   const messageTG = ` ЗАЯВКА НА ОБОРУДОВАНИЕ \n \n Имя ${modalName} \n Телефон ${modalPhone} \n Сообщение ${modalText} \n Дата бронирования ${modalDateStart} - ${modalDateEnd} \n Оборудование ${selectedTrash.join(', ')} на сумму ${selectedPrice}$`
 
   const archive = {
-
     modalName,
     modalPhone,
     modalText,
     modalDateStart,
     modalDateEnd,
     selectedTrash
-
   }
 
 
@@ -104,7 +101,6 @@ const ModalRental = ({trash, modalRentalAnimation, modalSubmitAnimation}) => {
     }
 
     sendToTelegram()
-    dispatch(setFireStore(archive))
 
 
     setModalName('')
@@ -115,7 +111,6 @@ const ModalRental = ({trash, modalRentalAnimation, modalSubmitAnimation}) => {
 
 
     setCounterTrash(0)
-    dispatch(clearTrash([]))
     navigate('/')
 
     apiRental.start({
@@ -136,7 +131,6 @@ const ModalRental = ({trash, modalRentalAnimation, modalSubmitAnimation}) => {
   return(
 
     <Row>
-
       <Col style={{position: 'fixed', top: '0', left: '0', zIndex: '1', background: 'black', opacity: '0.2'}}></Col>
 
 
@@ -176,7 +170,7 @@ const ModalRental = ({trash, modalRentalAnimation, modalSubmitAnimation}) => {
           <Row md={12} className='mt-2'>
             <ul className='trash-modal-list'>
             <Col>Ваш заказ</Col>
-            {(trashStore.length < 1) ? <li style={{fontSize: "10px"}}>Список пуст</li> : trashStore.map((item) => { return <li key={item.id} style={{fontSize: "10px"}} className='trash-modal-list-item'>{item.title}</li>})}
+            {(trashCard.length < 1) ? <li style={{fontSize: "10px"}}>Список пуст</li> : trashCard.map((item) => { return <li key={item.id} style={{fontSize: "10px"}} className='trash-modal-list-item'>{item.title}</li>})}
             </ul>
           </Row>
 
