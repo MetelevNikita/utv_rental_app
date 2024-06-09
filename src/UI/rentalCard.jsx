@@ -13,7 +13,8 @@ import MyButton from './myButton'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { postTrashAsync } from '../store/trashSlice'
-import { getProductAsync } from '../store/productSlice'
+import { addToTrash } from '../store/trashActiveSlice'
+
 import { useState } from 'react'
 
 //
@@ -32,7 +33,7 @@ const product = useSelector((state) => state.product.product)
 
 
 const currentCard = (product.length < 1) ? [] : product.filter((item) => {
-  return item.id === id
+  return item.title === title
 })
 
 
@@ -40,12 +41,13 @@ const currentCard = (product.length < 1) ? [] : product.filter((item) => {
 
 
 
-const addToTrash = () => {
+const addNewToTrash = () => {
 
   if(counterQuntity < 1) {
     return alert('Добавьте хотя бы одну позицию')
   }
-  dispatch(postTrashAsync({title: title, card: currentCard[0].rentalCard, counterQuantity: counterQuntity}))
+
+  dispatch(addToTrash({title: title, card: currentCard[0], counterQuantity: counterQuntity}))
   setCounterTrash(counterTrash + 1)
 
   apiSubmitRental.start({
@@ -61,6 +63,8 @@ const addToTrash = () => {
 
 }
 
+//
+
 
 const addQuantityPlus = () => {
 
@@ -73,18 +77,16 @@ const addQuantityPlus = () => {
 }
 
 
-
 const addQuantityMinus = () => {
   if(counterQuntity !== 0) {
-    setCounterQuantity(counterQuntity = counterQuntity - 1)
+    setCounterQuantity(counterQuntity ++)
   } else {
     return
   }
 }
 
 
-
-
+//
 
 
 
@@ -126,7 +128,7 @@ const addQuantityMinus = () => {
 
 
       <Col md={5} sm={12} xs={12} className='mb-2'><Link style={{marginRight: 10 + 'px'}} to={`/rental/${title}`}><MyButton className={'myBtn'}>Посмотреть</MyButton></Link></Col>
-      <Col md={6} sm={12} xs={12} className='mb-2'><MyButton className={'myBtn'} onClick={() => {addToTrash()}}>Добавить в корзину</MyButton></Col>
+      <Col md={6} sm={12} xs={12} className='mb-2'><MyButton className={'myBtn'} onClick={() => {addNewToTrash()}}>Добавить в корзину</MyButton></Col>
 
 
 

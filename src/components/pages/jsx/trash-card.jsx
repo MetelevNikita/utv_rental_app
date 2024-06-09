@@ -14,7 +14,7 @@ const TrashCard = (props) => {
     <Row md={12}>
 
       <Col md={12} sm={12} xs={12} className='mb-4 mt-4 d-flex  justify-content-start align-items-center'>
-        <img className='trash-card-img' src={props.img} alt="" />
+        <img className='trash-card-img' src={props.image} alt="" />
       </Col>
 
       <Col md={12} sm={12} xs={12}>

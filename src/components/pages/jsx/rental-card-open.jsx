@@ -35,7 +35,6 @@ const RentalCardOpen = ({trash, modalRentalSubmitAnimation, modalAnimation}) => 
   const params = useParams()
   const title = params.id
 
-  console.log(title)
 
   let [counterQuntity, setCounterQuantity] = useState(0)
 
@@ -73,10 +72,10 @@ const RentalCardOpen = ({trash, modalRentalSubmitAnimation, modalAnimation}) => 
   const addQuantityPlus = () => {
 
     console.log('click')
-    if(counterQuntity > currentCard[0].rentalCard.quantity) {
+    if(counterQuntity >= currentCard[0].quantity) {
       return
     }
-      setCounterQuantity(counterQuntity++)
+      setCounterQuantity(counterQuntity = counterQuntity + 1)
 
   }
 

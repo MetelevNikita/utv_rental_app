@@ -28,7 +28,7 @@ const ModalRental = ({trash, modalRentalAnimation, modalSubmitAnimation}) => {
   }, [])
 
   const dispatch = useDispatch()
-  const trashCard = useSelector(state => state.trash.trash)
+  const trashCard = useSelector(state => state.trashActive.activeTrash)
 
 
   const {modalRentalOpen, apiRental} = modalRentalAnimation
@@ -102,6 +102,18 @@ const ModalRental = ({trash, modalRentalAnimation, modalSubmitAnimation}) => {
 
     sendToTelegram()
 
+
+    const newTrashCard = {
+      name: modalName,
+      phone: modalPhone,
+      text: modalText,
+      dateStart: modalDateStart,
+      dateEnd: modalDateEnd,
+      list: (trashCard.length < 1) ?  'Список пуст'  : 'kist',
+      dateCreated: new Date().toLocaleDateString()
+    }
+
+    dispatch(postTrashAsync(newTrashCard))
 
     setModalName('')
     setModalPhone('')

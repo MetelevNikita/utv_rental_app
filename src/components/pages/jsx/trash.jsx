@@ -9,6 +9,7 @@ import { Col, Row } from "react-bootstrap"
 
 import { useDispatch, useSelector } from 'react-redux'
 import { getTrashAsync, postTrashAsync } from '../../../store/trashSlice'
+import { addToTrash, deleteToTrash, getActiveTrash } from '../../../store/trashActiveSlice'
 
 
 
@@ -24,17 +25,12 @@ import MyButton from '../../../UI/myButton'
 
 const Trash = ({counter, modalRentalAnimation}) => {
 
-  useEffect(() => {
-    dispatch(getTrashAsync())
-  }, [])
 
   const dispatch = useDispatch()
-  const trashCard = useSelector(state => state)
-
+  const trashCard = useSelector(state => state.trashActive.activeTrash)
 
   const {modalRentalOpen, apiRental} = modalRentalAnimation
   let {counterTrash, setCounterTrash} = counter
-
 
   let sum = 0
 
@@ -44,10 +40,17 @@ const Trash = ({counter, modalRentalAnimation}) => {
 
 
 
-
-  const deleteTrashCardHandler = (e) => {
+  const deleteTrashHandler = (item) => {
+    dispatch(deleteToTrash(item))
     setCounterTrash(counterTrash-1)
   }
+
+
+
+
+
+
+
 
   return(
 
@@ -56,7 +59,7 @@ const Trash = ({counter, modalRentalAnimation}) => {
       <Row md={12}>
 
           {(trashCard.length < 1) ? <div className='trash-empty'>Корзина пуста</div> :  trashCard.map((card, index) => {
-            return  <TrashCard className='d-flex justify-content-center' key={index} img={card.card.img} title={card.card.title} price={card.card.price} counterQuantity={card.counterQuantity} del={() => {deleteTrashCardHandler(card.card.title)}}></TrashCard>
+            return  <TrashCard className='d-flex justify-content-center' key={index} image={card.card.image} title={card.title} price={card.card.price} counterQuantity={card.counterQuantity} del={() => {deleteTrashHandler(card.title)}}></TrashCard>
           })}
 
       </Row>

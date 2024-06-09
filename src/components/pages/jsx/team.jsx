@@ -33,7 +33,6 @@ const Team = () => {
   const dispatch = useDispatch()
   const team = useSelector(state => state.team.team)
 
-  console.log(team)
 
 
 
