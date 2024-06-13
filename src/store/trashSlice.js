@@ -7,7 +7,7 @@ const initialState = {
 }
 
 
-const trashUrl = 'http://90.156.224.112:9000/api/v1/trash'
+const trashUrl = 'http://90.156.224.112/api/v1/trash'
 
 //
 
