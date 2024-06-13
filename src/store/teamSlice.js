@@ -6,7 +6,7 @@ const initialState = {
   team: []
 }
 
-const teamUrl = 'http://90.156.224.112:9000/api/v1/person'
+const teamUrl = '//90.156.224.112:9000/api/v1/person'
 
 //
 
