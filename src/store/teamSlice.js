@@ -6,7 +6,7 @@ const initialState = {
   team: []
 }
 
-const teamUrl = '//90.156.224.112:9000/api/v1/person'
+const teamUrl = 'https://utvls.tw1.su/api/v1/person'
 
 //
 
