@@ -43,9 +43,9 @@ const ServiceCardOpen = ({ serviceCardModalOpen, idCardModel }) => {
 
 
           <Col lg={8} md={8} sm={8} xs={8} className='d-flex align-items-center mb-4' style={{width: '100%', height:'max-content', fontSize: '18px', fontWeight: '400', textTransform: 'uppercase', lineHeight: '130%'}}>
-          <Col c className='d-flex justify-content-start' style={{width: '100%', height: 'max-content', fontSize: '32px', fontWeight: '400', textTransform: 'uppercase'}}>{checkedCard.title}</Col>
+          <Col c className='d-flex justify-content-start' style={{width: '100%', height: 'max-content', fontSize: '32px', fontWeight: '400', textTransform: 'uppercase', lineHeight: '110%'}}>{checkedCard.title}</Col>
 
-          <Col className='d-flex justify-content-end' lg={2} md={2} xs={2} style={{height: 'max-content', cursor: 'pointer'}} onClick={() => {setServiceCardModal(false)}}>&#10006;</Col>
+          <Col className='d-flex justify-content-end' lg={2} md={2} xs={2} style={{height: 'max-content', cursor: 'pointer', lineHeight: '130%'}} onClick={() => {setServiceCardModal(false)}}>&#10006;</Col>
 
         </Col>
 

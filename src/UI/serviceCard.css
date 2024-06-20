@@ -3,7 +3,11 @@ max-width: 377px;
 height: max-content;
 }
 
-.service-card-img {}
+.service-card-img {
+  width: 377px;
+  height: 212px;
+
+}
 
 .service-card-title {
   margin-top: 17px;
