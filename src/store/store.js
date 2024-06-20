@@ -7,6 +7,7 @@ import productSlice from "./productSlice";
 import teamSlice from "./teamSlice";
 import trashSlice from "./trashSlice";
 import trashActiveSlice from "./trashActiveSlice";
+import portfolioSlice from "./portfolioSlice";
 
 export const store= configureStore({
   reducer: {
@@ -14,7 +15,8 @@ export const store= configureStore({
     product: productSlice,
     team: teamSlice,
     trash: trashSlice,
-    trashActive: trashActiveSlice
+    trashActive: trashActiveSlice,
+    portfolio: portfolioSlice
 
   }
 })

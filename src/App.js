@@ -17,6 +17,7 @@ import Services from './components/pages/jsx/services'
 import Rental from './components/pages/jsx/rental'
 import Team from './components/pages/jsx/team'
 import Footer from './components/footer/footer'
+import ServiceCardOpen from './UI/ServiceCardOpen'
 
 //
 
@@ -56,6 +57,8 @@ const App = () => {
 
   const [counterTrash, setCounterTrash] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
+  const [serviceCardModal, setServiceCardModal] = useState(false)
+  const [idCard, setIdCard] = useState(0)
 
   useEffect(() => {
     setIsLoading(true)
@@ -63,6 +66,9 @@ const App = () => {
       setIsLoading(false)
     }, 3000)
   }, [])
+
+
+
 
   // animation spring
 
@@ -105,9 +111,11 @@ const App = () => {
                 <Route path='/' element={
                     <>
                     <AboutUs></AboutUs>
-                    <Services></Services>
+                    <Services serviceCardModalOpen={{serviceCardModal, setServiceCardModal}} idCardModel={{idCard, setIdCard}}></Services>
                     <Rental trash={{counterTrash, setCounterTrash}} modalRentalAnimation={{modalRentalOpen, apiRental}} modalRentalSubmitAnimation={{modalSubmitRentalOpen, apiSubmitRental}}></Rental>
                     <Team></Team>
+
+
                     </>
                   }>
                   </Route>
@@ -126,6 +134,9 @@ const App = () => {
                 <animated.div style={{position: 'fixed' , top:'0', left:'0', width: '100%', height: '100%',  transform: "translate(-50%, -50%)", ...modalRentalOpen}}><ModalRental trash={{counterTrash, setCounterTrash}} modalRentalAnimation={{modalRentalOpen, apiRental}} modalSubmitAnimation={{modalSubmit, apiSubmit}}></ModalRental ></animated.div>
                 <animated.div style={{position: 'fixed' , top:'0', left:'0', width: '100%', height: '100%',  transform: "translate(-50%, -50%)", ...modalSubmit}}><ModalSubmit modalSubmitAnimation={{modalSubmit, apiSubmit}}></ModalSubmit></animated.div>
                 <animated.div style={{position: 'fixed' , top:'0', left:'0', width: '100%', height: '100%',  transform: "translate(-50%, -50%)", ...modalSubmitRentalOpen}}><ModalRentalSubmit modalRentalSubmitAnimation={{modalSubmitRentalOpen, apiSubmitRental}}></ModalRentalSubmit></animated.div>
+
+
+                {(serviceCardModal == false) ? <></> : <ServiceCardOpen serviceCardModalOpen={{serviceCardModal, setServiceCardModal}} idCardModel={{idCard, setIdCard}}/>}
 
                 </div>
 

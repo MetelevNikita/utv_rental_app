@@ -78,8 +78,8 @@ const addQuantityPlus = () => {
 
 
 const addQuantityMinus = () => {
-  if(counterQuntity !== 0) {
-    setCounterQuantity(counterQuntity ++)
+  if(counterQuntity >= 0) {
+    setCounterQuantity(counterQuntity --)
   } else {
     return
   }
