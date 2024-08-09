@@ -109,7 +109,7 @@ const OpenPage = () => {
 
         <Col style={{width: '100%', marginTop: '800px'}} className='d-flex flex-column justify-content align-items-center mt-4'>
 
-            <Col style={{width:'100%', height: 'max-content', marginTop: '300px'}} className='d-flex justify-content-center'>
+            <Col style={{width:'100%', height: 'max-content', marginTop: '200px'}} className='d-flex justify-content-center'>
 
               <Col md={3} className='d-flex justify-content-center' style={{overflow: 'hidden', marginRight: '10px'}}><animated.div style={USprings}><img src={U} alt="123" /></animated.div></Col>
               <Col md={3} className='d-flex justify-content-center' style={{overflow: 'hidden'}}><animated.div style={TSprings}><img src={T} alt="123" /></animated.div></Col>
