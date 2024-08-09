@@ -2,7 +2,7 @@ import './../css/rental-card-open.css'
 
 //
 
-import { Row, Col } from "react-bootstrap"
+import { Row, Col, Container } from "react-bootstrap"
 
 //
 
@@ -19,14 +19,22 @@ import MyButton from '../../../UI/myButton'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProductAsync } from '../../../store/productSlice'
 import { postTrashAsync } from '../../../store/trashSlice'
+import { addToTrash } from '../../../store/trashActiveSlice'
 import { useEffect, useState } from 'react'
 import ModalRentalSubmit from '../../../modals/jsx/modal_rental_submit'
 
 
 const RentalCardOpen = ({trash, modalRentalSubmitAnimation, modalAnimation}) => {
 
+
+  const upPage = () => {
+    window.scrollTo({top: 0, behavior:'smooth'})
+  }
+
+
   useEffect(() => {
     dispatch(getProductAsync())
+    upPage()
   }, [])
 
   const dispatch = useDispatch()
@@ -48,17 +56,20 @@ const RentalCardOpen = ({trash, modalRentalSubmitAnimation, modalAnimation}) => 
     return item.title === title
   })
 
+
+
   console.log(currentCard)
 
 
 
 
-  const addToTrash = () => {
+
+  const addToTrashCard = () => {
     if(counterQuntity < 1) {
       return alert('Добавьте хотя бы одну позицию')
     }
 
-    dispatch(postTrashAsync({title: currentCard[0].rentalCard.title, card: currentCard[0].rentalCard, counterQuantity: counterQuntity}))
+    dispatch(addToTrash({title: currentCard[0].title, card: currentCard[0], counterQuantity: counterQuntity}))
     setCounterTrash(counterTrash + 1)
 
     apiSubmitRental.start({
@@ -98,7 +109,8 @@ const RentalCardOpen = ({trash, modalRentalSubmitAnimation, modalAnimation}) => 
 
 
   return(
-    <>
+
+    <Container>
 
       <Row className=''>
 
@@ -141,13 +153,13 @@ const RentalCardOpen = ({trash, modalRentalSubmitAnimation, modalAnimation}) => 
 
       <Row className='mb-5'>
 
-        <Col mb={2} sm={2} xs={12} className='mb-3'><MyButton className={'myBtn'} style={{marginRight: 20 + 'px'}} onClick = {() => {addToTrash()}}>Добавить в корзину</MyButton></Col>
+        <Col mb={2} sm={2} xs={12} className='mb-3'><MyButton className={'myBtn'} style={{marginRight: 20 + 'px'}} onClick = {() => {addToTrashCard()}}>Добавить в корзину</MyButton></Col>
         <Col mb={2} sm={2} xs={12} className='mb-3'><MyButton className={'myBtn'} onClick={() => {api.start({from: {opacity: 0, transform: 'scale(0)'}, to: {opacity: 1, transform: 'scale(1)'}})}}>Задайте вопрос</MyButton></Col>
 
       </Row>
 
 
-    </>
+    </Container>
 
 
 

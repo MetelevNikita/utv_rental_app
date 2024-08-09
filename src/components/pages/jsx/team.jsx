@@ -6,7 +6,7 @@ import './../css/team.css'
 
 // bootstrap
 
-import { Col, Row } from 'react-bootstrap'
+import { Col, Container, Row } from 'react-bootstrap'
 
 
 // components
@@ -60,7 +60,7 @@ const Team = () => {
 
 
   return(
-
+    <Container>
       <Row>
         <Col md={12} className='mt-5 mb-5'>
 
@@ -80,13 +80,9 @@ const Team = () => {
 
           </Col>
 
-
-
-
-
-
         </Col>
       </Row>
+      </Container>
 
 
   )

@@ -39,6 +39,7 @@ const Header = ({trash}) => {
 
 
   return(
+    <Container>
       <Row className='d-flex justify-content-between mt-4 mb-4'>
 
         <Col className='d-flex'>
@@ -67,6 +68,7 @@ const Header = ({trash}) => {
 
         </Col>
       </Row>
+      </Container>
   )
 }
 

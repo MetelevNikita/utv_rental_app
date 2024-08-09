@@ -8,7 +8,7 @@ import video from './../asset/showreel.webm'
 // bootstap
 
 
-import { Col, Row } from 'react-bootstrap'
+import { Col, Container, Row } from 'react-bootstrap'
 
 
 //
@@ -23,6 +23,7 @@ const {api} = modalAnimation
 
 
   return(
+    <Container fluid>
       <Row md={12} sm={12} xs={12} className='d-flex flex-column justify-content-start align-items-center'>
 
             <Col>
@@ -54,6 +55,7 @@ const {api} = modalAnimation
             </Col>
 
     </Row>
+    </Container>
 
 
 

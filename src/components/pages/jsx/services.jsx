@@ -1,7 +1,7 @@
 import './../css/services.css'
 
 
-import { Row, Col } from "react-bootstrap"
+import { Row, Col, Container } from "react-bootstrap"
 import { useState, useEffect } from 'react'
 import { Link  } from 'react-router-dom'
 
@@ -51,7 +51,7 @@ const serviceCardModalHandler = (id) => {
 
 
   return(
-    <>
+    <Container>
       <Row>
         <Col className="col-12">
             <div className="services-title">Наши услуги включают в себя:</div>
@@ -82,8 +82,7 @@ const serviceCardModalHandler = (id) => {
             }
           })}
       </Row>
-
-    </>
+      </Container>
 
   )
 }

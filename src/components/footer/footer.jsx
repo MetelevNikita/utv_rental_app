@@ -80,6 +80,7 @@ const Footer = ({ modalSubmitAnimation })  => {
 
   return(
 
+    <Container>
     <Row>
 
         <Row>
@@ -157,6 +158,7 @@ const Footer = ({ modalSubmitAnimation })  => {
 
 
     </Row>
+    </Container>
 
 
 

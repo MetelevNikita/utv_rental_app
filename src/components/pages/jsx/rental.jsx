@@ -2,7 +2,7 @@ import './../css/rental.css'
 
 // bootstrap
 
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Container } from 'react-bootstrap'
 
 //
 
@@ -50,7 +50,7 @@ const Rental = ({trash, modalRentalSubmitAnimation}) => {
 
   return(
 
-    <>
+      <Container>
 
       <Row>
         <Col>
@@ -77,7 +77,7 @@ const Rental = ({trash, modalRentalSubmitAnimation}) => {
         })}
       </Row>
 
-    </>
+      </Container>
 
 
   )

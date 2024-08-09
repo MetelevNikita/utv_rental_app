@@ -1,6 +1,6 @@
 import './../css/aboutUs.css'
 
-import { Col, Row } from "react-bootstrap"
+import { Col, Container, Row } from "react-bootstrap"
 
 // components
 
@@ -22,7 +22,8 @@ const AboutUs = () => {
   const arrOfPartners = [logo1, logo2, logo3, logo5, logo6]
 
   return(
-      <>
+
+      <Container>
       <Row>
         <Col className="col-12">
           <div className="about-title-box">
@@ -58,8 +59,8 @@ const AboutUs = () => {
           })}
 
       </Row>
+      </Container>
 
-      </>
 
   )
 }

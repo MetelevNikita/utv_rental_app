@@ -3,12 +3,11 @@ import { useEffect } from 'react'
 
 // bootstrap
 
-import { Col, Row } from "react-bootstrap"
+import { Col, Container, Row } from "react-bootstrap"
 
 // redux
 
 import { useDispatch, useSelector } from 'react-redux'
-import { getTrashAsync, postTrashAsync } from '../../../store/trashSlice'
 import { addToTrash, deleteToTrash, getActiveTrash } from '../../../store/trashActiveSlice'
 
 
@@ -32,6 +31,9 @@ const Trash = ({counter, modalRentalAnimation}) => {
   const {modalRentalOpen, apiRental} = modalRentalAnimation
   let {counterTrash, setCounterTrash} = counter
 
+
+  console.log(trashCard)
+
   let sum = 0
 
   trashCard.map((item) => {
@@ -54,7 +56,7 @@ const Trash = ({counter, modalRentalAnimation}) => {
 
   return(
 
-    <>
+    <Container>
 
       <Row md={12}>
 
@@ -76,7 +78,7 @@ const Trash = ({counter, modalRentalAnimation}) => {
 
       </Row>
 
-    </>
+    </Container>
 
   )
 }

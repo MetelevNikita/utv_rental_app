@@ -112,7 +112,7 @@ const App = () => {
   return(
 
     <Provider store={store}>
-      <Container>
+      <Container fluid>
 
             <div className="App">
 

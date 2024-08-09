@@ -4,7 +4,7 @@ import ReactPlayer from 'react-player'
 
 //
 
-import { Col } from 'react-bootstrap'
+import { Col, Container } from 'react-bootstrap'
 
 // redux
 
@@ -32,6 +32,8 @@ const ServiceCardOpen = ({ serviceCardModalOpen, idCardModel }) => {
 
   return (
 
+    <Container>
+
 
     <Col style={{width: "100%", height:  "100%", backdropFilter: 'blur(6px)', position: 'fixed', top: '0px', left: '0px'}}>
 
@@ -54,6 +56,8 @@ const ServiceCardOpen = ({ serviceCardModalOpen, idCardModel }) => {
 
       </Col>
     </Col>
+
+    </Container>
 
   )
 }

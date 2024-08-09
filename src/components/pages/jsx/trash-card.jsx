@@ -3,13 +3,14 @@ import './../css/trash-card.css'
 
 // bootstrap
 
-import { Col, Row } from 'react-bootstrap'
+import { Col, Container, Row } from 'react-bootstrap'
 
 
 const TrashCard = (props) => {
 
 
   return (
+    <Container>
 
     <Row md={12}>
 
@@ -31,6 +32,7 @@ const TrashCard = (props) => {
       </Col>
 
     </Row>
+    </Container>
 
   )
  }

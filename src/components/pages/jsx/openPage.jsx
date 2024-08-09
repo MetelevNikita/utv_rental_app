@@ -2,7 +2,7 @@ import React from 'react'
 
 //
 
-import { Col, Row } from 'react-bootstrap'
+import { Col, Container, Row } from 'react-bootstrap'
 
 //
 
@@ -106,7 +106,7 @@ const OpenPage = () => {
 
   return (
 
-
+      <Container>
         <Col style={{width: '100%', marginTop: '800px'}} className='d-flex flex-column justify-content align-items-center mt-4'>
 
             <Col style={{width:'100%', height: 'max-content', marginTop: '200px'}} className='d-flex justify-content-center'>
@@ -124,6 +124,7 @@ const OpenPage = () => {
             </Col>
 
       </Col>
+      </Container>
 
   )
 }
