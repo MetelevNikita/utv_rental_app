@@ -1,7 +1,10 @@
 import './serviceCard.css'
 
 
-const ServiceCard = ({img, title, subtitle, date}) => {
+const ServiceCard = ({img, title, description, date}) => {
+
+
+  const titleShort = `${description.substring(0, 40)}...`
 
 
   return(
@@ -12,8 +15,8 @@ const ServiceCard = ({img, title, subtitle, date}) => {
 
       <hr className='service-card-line'/>
 
-      <div className="service-card-subtitle">{subtitle}</div>
-      <div className="service-card-date">год: {date}</div>
+      <div className="service-card-subtitle">{titleShort}</div>
+      {/* <div className="service-card-date">год: {date}</div> */}
 
     </div>
   )

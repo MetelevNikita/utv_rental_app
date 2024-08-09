@@ -34,6 +34,8 @@ const Services = ({ serviceCardModalOpen, idCardModel }) => {
 const dispatch  = useDispatch()
 const portfolioSelector = useSelector((state) => state.portfolio.portfolio)
 
+console.log(portfolioSelector)
+
 const serviceMenu = ['Конфернции', 'Концерты', 'Спорт', 'Городские мероприятия']
 const [service, setService] = useState('Конфернция')
 
@@ -76,7 +78,7 @@ const serviceCardModalHandler = (id) => {
       <Row md={12}>
           {portfolioSelector.map((card, id) => {
             if(card.category === service) {
-              return <Col key={id} md={4} sm={12} xs={12} onClick={() => {serviceCardModalHandler(card.id)}} className='mb-3 service-card service-card-animation d-flex justify-content-md-start justify-content-center'><ServiceCard img={card.image} title={card.title} subtitle={card.subtitle} date={card.date}></ServiceCard></Col>
+              return <Col key={id} md={4} sm={12} xs={12} onClick={() => {serviceCardModalHandler(card.id)}} className='mb-3 service-card service-card-animation d-flex justify-content-md-start justify-content-center'><ServiceCard img={card.image} title={card.title} description={card.description} date={card.date}></ServiceCard></Col>
             } else {
               <div>Нет подобной котегории</div>
             }
