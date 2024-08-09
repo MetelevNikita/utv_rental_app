@@ -42,8 +42,9 @@ const {api} = modalAnimation
 
 
 
-            <Col className="video-subtitle-box">
-                <div className="video-subtitle">Текст о компании, цели и достижения за время работы, опыт</div>
+            <Col md={3} className="video-subtitle-box">
+                <div className="video-subtitle">Проведите мероприятие онлайн, не теряйте аудиторию и не переносите мероприятие.<br />
+                    У нас вы сможете заказать online трансляцию и телемост с конференции,<br /> форума, концерта и любого другого спортивного, делового, развлекательного мероприятия.</div>
             </Col>
 
 

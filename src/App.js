@@ -10,6 +10,10 @@ import { Routes, Route } from 'react-router-dom'
 
 // components
 
+import OpenPage from './components/pages/jsx/openPage'
+
+//
+
 import Header from './components/header/header'
 import Video from './UI/video'
 import AboutUs from './components/pages/jsx/aboutUs'
@@ -64,7 +68,7 @@ const App = () => {
     setIsLoading(true)
     setTimeout(() => {
       setIsLoading(false)
-    }, 3000)
+    }, 2500)
   }, [])
 
 
@@ -93,6 +97,14 @@ const App = () => {
 
 
   //
+
+  if (isLoading) {
+    return (
+      <Container>
+        <OpenPage></OpenPage>
+      </Container>
+    )
+  }
 
 
 
