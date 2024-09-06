@@ -5,7 +5,7 @@ const initialState = {
   portfolio: []
 }
 
-const portfolioUrl = 'https://www.utvls.tw1.su/api/v1/portfolio'
+const portfolioUrl = 'https://utvls.tw1.su/api/v1/portfolio'
 
 
 export const getPortfolioAsync  =  createAsyncThunk(
