@@ -70,7 +70,7 @@ const Rental = ({trash, modalRentalSubmitAnimation}) => {
 
 
       <Row md={12} className='mt-4'>
-        {rentalProduct.map((item, index) => {
+        {(rentalProduct.length < 1) ? <></> : rentalProduct.map((item, index) => {
           if(item.category === rental) {
             return <Col md={4} key={index} className='rental-card d-flex justify-content-md-around justify-content-center'><RentalCard modalRentalButton={modalRentalSubmitAnimation} addGetTrash={trash} id={item.title} img={item.image} title={item.title} subtitleShort={shortText(item.description)} price={item.price} quantity={item.quantity} counterQuantityTitle={item.counterQuantity}></RentalCard></Col>
           }
