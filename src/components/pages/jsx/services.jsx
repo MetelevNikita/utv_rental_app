@@ -76,7 +76,7 @@ const serviceCardModalHandler = (id) => {
 
 
       <Row md={12}>
-          {portfolioSelector.map((card, id) => {
+          {(portfolioSelector.length < 1) ? <></> : portfolioSelector.map((card, id) => {
             if(card.category === service) {
               return <Col key={id} md={4} sm={12} xs={12} onClick={() => {serviceCardModalHandler(card.id)}} className='mb-3 service-card service-card-animation d-flex justify-content-md-start justify-content-center'><ServiceCard img={card.image} title={card.title} description={card.description} date={card.date}></ServiceCard></Col>
             } else {
