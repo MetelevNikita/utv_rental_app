@@ -36,7 +36,7 @@ const portfolioSelector = useSelector((state) => state.portfolio.portfolio)
 
 console.log(portfolioSelector)
 
-const serviceMenu = ['Конфернции', 'Концерты', 'Спорт', 'Городские мероприятия']
+const serviceMenu = ['Конференции', 'Концерты', 'Спорт', 'Городские мероприятия']
 const [service, setService] = useState('Конфернция')
 
 
