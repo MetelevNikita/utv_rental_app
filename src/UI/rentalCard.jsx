@@ -92,7 +92,10 @@ const addQuantityMinus = () => {
 
   return(
     <div className="rental-card-container" id={id}>
-      <img className="rental-card-img" src={img} alt="rentalCardImg" />
+      <div className="rental-card-img-container">
+        <img className="rental-card-img" style={{objectFit: 'cover', width: '377px', height: '316px'}} src={img} alt="rentalCardImg" />
+      </div>
+
 
       <div className="rental-card-title">{title}</div>
 
