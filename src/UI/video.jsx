@@ -38,14 +38,13 @@ const {api} = modalAnimation
 
 
             <Col className='video-title-box'>
-                <div className='video-title'>Организация <br /> Онлайн-трансляций</div>
+                <div className='video-title'>Аренда <br /> видеооборудования</div>
             </Col>
 
 
 
             <Col md={3} className="video-subtitle-box">
-                <div className="video-subtitle">Проведите мероприятие онлайн, не теряйте аудиторию и не переносите мероприятие.<br />
-                    У нас вы сможете заказать online трансляцию и телемост с конференции,<br /> форума, концерта и любого другого спортивного, делового, развлекательного мероприятия.</div>
+                <div className="video-subtitle">прокат видеокамер, оптики, света, аксессуаров для съёмки</div>
             </Col>
 
 

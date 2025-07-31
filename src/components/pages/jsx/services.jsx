@@ -36,8 +36,8 @@ const portfolioSelector = useSelector((state) => state.portfolio.portfolio)
 
 console.log(portfolioSelector)
 
-const serviceMenu = ['Конференции', 'Концерты', 'Спорт', 'Городские мероприятия']
-const [service, setService] = useState('Конфернция')
+const serviceMenu = ['Постановчные ролики', 'Корпоративные фильмы', 'Музыкальные клипы', 'Документальные фильмы']
+const [service, setService] = useState('Постановчные ролики')
 
 
 const serviceCardModalHandler = (id) => {
@@ -56,13 +56,8 @@ const serviceCardModalHandler = (id) => {
     <Container>
       <Row>
         <Col className="col-12">
-            <div className="services-title">Наши услуги включают в себя:</div>
-            <div className="services-subtitle">
-              — Организацию и проведение прямых трансляций в интернете<br></br>
-              — Разработку индивидуальных решений для каждого клиента<br></br>
-              — Использование новейших технологий и оборудования<br></br>
-              — Предоставление возможности взаимодействия с аудиторией через чат и другие интерактивные функции
-            </div>
+            <div className="services-title">Наши работы</div>
+            <div className="services-subtitle">Посмотрите проекты, снятые на нашем оборудовании</div>
         </Col>
       </Row>
 
