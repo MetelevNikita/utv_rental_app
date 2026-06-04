@@ -4,7 +4,7 @@ import { act } from "react";
 
 
 const initialState  =  {
-  activeTrash: []
+  trashActive: []
 }
 
 
@@ -17,11 +17,11 @@ const trashActiveSlice = createSlice({
 
 
     addToTrash: (state, action) => {
-       state.activeTrash.push(action.payload)
+       state.trashActive.push(action.payload)
     },
 
     deleteToTrash:  (state, action)  =>  {
-      state.activeTrash = state.activeTrash.filter((item) =>  item.title !== action.payload)
+      state.trashActive = state.trashActive.filter((item) =>  item.title !== action.payload)
     }
 
 

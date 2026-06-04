@@ -11,6 +11,7 @@ import { useState, useEffect } from 'react'
 // components
 
 import RentalCard from '../../../UI/rentalCard'
+import PackCard from '../../../UI/PackCard'
 import MyButton from '../../../UI/myButton'
 
 //
@@ -18,6 +19,8 @@ import MyButton from '../../../UI/myButton'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { getProductAsync } from '../../../store/productSlice'
+import { getComplectAsync } from '../../../store/complectSlice'
+
 
 
 
@@ -25,18 +28,41 @@ const Rental = ({trash, modalRentalSubmitAnimation}) => {
 
   useEffect(() => {
     dispatch(getProductAsync())
+    dispatch(getComplectAsync())
   }, [])
 
   const dispatch = useDispatch()
   const rentalProduct = useSelector(state => state.product.product)
+  const rentalComplect = useSelector(state => state.complect.complect)
+
+
 
   const {modalSubmitRentalOpen, apiSubmitRental} = modalRentalSubmitAnimation
 
 
-  const rentalMenu = ['Камеры', 'Свет', 'Звук' , 'Операторское оборудование', 'Техника для трансляций']
-  const [rental, setRental] = useState('Камеры')
+
+  const rentalMenu = [
+    {
+      item: 'Камеры',
+      value: 'camera'
+    },
+    {
+      item: 'Свет',
+      value: 'light'
+    },
+    {
+      item: 'Операторское оборудование',
+      value: 'operator_equipment'
+    },
+    {
+      item: 'Звук',
+      value: 'sound'
+    },
+  ]
 
 
+
+  const [rental, setRental] = useState(rentalMenu[0])
 
   const shortText = (text) => {
 
@@ -46,36 +72,69 @@ const Rental = ({trash, modalRentalSubmitAnimation}) => {
   }
 
 
+ 
+
+
+
 
 
   return(
 
       <Container>
 
-      <Row>
-        <Col>
-        <div className="rental-title">техника</div>
-        <div className="rental-subtitle">Мы предлагаем широкий выбор оборудования, включая камеры, объективы, стабилизаторы, световое оборудование и многое другое. Все наше оборудование профессионального уровня и регулярно проходит техническое обслуживание, чтобы гарантировать его безупречную работу.</div>
-        </Col>
-      </Row>
+        <Row>
+          <Col>
+          <div className="rental-title">Комплекты техники</div>
+          <div className="rental-subtitle">Мы предлагаем широкий выбор оборудования, включая камеры, объективы, стабилизаторы, световое оборудование и многое другое. Все наше оборудование профессионального уровня и регулярно проходит техническое обслуживание, чтобы гарантировать его безупречную работу.</div>
+          </Col>
+        </Row>
 
 
-      <Row className='mt-4' md={12} xs={12} sm={12}>
 
-            {rentalMenu.map((item, index) => {
-              return <Col key={index} md={2} sm={6} xs={12} className='d-flex justify-content-around mb-4'><MyButton className={(rental === item) ? 'myBtn myBtn-click' : 'myBtn'} style={{minWidth: 200 + 'px', height: 70 + 'px'}} value={item} onClick={(e) => {setRental(e.target.value)}}>{item}</MyButton></Col>
-            })}
+        <Row className='mt-4'>
 
-      </Row>
+          {(!rentalComplect || rentalComplect.length < 1 ) ? <></> : rentalComplect.map((item) => {
+
+            const short = shortText(item.description)
+
+            return <Col><PackCard id={item.id} img={item.imageOne} title={item.title} description={short} quantity={item.quantity} price={item.price}/></Col>
+          })}
+          
+        </Row>
 
 
-      <Row md={12} className='mt-4'>
-        {(rentalProduct.length < 1) ? <></> : rentalProduct.map((item, index) => {
-          if(item.category === rental) {
-            return <Col md={4} key={index} className='rental-card d-flex justify-content-md-around justify-content-center'><RentalCard modalRentalButton={modalRentalSubmitAnimation} addGetTrash={trash} id={item.title} img={item.image} title={item.title} subtitleShort={shortText(item.description)} price={item.price} quantity={item.quantity} counterQuantityTitle={item.counterQuantity}></RentalCard></Col>
-          }
-        })}
-      </Row>
+
+
+        {/*  */}
+
+
+
+        <Row>
+          <Col>
+          <div className="rental-title">техника</div>
+          <div className="rental-subtitle">Мы предлагаем широкий выбор оборудования, включая камеры, объективы, стабилизаторы, световое оборудование и многое другое. Все наше оборудование профессионального уровня и регулярно проходит техническое обслуживание, чтобы гарантировать его безупречную работу.</div>
+          </Col>
+        </Row>
+
+
+
+        <Row className='mt-4' md={12} xs={12} sm={12}>
+
+              {rentalMenu.map((item, index) => {
+
+                return <Col key={index} md={3} sm={6} xs={12} className='d-flex justify-content-around mb-3 '><MyButton className={(rental.value == item.value) ? 'myBtn myBtn-click' : 'myBtn'} value={item.value} onClick={(e) => {setRental({...item, value: e.target.value})}}>{item.item}</MyButton></Col>
+              })}
+
+        </Row>
+
+
+        <Row md={12} className='mt-4'>
+          {(rentalProduct.length < 1) ? <></> : rentalProduct.map((item, index) => {
+            if(item.category === rental.value) {
+              return <Col md={3} key={index} className='rental-card d-flex justify-content-md-around justify-content-center'><RentalCard modalRentalButton={modalRentalSubmitAnimation} addGetTrash={trash} id={item.id} img={item.imageOne} title={item.title} subtitleShort={shortText(item.description)} price={item.price} quantity={item.quantity} counterQuantityTitle={item.counterQuantity}></RentalCard></Col>
+            }
+          })}
+        </Row>
 
       </Container>
 

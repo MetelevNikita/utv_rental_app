@@ -1,130 +1,77 @@
-import React from 'react'
+import { FC } from 'react'
+import { motion } from "motion/react"
+
+// css
+import './../css/openPage.css'
+
+// 
+import { Container, Row, Col } from 'react-bootstrap'
 
 //
+import U from '../../../asset/logo/U.png'
+import T from '../../../asset/logo/T.png'
+import V from '../../../asset/logo/V.png'
 
-import { Col, Container, Row } from 'react-bootstrap'
-
-//
-
-import { animated, useSpring } from '@react-spring/web'
-
-//
-
-import U from '../../../asset/logoUTV/U.svg'
-import T from '../../../asset/logoUTV/T.svg'
-import V from '../../../asset/logoUTV/V.svg'
-import PROD from '../../../asset/logoUTV/production.svg'
-
-
-//
-
-
-
+// 
+import bgBlue from '../../../asset/logo/bg_blue.png'
+import productionText from '../../../asset/logo/production.png'
 
 const OpenPage = () => {
-
-
-  const USprings = useSpring({
-    from: {
-      opacity: 0,
-      transform: 'translateY(-300px)'
-    },
-    to: {
-      opacity: 1,
-      transform: 'translateY(0px)'
-    },
-    config: {
-      duration: 1000,
-      mass: 5,
-      friction: 14,
-      tension: 120,
-    }
-  })
-
-  const TSprings = useSpring({
-    from: {
-      opacity: 0,
-      transform: 'translateY(300px)'
-    },
-    to: {
-      opacity: 1,
-      transform: 'translateY(0px)'
-    },
-    config: {
-      duration: 1000,
-      mass: 5,
-      friction: 14,
-      tension: 120,
-    }
-  })
-
-
-  const VSprings = useSpring({
-    from: {
-      opacity: 0,
-      transform: 'translateY(-300px)'
-    },
-    to: {
-      opacity: 1,
-      transform: 'translateY(0px)'
-    },
-    config: {
-      duration: 1000,
-      mass: 5,
-      friction: 14,
-      tension: 120,
-    }
-
-  })
-
-
-
-  const ProdSpring = useSpring({
-    from : {
-      opacity: 0,
-      transform: 'scale(0.9)'
-
-    },
-    to: {
-      opacity: 1,
-      transform: 'scale(1)'
-
-    },
-    delay: 500,
-    config: {
-      duration: 1600,
-      mass: 5,
-      friction: 120,
-      tension: 120,
-    }
-  })
-
-
-
-
-
-
   return (
 
-      <Container>
-        <Col style={{width: '100%', marginTop: '800px'}} className='d-flex flex-column justify-content align-items-center mt-4'>
 
-            <Col style={{width:'100%', height: 'max-content', marginTop: '200px'}} className='d-flex justify-content-center'>
+    <Container className='vh-100 vw-100 p-0 d-flex align-items-center justify-content-center'>
+      <Row className='justify-content-center align-items-center m-0 w-100'>
+        <Col xs={12} className='d-flex justify-content-center'>
+          <div className='open_page_element_container'>
+            <motion.img 
+              className='open_page_letter' 
+              src={U} 
+              initial={{y: -100}} 
+              animate={{y: 0, transition: {duration: 1, delay: 0}}} 
+            />
+          </div>
 
-              <Col md={3} className='d-flex justify-content-center' style={{overflow: 'hidden', marginRight: '10px'}}><animated.div style={USprings}><img src={U} alt="123" /></animated.div></Col>
-              <Col md={3} className='d-flex justify-content-center' style={{overflow: 'hidden'}}><animated.div style={TSprings}><img src={T} alt="123" /></animated.div></Col>
-              <Col md={3} className='d-flex justify-content-center' style={{overflow: 'hidden'}}><animated.div style={VSprings}><img src={V} alt="123" /></animated.div></Col>
+          <div className='open_page_element_container'>
+            <motion.img 
+              className='open_page_letter' 
+              src={T} 
+              initial={{y: -100}} 
+              animate={{y: 0, transition: {duration: 1, delay: .3}}} 
+            />
+          </div>
 
-            </Col>
+          <div className='open_page_element_container'>
+            <motion.img 
+              className='open_page_letter' 
+              src={V} 
+              initial={{y: -100}} 
+              animate={{y: 0, transition: {duration: 1, delay: .5}}} 
+            />
+          </div>
+        </Col>
+        
+        <Col xs={12} className='d-flex flex-column justify-content-center'>
+          <div className='open_page_word_container'>
+            <motion.img 
+              className='open_page_word_bg' 
+              src={bgBlue} 
+              initial={{opacity: 0, y: 20}} 
+              animate={{opacity: 1, y: 0, transition: {duration: .5, delay: .5}}} 
+            />
+          </div>
 
-            <Col style={{width: '100%'}} className='d-flex justify-content-center'>
-
-              <Col md={9} className='d-flex justify-content-center mt-3'><animated.div style={ProdSpring}><img src={PROD} alt="" /></animated.div></Col>
-
-            </Col>
-
-      </Col>
-      </Container>
+          <div className='open_page_word_container'>
+            <motion.img 
+              className='open_page_word_text' 
+              src={productionText} 
+              initial={{opacity: 0}} 
+              animate={{opacity: 1, transition: {duration: .5, delay: 1}}} 
+            />
+          </div>
+        </Col>
+      </Row>
+    </Container>
 
   )
 }

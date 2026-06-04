@@ -34,20 +34,36 @@ const Services = ({ serviceCardModalOpen, idCardModel }) => {
 const dispatch  = useDispatch()
 const portfolioSelector = useSelector((state) => state.portfolio.portfolio)
 
-console.log(portfolioSelector)
 
-const serviceMenu = ['Постановчные ролики', 'Корпоративные фильмы', 'Музыкальные клипы', 'Документальные фильмы']
-const [service, setService] = useState('Постановчные ролики')
+const serviceMenu = [
+  {
+    id: '1',
+    label: 'Постановочные ролики',
+    value: 'advertising_video'
+  },
+  {
+    id: '2',
+    label: 'Корпоративные фильмы',
+    value: 'corporate_films'
+  },
+  {
+    id: '3',
+    label: 'Музыкальные клипы',
+    value: 'music_video'
+  },
+  {
+    id: '4',
+    label: 'Документальные фильмы',
+    value: 'doc_films'
+  },
+]
+const [service, setService] = useState(serviceMenu[0])
 
 
 const serviceCardModalHandler = (id) => {
-
   setIdCard(id)
   setServiceCardModal(true)
-
 }
-
-
 
 
 
@@ -64,16 +80,24 @@ const serviceCardModalHandler = (id) => {
       <Row md={12} className='mb-5'>
 
         {serviceMenu.map((item, index) => {
-          return <Col key={index} className='d-flex justify-content-center mb-3' md={2} sm={12} xs={12}><MyButton className={(service === item) ? 'myBtn myBtn-click' : 'myBtn'} style={{marginRight: 17 + 'px', width: 220 + 'px', height: '70px'}} value={item} onClick={(e) => {setService(e.target.value)}}>{item}</MyButton></Col>
+          return <Col md={3} sm={12} xs={12} key={index} className='d-flex justify-content-center mb-3' ><MyButton className={(service.value === item.value) ? 'myBtn myBtn-click' : 'myBtn'} value={item.value} onClick={(e) => {setService({...item, value: e.target.value})}}>{item.label}</MyButton></Col>
         })}
 
       </Row>
 
+      {/*  */}
+
+
+
+
+      {/*  */}
+
 
       <Row md={12}>
           {(portfolioSelector.length < 1) ? <></> : portfolioSelector.map((card, id) => {
-            if(card.category === service) {
-              return <Col key={id} md={4} sm={12} xs={12} onClick={() => {serviceCardModalHandler(card.id)}} className='mb-3 service-card service-card-animation d-flex justify-content-md-start justify-content-center'><ServiceCard img={card.image} title={card.title} description={card.description} date={card.date}></ServiceCard></Col>
+            if(card.category === service.value) {
+
+              return <Col key={id} md={4} sm={12} xs={12} onClick={() => {}} className='mb-3 service-card service-card-animation d-flex justify-content-md-start justify-content-center'><ServiceCard id={card.id} img={card.image_one} title={card.title} description={card.description} date={card.date}></ServiceCard></Col>
             } else {
               <div>Нет подобной котегории</div>
             }

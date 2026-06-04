@@ -3,9 +3,16 @@ max-width: 377px;
 height: max-content;
 }
 
+.service-card-img_wrapper {
+  width: 377px;
+  height: 316px;
+}
+
 .service-card-img {
   width: 377px;
-  height: 212px;
+  height: 316px;
+  object-fit: cover;
+
 
 }
 

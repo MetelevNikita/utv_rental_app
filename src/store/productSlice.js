@@ -6,7 +6,7 @@ const initialState = {
   product: []
 }
 
-const urlProduct = 'https://utvls.tw1.su/api/v1/product'
+const urlProduct = '/api/v1/product'
 
 //
 

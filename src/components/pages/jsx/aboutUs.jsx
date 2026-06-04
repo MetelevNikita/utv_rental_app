@@ -1,6 +1,7 @@
 import './../css/aboutUs.css'
 
 import { Col, Container, Row } from "react-bootstrap"
+import { motion } from "motion/react"
 
 // components
 
@@ -23,7 +24,7 @@ const AboutUs = () => {
 
   return(
 
-    <Container>
+    <Container className='mt-5'>
         <Row>
           <Col className="col-12">
             <div className="about-title-box">
@@ -53,7 +54,7 @@ const AboutUs = () => {
         <Row md={12} className='mt-4'>
 
             {arrOfPartners.map((logo, index) => {
-              return <Col key={index+1} md={2} sm={12} xs={12} className='d-flex justify-content-center mt-4'> <div className='logo-partners-box'><img key={index+1} className='logo-partners' src={logo} alt={logo} /></div></Col>
+              return <Col key={index+1} md={2} sm={12} xs={12} className='d-flex justify-content-center mt-4'><motion.div whileHover={{scale: 1.05}} className='logo-partners-box'><img key={index+1} className='logo-partners' src={logo} alt={logo} /></motion.div></Col>
             })}
 
         </Row>

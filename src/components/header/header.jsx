@@ -1,9 +1,11 @@
 import './header.css'
+import { motion } from "motion/react"
 
 
 // bootstrap
 
 import { Container, Row, Col } from "react-bootstrap"
+
 
 
 //
@@ -43,7 +45,7 @@ const Header = ({trash}) => {
       <Row className='d-flex justify-content-between mt-4 mb-4'>
 
         <Col className='d-flex'>
-          <Link to={'/'}><img className="header-logo" src={logoUtv} alt="logoUtv" /></Link>
+          <motion.div whileTap={{scale: 1.1}}><Link to={'/'}><img className="header-logo" src={logoUtv} alt="logoUtv" /></Link></motion.div>
         </Col>
 
 
@@ -53,10 +55,12 @@ const Header = ({trash}) => {
 
               <Col md={12} className='d-flex justify-content-end flex-md-row flex-column'>
                   <Col className='d-flex flex-row align-items-center justify-content-center'>
-                    <Link to={'/trash'} onClick={() => {Scroll()}} className='d-flex'>
+                    <motion.div whileTap={{scale: 1.1}}>
+                      <Link to={'/trash'} onClick={() => {Scroll()}} className='d-flex'>
                           <div className='header-trash-counter'>Количество: {counterTrash}</div>
                           <img className='header-trash-img' src={trashIcon} alt="trashicon" />
                       </Link>
+                    </motion.div>
                   </Col>
 
                   <Col className='d-flex flex-column justify-content-end'>

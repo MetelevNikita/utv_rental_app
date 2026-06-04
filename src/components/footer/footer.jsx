@@ -13,7 +13,7 @@ import icon_location from './../../asset/footer_icons/Location_icon.svg'
 
 //
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // components
 
@@ -27,51 +27,72 @@ import MyCheckBox from '../../UI/myCheckBox'
 const Footer = ({ modalSubmitAnimation })  => {
 
 
+  const [check, setCheck] = useState(false)
+  useEffect(() => {
+    if(check) {
+      setMessage({...message, agree: true})
+    } else {
+      setMessage({...message, agree: false})
+    }
+  }, [check])
+
+
+  const [message, setMessage] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    text: '',
+    agree: false,
+  })
+
 
   const {modalSubmit, apiSubmit} = modalSubmitAnimation
-  const [activeChk, setActiveChk] = useState(false)
 
-  const [name, setName] = useState('')
-  const [phone, setPhone] = useState('')
-  const [email, setEmail] = useState('')
-  const [text, setText] = useState('')
 
-  const createMessage = () => {
 
-    if(name === ''  && phone === '' && email === '' && text === '') {
+
+  const createMessage = async () => {
+
+
+    if(message.name === ''  && message.phone === '' && message.email === '' && message.text === '') {
       alert('заполните все поля')
       return
     }
 
-
-    if(activeChk === false) {
-      alert('согласитесь с условиями')
+    if (!check) {
+      alert('Вы не согласились с политикой конфиденциальности')
       return
     }
 
-      const message = {
-        name: name,
-        phone: phone,
-        email: email,
-        text: text
-      }
 
+    console.log(message)
 
-      setName('')
-      setPhone('')
-      setEmail('')
-      setText('')
+    const responce = await fetch('/api/v1/message', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(message)
+    })
 
-      apiSubmit.start({
-        from: {opacity: 0, transform:'scale(0)'},
-        to: {opacity: 1, transform:'scale(1)'}
-      })
+    if (!responce.ok) {
+      alert(`Ошибка при отправке сообщения, попробуйте позже ${responce.status}`)
+      return
+    } 
 
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    const data = await responce.json()
+    return data
 
-      })
+    // apiSubmit.start({
+    //   from: {opacity: 0, transform:'scale(0)'},
+    //   to: {opacity: 1, transform:'scale(1)'}
+    // })
+
+    // window.scrollTo({
+    //   top: 0,
+    //   behavior: 'smooth'
+
+    // })
   }
 
 
@@ -97,16 +118,16 @@ const Footer = ({ modalSubmitAnimation })  => {
         <Row>
             <Col md={6} sm={6} xs={12}>
                 <div className="input-box-left">
-                  <input className='footer-input' type="text" placeholder='Имя' value={name} onChange={(e) => {setName(e.target.value)}}/>
-                  <input className='footer-input' type="text" placeholder='Телефон' value={phone} onChange={(e) => {setPhone(e.target.value)}}/>
+                  <input className='footer-input' type="text" placeholder='Имя' value={message.name} onChange={(e) => {setMessage({...message, name: e.target.value})}}/>
+                  <input className='footer-input' type="text" placeholder='Телефон' value={message.phone} onChange={(e) => {setMessage({...message, phone: e.target.value})}}/>
                 </div>
             </Col>
 
             <Col md={6} sm={6} xs={12}>
 
                 <div className="input-box-right">
-                    <input className='footer-input' type="text" placeholder='E-mail' value={email} onChange={(e) => {setEmail(e.target.value)}}/>
-                    <input className='footer-input' type="text" placeholder='Сообщение' value={text} onChange={(e) => {setText(e.target.value)}}/>
+                    <input className='footer-input' type="text" placeholder='E-mail' value={message.email} onChange={(e) => {setMessage({...message, email: e.target.value})}}/>
+                    <input className='footer-input' type="text" placeholder='Сообщение' value={message.text} onChange={(e) => {setMessage({...message, text: e.target.value})}}/>
                 </div>
 
             </Col>
@@ -115,7 +136,7 @@ const Footer = ({ modalSubmitAnimation })  => {
 
         <Row className='mb-4'>
         <Col md={6} sm={6} xs={12} className='mt-4'>
-          <MyCheckBox title={'Я согласен с политикой конфиденциальности'} checked={activeChk} onChange={() => {setActiveChk(prev => !prev)}}></MyCheckBox>
+          <MyCheckBox title={'Я согласен с политикой конфиденциальности'} checked={check} onChange={() => {setCheck(prev => !prev)}}></MyCheckBox>
         </Col>
 
 

@@ -1,0 +1,42 @@
+
+.text-center {
+  
+}
+
+.open_page_element_container {
+  width: 68px;
+  height: 70px;
+  /*  */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /*  */
+
+  overflow:  hidden;
+  padding: 0;
+}
+
+.open_page_letter {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.open_page_word_container {
+  width: 100%;
+  height: max-content;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.open_page_word_bg {
+
+}
+
+.open_page_word_text {
+  margin-top: -25px;
+}

@@ -6,11 +6,11 @@ const initialState = {
   team: []
 }
 
-const teamUrl = 'https://utvls.tw1.su/api/v1/person'
+const teamUrl = '/api/v1/team'
 
 //
 
-export const getTeamAsync  =  createAsyncThunk(
+export const getTeamAsync = createAsyncThunk(
   'getTeamAsync',
 
   async () => {

@@ -1,24 +1,46 @@
+import { Link } from 'react-router-dom'
 import './serviceCard.css'
 
+// 
 
-const ServiceCard = ({img, title, description, date}) => {
+import { motion } from "motion/react"
+
+// 
+
+import { Container, Row, Col } from 'react-bootstrap'
+
+// components
+
+import MyButton from './myButton'
+
+
+const ServiceCard = ({id, img, title, description}) => {
 
 
   const titleShort = `${description.substring(0, 40)}...`
 
 
   return(
-    <div className="service-card-container">
+    <Container className="service-card-container">
 
-      <img className='service-card-img' src={img} alt="serviceImg" />
-      <div className="service-card-title">{title}</div>
+      <Row className='mb-4'>
+          <Link to={`service/${id}`}><motion.div whileHover={{scale: 1.03}} whileTap={{scale: 1.05}} className='service-card-img_wrapper'>
+            <img className='service-card-img' src={img} alt="serviceImg" />
+          </motion.div></Link>
+          
+          <div className="service-card-title">{title}</div>
 
-      <hr className='service-card-line'/>
+          <hr className='service-card-line'/>
 
-      <div className="service-card-subtitle">{titleShort}</div>
-      {/* <div className="service-card-date">год: {date}</div> */}
+          <div className="service-card-subtitle">{titleShort}</div>
+      </Row>
 
-    </div>
+
+      <Row className={'d-flex flex-column justify-content-between'}>
+        <Col md={12} sm={12} xs={12} className='mb-2'><Link to={`/service/${id}`}><MyButton className={'myBtn_blue'} onClick={() => {}}>Подробнее</MyButton></Link></Col>
+      </Row>
+
+    </Container>
   )
 }
 

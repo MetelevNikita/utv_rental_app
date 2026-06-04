@@ -40,22 +40,12 @@ const Team = () => {
   const [teamCards, setTeamCards] = useState([])
 
 
-
-
-
-
   const autoSlider = () => {
     setInterval(() => {
       setPosition((position  -=  438))
     }, 13000)
 
   }
-
-
-
-
-
-
 
 
 
@@ -73,7 +63,7 @@ const Team = () => {
               <Col className='d-flex' style={{position: 'relative', left: position, transition: '1s all ease'}}>
 
                 {(team.length < 1) ? <></> : team.map((card, index) => {
-                  return <TeamCard key={index} img={card.avatar} name={card.name} profession={card.profession}></TeamCard>
+                  return <TeamCard key={index} img={card.image} name={card.name} profession={card.profession}></TeamCard>
                 })}
 
               </Col>

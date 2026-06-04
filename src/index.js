@@ -28,10 +28,9 @@ root.render(
 
       <BrowserRouter>
 
-
-
-
-          <App><Video></Video></App>
+            <App>
+                {/* <Video></Video> */}
+            </App>
 
       </BrowserRouter>
 

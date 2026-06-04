@@ -56,10 +56,4 @@
 }
 
 
-/* animation */
 
-
-.service-card-animation:hover {
-  transform: scale(1.05);
-  transition: all 0.03s ease-in-out;
-}

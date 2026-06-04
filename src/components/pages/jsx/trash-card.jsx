@@ -6,8 +6,11 @@ import './../css/trash-card.css'
 import { Col, Container, Row } from 'react-bootstrap'
 
 
-const TrashCard = (props) => {
+const TrashCard = ({ image, title, counterQuantity, price, del }) => {
 
+  
+
+  const currentPriceFromProduct = parseInt(price) * parseInt(counterQuantity) ?? 0
 
   return (
     <Container>
@@ -15,18 +18,18 @@ const TrashCard = (props) => {
     <Row md={12}>
 
       <Col md={12} sm={12} xs={12} className='mb-4 mt-4 d-flex  justify-content-start align-items-center'>
-        <img className='trash-card-img' src={props.image} alt="" />
+        <img className='trash-card-img' src={image} alt="" />
       </Col>
 
       <Col md={12} sm={12} xs={12}>
 
-          <div className="trash-card-title">{props.title}</div>
+          <div className="trash-card-title">{title}</div>
           <hr className='trash-card-line'/>
-          <div className='trash-card-quantity'>Количество: {props.counterQuantity}</div>
-          <div className="trash-card-price mb-4">Цена: {props.price} &#8381;</div>
+          <div className='trash-card-quantity'>Количество: {counterQuantity}</div>
+          <div className="trash-card-price mb-4">Цена: {price} &#8381;</div>
 
 
-          <MyButton className={'myBtn'} onClick={() => {props.del(props.title)}}>Удалить</MyButton>
+          <MyButton className={'myBtn'} onClick={() => {del(title)}}>Удалить</MyButton>
 
 
       </Col>

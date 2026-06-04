@@ -5,18 +5,18 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import productSlice from "./productSlice";
 import teamSlice from "./teamSlice";
-import trashSlice from "./trashSlice";
 import trashActiveSlice from "./trashActiveSlice";
 import portfolioSlice from "./portfolioSlice";
+import complectSlice from "./complectSlice";
 
 export const store= configureStore({
   reducer: {
 
     product: productSlice,
     team: teamSlice,
-    trash: trashSlice,
     trashActive: trashActiveSlice,
-    portfolio: portfolioSlice
+    portfolio: portfolioSlice,
+    complect: complectSlice
 
   }
 })

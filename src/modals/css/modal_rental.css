@@ -98,6 +98,18 @@
 }
 
 
+/*  */
+
+.modal-rental-info {
+  font-size: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-rental-info-tg {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
 
 
 /* trash list */
@@ -115,6 +127,8 @@
 .trash-modal-list-item {
   list-style: decimal;
 }
+
+
 
 
 /* btn */
@@ -143,3 +157,6 @@
   background: linear-gradient(260deg, #00B0E1 10.52%, #1E4FC6 91.43%);
 
 }
+
+
+/*  */

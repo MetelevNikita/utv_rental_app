@@ -2,7 +2,6 @@ import '../css/pack-card-open.css'
 
 import {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
-import { motion } from 'motion/react'
 
 // bootstrap
 
@@ -28,10 +27,8 @@ const PackCardOpen = ({ trash, modalRentalSubmitAnimation, modalAnimation }) => 
   const [showImage, setShowImage] = useState(null)
   const [currentCard, setCurrentCard] = useState(null)
 
-
-
   const dispatch = useDispatch()
-  const productState = useSelector(state => state.product.product)
+  const complectState = useSelector(state => state.complect.complect)
 
   const {modalOpen, api} = modalAnimation
   const {modalSubmitRentalOpen, apiSubmitRental} = modalRentalSubmitAnimation
@@ -46,9 +43,8 @@ const PackCardOpen = ({ trash, modalRentalSubmitAnimation, modalAnimation }) => 
 
   useEffect(() => {
     if (!id) return
-    setCurrentCard(productState.find(item => item.id == id))
+    setCurrentCard(complectState.find(item => item.id == id))
   }, [])
-
 
 
 
@@ -60,7 +56,7 @@ const PackCardOpen = ({ trash, modalRentalSubmitAnimation, modalAnimation }) => 
   const addToTrashCard = () => {
 
 
-    dispatch(addToTrash({title: productState[0].title, card: productState[0], counterQuantity: counterTrash}))
+    dispatch(addToTrash({title: complectState[0].title, card: complectState[0], counterQuantity: 1}))
     setCounterTrash(counterTrash + 1)
 
 
@@ -70,7 +66,6 @@ const PackCardOpen = ({ trash, modalRentalSubmitAnimation, modalAnimation }) => 
     })
 
   }
-
 
 
   function createSetList (set) {
@@ -98,39 +93,44 @@ const PackCardOpen = ({ trash, modalRentalSubmitAnimation, modalAnimation }) => 
     <Container className='mt-5'>
       <Row>
 
-        <Col md={6}>
+        <Col md={6} xs={12}>
 
-            <div className='card-title-image-container'>
-              <img className='card-title-image' src={showImage ?? currentCard.imageOne} alt="" />
-            </div>
+            <Col>
+              <div className='card-title-image-container'>
+                <img className='card-title-image' src={showImage ?? currentCard.imageOne} alt="" />
+              </div>
+            </Col>
 
-            <div className='card-open-image-container'>
-                <div
-                  onClick={() => {setShowImage(currentCard.imageOne)}}
-                  className={(showImage === currentCard.imageOne || showImage === null) ? 'card-open-image-box_active' : 'card-open-image-box'}>
-                    <img src={currentCard.imageOne}
-                  alt="img_one"/>
-                </div>
-
-
-                <div
-                  onClick={() => {setShowImage(currentCard.imageTwo)}}
-                  className={(showImage === currentCard.imageTwo) ? 'card-open-image-box_active' : 'card-open-image-box'}>
-                    <img src={currentCard.imageTwo} alt="img_two"/>
+            <Col className='d-flex d-none d-sm-block'>
+              <div className='card-open-image-container'>
+                  <div
+                    onClick={() => {setShowImage(currentCard.imageOne)}}
+                    className={(showImage === currentCard.imageOne || showImage === null) ? 'card-open-image-box_active' : 'card-open-image-box'}>
+                      <img src={currentCard.imageOne}
+                    alt="img_one"/>
                   </div>
 
 
-                <div
-                  onClick={() => {setShowImage(currentCard.imageThree)}}
-                  className={(showImage === currentCard.imageThree) ? 'card-open-image-box_active' : 'card-open-image-box'}>
-                    <img src={currentCard.imageThree} alt="img_three"/>
-                </div>
-            </div>
+                  <div
+                    onClick={() => {setShowImage(currentCard.imageTwo)}}
+                    className={(showImage === currentCard.imageTwo) ? 'card-open-image-box_active' : 'card-open-image-box'}>
+                      <img src={currentCard.imageTwo} alt="img_two"/>
+                    </div>
+
+
+                  <div
+                    onClick={() => {setShowImage(currentCard.imageThree)}}
+                    className={(showImage === currentCard.imageThree) ? 'card-open-image-box_active' : 'card-open-image-box'}>
+                      <img src={currentCard.imageThree} alt="img_three"/>
+                  </div>
+              </div>
+            </Col>
 
         </Col>
 
 
-        <Col md={6}>
+
+        <Col md={6} xs={12}>
         
           <div className='card-open_title'>{currentCard.title}</div>
           <div className='card-open_description'>{currentCard.description}</div>

@@ -2,7 +2,9 @@
   "name": "utv-ls",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8000",
   "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
     "@react-spring/web": "^9.7.4",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.17.0",
@@ -10,18 +12,20 @@
     "@testing-library/user-event": "^13.5.0",
     "ajv": "^8.17.1",
     "bootstrap": "^5.3.1",
-    "react": "^18.2.0",
+    "motion": "^12.26.2",
+    "react": "^18.3.1",
     "react-bootstrap": "^2.8.0",
-    "react-dom": "^18.2.0",
+    "react-dom": "^18.3.1",
     "react-player": "^2.16.0",
     "react-redux": "^8.1.2",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.15.0",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.9",
-    "react-spring": "^9.7.3",
+    "react-spring": "^9.5.5",
     "react-uuid": "^2.0.0",
     "swiper": "^10.2.0",
+    "uuid": "^13.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -48,9 +52,7 @@
       "last 1 safari version"
     ]
   },
-
-    "optionalDependencies": {
+  "optionalDependencies": {
     "fsevents": "*"
   }
-
 }
