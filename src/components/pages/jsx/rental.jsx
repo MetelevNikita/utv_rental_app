@@ -128,9 +128,7 @@ const Rental = ({trash, modalRentalSubmitAnimation}) => {
 
                 return <Col
                   key={index}
-                  md={3}
-                  sm={6}
-                  xs={12}
+                  md={3} sm={6} xs={12}
                   className='d-flex justify-content-around mb-3 '>
                     <MyButton
                       onClick={(e) => {
@@ -150,7 +148,22 @@ const Rental = ({trash, modalRentalSubmitAnimation}) => {
         <Row md={12} className='mt-4'>
           {(rentalProduct.length < 1) ? <></> : rentalProduct.map((item, index) => {
             if(item.category === rental.value) {
-              return <Col md={3} key={index} className='rental-card d-flex justify-content-md-around justify-content-center'><RentalCard modalRentalButton={modalRentalSubmitAnimation} addGetTrash={trash} id={item.id} img={item.imageOne} title={item.title} subtitleShort={shortText(item.description)} price={item.price} quantity={item.quantity} counterQuantityTitle={item.counterQuantity}></RentalCard></Col>
+              return <Col
+                        md={3}
+                        key={index}
+                        className='rental-card d-flex justify-content-md-around justify-content-center'>
+                            <RentalCard
+                              modalRentalButton={modalRentalSubmitAnimation}
+                              addGetTrash={trash}
+                              id={item.id}
+                              img={item.imageOne}
+                              title={item.title}
+                              subtitleShort={shortText(item.description)}
+                              price={item.price}
+                              quantity={item.quantity}
+                              counterQuantityTitle={item.counterQuantity}>
+                            </RentalCard>
+                      </Col>
             }
           })}
         </Row>
