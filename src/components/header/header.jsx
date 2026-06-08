@@ -65,7 +65,7 @@ const Header = ({trash}) => {
 
                   <Col className='d-flex flex-column justify-content-end'>
                       <div className="hedaer-contanct-title">Позвоните нам</div>
-                      <div className="hedaer-contanct-phone">8 (800) 000-00-00</div>
+                      <div className="hedaer-contanct-phone">+7 (989) 951-90-63</div>
                   </Col>
               </Col>
 

@@ -156,17 +156,17 @@ const Footer = ({ modalSubmitAnimation })  => {
                   <div className="footer-contacts">КОНТАКТЫ</div>
                   <div className="contact-box">
                       <img className='contact-img' src={icon_phone} alt="icon-phone" />
-                      <div className="contact-title">+7 (000) 000-00-00</div>
+                      <div className="contact-title">+7 (989) 951-90-63</div>
                   </div>
 
                   <div className="contact-box">
                       <img className='contact-img' src={icon_mail} alt="icon-mail" />
-                      <div className="contact-title">vr-project.ru</div>
+                      <div className="contact-title">utv@ufanet.ru</div>
                   </div>
 
                   <div className="contact-box">
                       <img className='contact-img' src={icon_location} alt="icon-location" />
-                      <div className="contact-title">г.Уфа, улица Бакалинская 64/4</div>
+                      <div className="contact-title">г. Уфа, проспект Октября, д. 4/2 Е</div>
                   </div>
 
                 </Col>
