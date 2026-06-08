@@ -4,7 +4,6 @@ import { motion } from "motion/react"
 //
 
 import video from './../asset/showreel.webm'
-import gif from '../asset/final_animation.gif'
 
 
 // bootstap
