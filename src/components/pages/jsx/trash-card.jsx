@@ -1,4 +1,5 @@
 import MyButton from '../../../UI/myButton'
+import MyButtonMotion from '../../../UI/MyButtonMotion'
 import './../css/trash-card.css'
 
 // bootstrap
@@ -29,7 +30,10 @@ const TrashCard = ({ image, title, counterQuantity, price, del }) => {
           <div className="trash-card-price mb-4">Цена: {price} &#8381;</div>
 
 
-          <MyButton className={'myBtn'} onClick={() => {del(title)}}>Удалить</MyButton>
+          <Col md={6} sm={12} xs={12}>
+            <MyButtonMotion text={'Удалить'} onClick={() => {del(title)}} />
+          </Col>
+          
 
 
       </Col>

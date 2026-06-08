@@ -23,81 +23,72 @@ const ModalCreate = ({modalAnimation, modalSubmitAnimation}) => {
   const {modalOpen, api} = modalAnimation
   const {modalSubmit, apiSubmit} = modalSubmitAnimation
 
-  const [modalCreateChk, setModalCreateChk] = useState(false)
-
-
-  const [name, setName] = useState('')
-  const [phone, setPhone] = useState()
-  const [email, setEmail] = useState()
-  const [text, setText] = useState('')
-
-
-
-  const messageTG = ` ЗАЯВКА С САЙТА \n \n Имя ${name} \n Телефон ${phone} \n Email ${email} \n Сообщение ${text}`
-
-
-  const sendToTelegram = () => {
-
-    const TOKEN_API = '6300640727:AAEfkGCzf4alOlm7vRDiFkgvYixyUeggxz0'
-    const CHAT_ID = '-4033081603'
-    const URL = `https://api.telegram.org/bot${TOKEN_API}/sendMessage`
-
-
-    fetch(URL, {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify({chat_id: CHAT_ID, text: messageTG})
-
-    }).then(responce => responce.json())
-      .then(data => console.log(data))
-  }
+  const [message, setMessage] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    text: '',
+    agree: false
+  })
 
 
 
+  const createMessage = async (message) => {
 
+    try {
+      
+      if (message.name === '' && message.email === '' && message.phone === '' && message.text === '' ) {
+        alert('заполните все поля')
+        return
+      }
 
-  const modalCreateMessage = () => {
-
-    if (name === '' && email === '' && phone === '' && text === '' ) {
-      alert('заполните все поля')
-      return
-    }
-
-    if (modalCreateChk === false) {
-      alert('примите условия соглашения')
-      return
-    }
-
-       const message = {
-        name: name,
-        phone: phone,
-        email: email,
-        text: text
+      if (message.agree === false) {
+        alert('примите условия соглашения')
+        return
       }
 
 
-
-      sendToTelegram()
-
-
-      setName('')
-      setEmail('')
-      setPhone('')
-      setText('')
-      setModalCreateChk(false)
-
-      api.start({
-        from: {opacity: 1, transform: 'scale(1)'},
-        to: {opacity: 0, transform: 'scale(0)'}
+      const responce = await fetch('/api/v1/message', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(message)
       })
 
+      if (!responce.ok) {
+        alert(`Ошибка при отправке сообщения, попробуйте позже ${responce.status}`)
+        return
+      } 
+      const data = await responce.json()
+
+        
+      api.start({
+        from: {
+          opacity: 1,
+          transform: 'scale(1)'
+        }, to: {
+          opacity: 0,
+          transform: 'scale(0)'
+        }
+      })
 
       apiSubmit.start({
-        from: {opacity: 0, transform: 'scale(0)'},
-        to: {opacity: 1, transform: 'scale(1)'}
+        from: {
+          opacity: 0,
+          transform: 'scale(0)'
+        }, to: {
+          opacity: 1,
+          transform: 'scale(1)'
+        }
       })
+
+
+    } catch (error) {
+      console.error(`Ошибка отправки сообщения фидбэка ${error.message}`)
+      alert(`Ошибка отправки сообщения фидбэка ${error.message}`)
+      return `Ошибка отправки сообщения фидбэка ${error.message}`
+    }
 
   }
 
@@ -129,16 +120,16 @@ const ModalCreate = ({modalAnimation, modalSubmitAnimation}) => {
         </Row>
 
           <Row className='mt-2'>
-            <MyInput style={{marginBottom: 10 + 'px'}} type={'text'} placeholder='ФИО' value={name} onChange={(e) => {setName(e.target.value)}}></MyInput>
-            <MyInput style={{marginBottom: 10 + 'px'}} type={'phone'} placeholder='ТЕЛЕФОН' value={phone} onChange={(e) => {setPhone(e.target.value)}}></MyInput>
-            <MyInput style={{marginBottom: 10 + 'px'}} type={'email'} placeholder='ПОЧТА' value={email} onChange={(e) => {setEmail(e.target.value)}}></MyInput>
-            <MyTextArea placeholder={'СООБЩЕНИЕ'} style={{marginBottom: 10 + 'px'}} value={text} onChange={(e) => {setText(e.target.value)}}></MyTextArea>
+            <MyInput style={{marginBottom: 10 + 'px'}} type={'text'} placeholder='ФИО' value={message.name} onChange={(e) => {setMessage({...message, name: e.target.value})}}></MyInput>
+            <MyInput style={{marginBottom: 10 + 'px'}} type={'phone'} placeholder='ТЕЛЕФОН' value={message.phone} onChange={(e) => {setMessage({...message, phone: e.target.value})}}></MyInput>
+            <MyInput style={{marginBottom: 10 + 'px'}} type={'email'} placeholder='ПОЧТА' value={message.email} onChange={(e) => {setMessage({...message, email: e.target.value})}}></MyInput>
+            <MyTextArea placeholder={'СООБЩЕНИЕ'} style={{marginBottom: 10 + 'px'}} value={message.text} onChange={(e) => {setMessage({...message, text: e.target.value})}}></MyTextArea>
           </Row>
 
 
           <Row className='mt-1 mb-5'>
-            <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-start mb-3'><MyCheckBox title={'Я согласен с политикой конфиденциальности'} onChange={() => {setModalCreateChk(prev => !prev)}} checked={modalCreateChk}></MyCheckBox></Col>
-            <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-end mb-3'><MyButton className={'myBtn'} onClick={() => {modalCreateMessage()}}>Отправить</MyButton></Col>
+            <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-start mb-3'><MyCheckBox title={'Я согласен с политикой конфиденциальности'} onChange={(e) => {setMessage({...message, agree: e.target.checked})}}></MyCheckBox></Col>
+            <Col md={6} sm={6} xs={12} className='d-flex justify-content-md-end mb-3'><MyButton className={'myBtn'} onClick={() => {createMessage(message)}}>Отправить</MyButton></Col>
           </Row>
 
 

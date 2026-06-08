@@ -23,7 +23,6 @@ const Video = ({ modalAnimation }) => {
 const {api} = modalAnimation
 
 
-
   return(
 
     <Container fluid>
@@ -42,9 +41,9 @@ const {api} = modalAnimation
 
 
 
-            <Col md={3} className="video-wrapper">
+            <Col md={8} className="video-wrapper">
 
-                <div className='video-title'>Аренда <br /> видеооборудования</div>
+                <motion.div whileHover={{scale: 1.2}} transition={{duration: 2}} className='video-title'>Аренда <br /> видеооборудования</motion.div>
                 <div className="video-subtitle">прокат видеокамер, оптики, света, аксессуаров для съёмки</div>
 
                 <div className='video-btn-wrapper'>

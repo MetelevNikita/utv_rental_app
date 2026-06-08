@@ -83,16 +83,7 @@ const Footer = ({ modalSubmitAnimation })  => {
     const data = await responce.json()
     return data
 
-    // apiSubmit.start({
-    //   from: {opacity: 0, transform:'scale(0)'},
-    //   to: {opacity: 1, transform:'scale(1)'}
-    // })
 
-    // window.scrollTo({
-    //   top: 0,
-    //   behavior: 'smooth'
-
-    // })
   }
 
 

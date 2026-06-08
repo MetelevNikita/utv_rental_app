@@ -54,7 +54,24 @@ const AboutUs = () => {
         <Row md={12} className='mt-4'>
 
             {arrOfPartners.map((logo, index) => {
-              return <Col key={index+1} md={2} sm={12} xs={12} className='d-flex justify-content-center mt-4'><motion.div whileHover={{scale: 1.05}} className='logo-partners-box'><img key={index+1} className='logo-partners' src={logo} alt={logo} /></motion.div></Col>
+              return <Col
+                        key={index+1}
+                        md={2} sm={12} xs={12}
+                        className='d-flex justify-content-center mt-4'>
+                            <motion.div
+                              whileHover={{scale: 1.05}}
+                              initial={{opacity: 0, y: 10}}
+                              whileInView={{opacity: 1, y: 0}}
+                              transition={{
+                                delay: index * 0.5,
+                                duration: 2
+                              }}
+                              className='logo-partners-box'>
+                                  <img key={index+1}
+                                  className='logo-partners'
+                                  src={logo} alt={logo} />
+                            </motion.div>
+                      </Col>
             })}
 
         </Row>

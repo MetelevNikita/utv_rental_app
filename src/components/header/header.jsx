@@ -45,7 +45,7 @@ const Header = ({trash}) => {
       <Row className='d-flex justify-content-between mt-4 mb-4'>
 
         <Col className='d-flex'>
-          <motion.div whileTap={{scale: 1.1}}><Link to={'/'}><img className="header-logo" src={logoUtv} alt="logoUtv" /></Link></motion.div>
+          <motion.div whileTap={{scale: 1.1}} whileHover={{scale: 1.15}}><Link to={'/'}><img className="header-logo" src={logoUtv} alt="logoUtv" /></Link></motion.div>
         </Col>
 
 
@@ -55,7 +55,7 @@ const Header = ({trash}) => {
 
               <Col md={12} className='d-flex justify-content-end flex-md-row flex-column'>
                   <Col className='d-flex flex-row align-items-center justify-content-center'>
-                    <motion.div whileTap={{scale: 1.1}}>
+                    <motion.div whileTap={{scale: 1.1}} whileHover={{scale: 1.2}}>
                       <Link to={'/trash'} onClick={() => {Scroll()}} className='d-flex'>
                           <div className='header-trash-counter'>Количество: {counterTrash}</div>
                           <img className='header-trash-img' src={trashIcon} alt="trashicon" />
@@ -64,8 +64,10 @@ const Header = ({trash}) => {
                   </Col>
 
                   <Col className='d-flex flex-column justify-content-end'>
+                      <motion.div whileHover={{x: 10}}>
                       <div className="hedaer-contanct-title">Позвоните нам</div>
                       <div className="hedaer-contanct-phone">+7 (989) 951-90-63</div>
+                      </motion.div>
                   </Col>
               </Col>
 

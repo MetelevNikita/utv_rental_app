@@ -47,17 +47,18 @@ const Rental = ({trash, modalRentalSubmitAnimation}) => {
       value: 'camera'
     },
     {
+      item: 'Оптика',
+      value: 'lens'
+    },
+    {
       item: 'Свет',
       value: 'light'
     },
     {
       item: 'Операторское оборудование',
       value: 'operator_equipment'
-    },
-    {
-      item: 'Звук',
-      value: 'sound'
-    },
+    }
+
   ]
 
 
@@ -70,13 +71,6 @@ const Rental = ({trash, modalRentalSubmitAnimation}) => {
       return  text.slice(0, 100) + '...'
     }
   }
-
-
- 
-
-
-
-
 
   return(
 
@@ -97,7 +91,17 @@ const Rental = ({trash, modalRentalSubmitAnimation}) => {
 
             const short = shortText(item.description)
 
-            return <Col><PackCard id={item.id} img={item.imageOne} title={item.title} description={short} quantity={item.quantity} price={item.price}/></Col>
+            return <Col>
+                      <PackCard
+                        id={item.id}
+                        img={item.imageOne}
+                        title={item.title}
+                        description={short}
+                        quantity={item.quantity}
+                        price={item.price}
+                        addGetTrash={trash}
+                        modalRentalButton={modalRentalSubmitAnimation}/>
+                    </Col>
           })}
           
         </Row>
@@ -122,7 +126,22 @@ const Rental = ({trash, modalRentalSubmitAnimation}) => {
 
               {rentalMenu.map((item, index) => {
 
-                return <Col key={index} md={3} sm={6} xs={12} className='d-flex justify-content-around mb-3 '><MyButton className={(rental.value == item.value) ? 'myBtn myBtn-click' : 'myBtn'} value={item.value} onClick={(e) => {setRental({...item, value: e.target.value})}}>{item.item}</MyButton></Col>
+                return <Col
+                  key={index}
+                  md={3}
+                  sm={6}
+                  xs={12}
+                  className='d-flex justify-content-around mb-3 '>
+                    <MyButton
+                      onClick={(e) => {
+                        const currentMenu = rentalMenu.find((item) => item.value === e.target.value)
+                        setRental(currentMenu)
+                      }}
+                      className={(rental.value == item.value) ? 'myBtn myBtn-click' : 'myBtn'}
+                      value={item.value}>
+                        {item.item}
+                    </MyButton>
+                  </Col>
               })}
 
         </Row>

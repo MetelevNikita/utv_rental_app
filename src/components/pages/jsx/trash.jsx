@@ -14,6 +14,7 @@ import { deleteToTrash } from '../../../store/trashActiveSlice'
 
 import TrashCard from './trash-card'
 import MyButton from '../../../UI/myButton'
+import MyButtonMotion from '../../../UI/MyButtonMotion'
 
 
 const Trash = ({counter, modalRentalAnimation}) => {
@@ -98,9 +99,9 @@ const Trash = ({counter, modalRentalAnimation}) => {
           
           </Col>
 
-          <Col md={6} sm={12} xs={12} className='mb-5'><MyButton className={'myBtn'} onClick={() => {apiRental.start(
+          <Col md={6} sm={12} xs={12} className='mb-5'><MyButtonMotion onClick={() => {apiRental.start(
             {from: {opacity: 0, transform: 'scale(0)'}, to: {opacity: 1, transform: 'scale(1)'}
-          })}}>Оформить заказ</MyButton></Col>
+          })}} text={'Оформить заказ'}/></Col>
 
 
 
