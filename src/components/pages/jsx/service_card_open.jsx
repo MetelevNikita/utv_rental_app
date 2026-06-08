@@ -25,7 +25,8 @@ const ServiceCardOpen = () => {
   }, [])
 
   const dispatch = useDispatch()
-  const currentPortfolio = useSelector(state => state.portfolio.portfolio)[0]
+  const portfolio = useSelector(state => state.portfolio.portfolio)
+  const currentPortfolio = portfolio.find(card => card.id == id)
 
   // 
 
@@ -58,9 +59,7 @@ const ServiceCardOpen = () => {
     return <div>Loading</div>
   }
 
-
-  const currentCategory = serviceMenu.find(item => item.value == currentPortfolio.category)
-
+  const currentCategory = serviceMenu.find(item => item.label == currentPortfolio.category)
 
   return (
     <Container>
@@ -71,7 +70,7 @@ const ServiceCardOpen = () => {
           <div className='service_card_open_text_wrapper'>
 
             <div className='service_card_open_title'>{currentPortfolio.title}</div>
-            <div className='service_card_open_category'>Категория: {currentCategory.label}</div>
+            <div className='service_card_open_category'>Категория: {currentCategory?.label ?? ''}</div>
 
             <hr />
 

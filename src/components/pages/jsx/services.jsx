@@ -97,6 +97,8 @@ const serviceCardModalHandler = (id) => {
           {(portfolioSelector.length < 1) ? <></> : portfolioSelector.map((card, id) => {
             if(card.category === service.value) {
 
+              console.log(card)
+
               return <Col key={id} md={4} sm={12} xs={12} onClick={() => {}} className='mb-3 service-card service-card-animation d-flex justify-content-md-start justify-content-center'><ServiceCard id={card.id} img={card.image_one} title={card.title} description={card.description} date={card.date}></ServiceCard></Col>
             } else {
               <div>Нет подобной котегории</div>

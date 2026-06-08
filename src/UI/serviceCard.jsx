@@ -36,8 +36,12 @@ const ServiceCard = ({id, img, title, description}) => {
       </Row>
 
 
-      <Row className={'d-flex flex-column justify-content-between'}>
-        <Col md={12} sm={12} xs={12} className='mb-2'><Link to={`/service/${id}`}><MyButton className={'myBtn_blue'} onClick={() => {}}>Подробнее</MyButton></Link></Col>
+      <Row>
+        <Col md={12}>
+          <Link to={`/service/${id}`} >
+              <MyButton className={'myBtn_blue'} onClick={() => {}}>Подробнее</MyButton>
+          </Link>
+        </Col>
       </Row>
 
     </Container>

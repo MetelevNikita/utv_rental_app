@@ -124,6 +124,8 @@ const ModalRental = ({trash, modalRentalAnimation, modalSubmitAnimation}) => {
   const [order, setOrder] = useState({
     name: '',
     phone: '',
+    email: '',
+    telegramId: '',
     comment: '',
     dates: [modalDateStart, modalDateEnd],
     agreed: modalRentalChk,
@@ -134,7 +136,7 @@ const ModalRental = ({trash, modalRentalAnimation, modalSubmitAnimation}) => {
 
   const modalRentalMessage = async () => {
 
-    if(order.name === '' && order.phone === '' && modalDateStart === '' && modalDateEnd === '') {
+    if(order.name === '' && order.phone === '' && order.email === '' && modalDateStart === '' && modalDateEnd === '') {
       return alert('Заполните все поля')
     }
 
@@ -162,6 +164,7 @@ const ModalRental = ({trash, modalRentalAnimation, modalSubmitAnimation}) => {
     setOrder({
       name: '',
       phone: '',
+      email: '',
       telegramId: '',
       comment: '',
       dates: [modalDateStart, modalDateEnd],
@@ -220,6 +223,9 @@ const ModalRental = ({trash, modalRentalAnimation, modalSubmitAnimation}) => {
               <MyInput style={{marginBottom: 20 + 'px', width: 100 + '%'}} placeholder='Имя' value={order.name} onChange={(e) => {setOrder({...order, name: e.target.value})}}></MyInput></Col>
               <Col>
               <MyInput style={{marginBottom: 20 + 'px', width: 100 + '%'}} placeholder='Телефон' value={order.phone} onChange={(e) => {setOrder({...order, phone: e.target.value})}}></MyInput>
+              </Col>
+              <Col>
+              <MyInput style={{marginBottom: 20 + 'px', width: 100 + '%'}} placeholder='Почта' value={order.email} onChange={(e) => {setOrder({...order, email: e.target.value})}}></MyInput>
               </Col>
               <Col>
               <MyInput style={{marginBottom: 5 + 'px', width: 100 + '%'}} placeholder='Телеграм ID (00000000)' value={order.telegramId} onChange={(e) => {setOrder({...order, telegramId: e.target.value})}}></MyInput>

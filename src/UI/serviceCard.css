@@ -1,30 +1,48 @@
 .service-card-container {
-max-width: 377px;
+width: 100%;
 height: max-content;
+display: flex;
+flex-direction: column;
 }
 
 .service-card-img_wrapper {
-  width: 377px;
+  min-width: 377px;
   height: 316px;
+  max-width: 100%;
+
 }
 
 .service-card-img {
-  width: 377px;
+  width: 100%;
   height: 316px;
   object-fit: cover;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 
 
 }
 
 .service-card-title {
-  margin-top: 17px;
-  height: 55px;
+  margin-top: 20px;
+  width: 280px;
+  height: 50px;
+
+  /*  */
+
   color: #FFF;
-  font-size: 22px;
+  font-family: Montserrat;
+  font-size: 18px;
   font-style: normal;
-  font-weight: 400;
-  line-height: 130%;
-  letter-spacing: 0.66px;
+  font-weight: 700;
+  line-height: 130%; /* 32.5px */
+  letter-spacing: 0.75px;
+
+  /*  */
+
+  margin-bottom: 15px;
 }
 
 .service-card-line {
@@ -32,11 +50,17 @@ height: max-content;
 }
 
 .service-card-subtitle {
-  color: rgba(169, 169, 169, 0.60);
+  width: 280px;
+  height: 163px;
+
+  /*  */
+
+  color: #FFF;
+  font-family: Montserrat;
   font-size: 14px;
   font-style: normal;
-  font-weight: 400;
-  line-height: 130%;
+  font-weight: 300;
+  line-height: 127%; /* 20.32px */
 }
 
 .service-card-date {
@@ -48,4 +72,15 @@ height: max-content;
   margin-top: 30px;
 }
 
+/*  */
 
+
+/*  */
+
+.myBtn_blue {
+  width: 100% !important;
+}
+
+.myBtn {
+  width: 100% !important;
+}

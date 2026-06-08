@@ -136,12 +136,15 @@ const addQuantityMinus = () => {
 
       <Row className={'d-flex flex-column'}>
 
+        <Col md={12} sm={12} xs={12} className='mb-2'>
+          <Link to={`/rental/${id}`}>
+            <MyButton className={'myBtn_blue'}>Посмотреть</MyButton>
+          </Link>
+        </Col>
 
-      <Col md={12} sm={12} xs={12} className='mb-2'><Link to={`/rental/${id}`}><MyButton className={'myBtn_blue'}>Посмотреть</MyButton></Link></Col>
-      <Col md={12} sm={12} xs={12} className='mb-2'><MyButton className={'myBtn'} onClick={() => {trashHandler(title, currentProduct, counterQuntity)}}>Добавить в корзину</MyButton></Col>
-
-
-
+        <Col md={12} sm={12} xs={12} className='mb-2'>
+          <MyButton className={'myBtn'} onClick={() => {trashHandler(title, currentProduct, counterQuntity)}}>Добавить в корзину</MyButton>
+        </Col>
 
       </Row>
 
