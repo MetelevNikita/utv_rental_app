@@ -1,10 +1,33 @@
 @import './reset.css';
 
 
-.html, body {
-  background-image: url('./asset/BG\ final.png');
-  background-size: cover;
+
+html, body {
+  min-height: 100%;
   overflow-x: hidden;
-  cursor: default
+  cursor: default;
 }
 
+body {
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background-image: url('./asset/BG final.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+
+@media (max-width: 768px) {
+  body::before {
+    background-position: center top;
+  }
+}
