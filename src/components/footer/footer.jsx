@@ -65,7 +65,6 @@ const Footer = ({ modalSubmitAnimation })  => {
     }
 
 
-    console.log(message)
 
     const responce = await fetch('/api/v1/message', {
       method: 'POST',
@@ -107,14 +106,14 @@ const Footer = ({ modalSubmitAnimation })  => {
       <Col className='d-flex flex-column'>
 
         <Row>
-            <Col md={6} sm={6} xs={12}>
+            <Col md={6} sm={12} xs={12}>
                 <div className="input-box-left">
                   <input className='footer-input' type="text" placeholder='Имя' value={message.name} onChange={(e) => {setMessage({...message, name: e.target.value})}}/>
                   <input className='footer-input' type="text" placeholder='Телефон' value={message.phone} onChange={(e) => {setMessage({...message, phone: e.target.value})}}/>
                 </div>
             </Col>
 
-            <Col md={6} sm={6} xs={12}>
+            <Col md={6} sm={12} xs={12}>
 
                 <div className="input-box-right">
                     <input className='footer-input' type="text" placeholder='E-mail' value={message.email} onChange={(e) => {setMessage({...message, email: e.target.value})}}/>

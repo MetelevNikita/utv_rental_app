@@ -24,7 +24,7 @@
 .video-title {
   text-align: center;
   color: #FFF;
-  font-size: 30px;
+font-size: clamp(20px, 2vw, 52px);
   font-style: normal;
   font-weight: 700;
   text-transform: uppercase;

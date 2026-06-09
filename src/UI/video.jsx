@@ -40,7 +40,7 @@ const {api} = modalAnimation
 
 
 
-            <Col md={8} className="video-wrapper">
+            <Col md={8} className="d-flex video-wrapper">
 
                 <motion.div whileHover={{scale: 1.2}} transition={{duration: 2}} className='video-title'>Аренда <br /> видеооборудования</motion.div>
                 <div className="video-subtitle">прокат видеокамер, оптики, света, аксессуаров для съёмки</div>

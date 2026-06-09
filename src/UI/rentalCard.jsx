@@ -97,7 +97,7 @@ const addQuantityMinus = () => {
   return(
     <div className="rental-card-container" id={id}>
       <div className="rental-card-img-container">
-        <Link to={`/rental/${id}`}><motion.div whileHover={{scale: 1.05}}><img className="rental-card-img" style={{objectFit: 'cover', width: '377px', height: '316px'}} src={img} alt="rentalCardImg" /></motion.div></Link>
+        <Link to={`/rental/${id}`}><motion.div whileHover={{scale: 1.05}}><img className="rental-card-img" style={{objectFit: 'cover'}} src={img} alt="rentalCardImg" /></motion.div></Link>
       </div>
 
 

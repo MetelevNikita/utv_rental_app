@@ -85,13 +85,13 @@ const Rental = ({trash, modalRentalSubmitAnimation}) => {
 
 
 
-        <Row className='mt-4'>
+        <Row className='d-flex justify-content-around mt-4' md={12} sm={12} xs={12}>
 
           {(!rentalComplect || rentalComplect.length < 1 ) ? <></> : rentalComplect.map((item) => {
 
             const short = shortText(item.description)
 
-            return <Col>
+            return <Col md={3} className='d-flex justify-content-center align-items-center'>
                       <PackCard
                         id={item.id}
                         img={item.imageOne}
