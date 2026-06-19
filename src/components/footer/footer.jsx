@@ -94,14 +94,14 @@ const Footer = ({ modalSubmitAnimation })  => {
     <Container>
     <Row>
 
-        <Row>
-              <Col md={12} sm={12} xs={12} className='col-xl-8 col-md-12'>
+      <Row>
+            <Col md={12} sm={12} xs={12} className='col-xl-8 col-md-12'>
 
-                <div className="footer-title">Напишите нам</div>
-                <div className="footer-subtitle">Готовы создать уникальный проект? Давайте сделаем его вместе!</div>
+              <div className="footer-title">Напишите нам</div>
+              <div className="footer-subtitle">Готовы создать уникальный проект? Давайте сделаем его вместе!</div>
 
-              </Col>
-        </Row>
+            </Col>
+      </Row>
 
       <Col className='d-flex flex-column'>
 
@@ -161,9 +161,23 @@ const Footer = ({ modalSubmitAnimation })  => {
 
                 </Col>
 
+
+
         </Row>
 
       </Col>
+
+
+      <Row className='d-flex justify-content-center mt-4 mb-5'>
+
+        <Col md={6} className='d-flex justify-content-center'>
+          <a href='/api/v1/docs/сonfidentiality' target='_blank' className='contact-politic'>Политика обработки персональных данных</a>
+        </Col>
+
+        <Col md={6} className='d-flex justify-content-center'>
+          <a href='/api/v1/docs/cookie' target='_blank' className='contact-politic'>Согласие на обработку персональных данных и куки</a>
+        </Col>
+      </Row>
 
 
 

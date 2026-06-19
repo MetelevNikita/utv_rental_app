@@ -17,6 +17,7 @@ import OpenPage from './components/pages/jsx/openPage'
 import Header from './components/header/header'
 import Video from './UI/video'
 import AboutUs from './components/pages/jsx/aboutUs'
+import Production from './components/pages/jsx/production'
 import Services from './components/pages/jsx/services'
 import Rental from './components/pages/jsx/rental'
 import Team from './components/pages/jsx/team'
@@ -49,12 +50,7 @@ import { Provider } from 'react-redux'
 
 // animation
 
-import { animated, useSpring } from 'react-spring'
-
-
-
-
-
+import { animated, useSpring } from '@react-spring/web'
 
 
 
@@ -124,6 +120,7 @@ const App = () => {
                 <Route path='/' element={
                     <div style={{marginTop: '100px'}}>
                     <AboutUs></AboutUs>
+                    <Production></Production>
                     <Rental trash={{counterTrash, setCounterTrash}} modalRentalAnimation={{modalRentalOpen, apiRental}} modalRentalSubmitAnimation={{modalSubmitRentalOpen, apiSubmitRental}}></Rental>
                     <Services serviceCardModalOpen={{serviceCardModal, setServiceCardModal}} idCardModel={{idCard, setIdCard}}></Services>
                     <Team></Team>
