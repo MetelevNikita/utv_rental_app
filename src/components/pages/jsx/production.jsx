@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { motion } from "motion/react"
 
 // css
@@ -9,6 +9,9 @@ import '../css/production.css'
 
 import {Container, Row, Col} from 'react-bootstrap'
 
+// modals
+
+import ModalDone from './../../../modals/jsx/modal_done'
 
 // components
 
@@ -19,12 +22,14 @@ import ProductionCard from '../../../UI/ProductionCard'
 const Production = () => {
 
 
-
     const [form, setForm] = useState({
         politic: false
     })
-
-    console.log(form)
+    const [isModal, setIsModal] = useState({
+        status: false,
+        title: '',
+        subtitle: ''
+    })
 
 
     const typeProductionArr = [
@@ -231,19 +236,36 @@ const Production = () => {
         }
     ]
 
+  
 
     async function formHandler (titleForm) {
 
-        const { fio, subtitle, phone, email, message } = form
+        const { fio, subtitle, phone, email, message, politic } = form
 
         if (!fio || !phone || !email || !message) {
-            return alert('Заполните все поля')
+            setIsModal({
+                status: true,
+                title: 'Ошибка создания',
+                subtitle: 'Все поля должны быть заполнены'
+            })
+            return
+        }
+
+        if (!politic) {
+            setIsModal({
+                status: true,
+                title: 'Ошибка создания',
+                subtitle: 'Вы не согласились с политикой конфиденциальности'
+            })
+            return
         }
 
         const resData = {
             titleForm: titleForm,
             ...form
         }
+
+        console.log(resData)
 
         try {
 
@@ -260,7 +282,21 @@ const Production = () => {
             }
 
             const data = await response.json()
-            return data
+            console.log(data)
+
+            if (!data.success) {
+                alert('Ошибка создания заявки, попробуйте позже')
+                return
+            }
+
+
+            setIsModal({
+                status: true,
+                title: 'Сообщение отправлено',
+                subtitle: 'Вам придет оповещение о статусе вашей заявки'
+            })
+
+
             
         } catch (error) {
             console.error(error.message)
@@ -269,8 +305,28 @@ const Production = () => {
     }
 
 
+    function closeModal () {
+        setIsModal(false)
+        window.location.reload()
+    }
+
+
   return (
     <Container>
+
+        <>
+
+            <Row>
+                <Col>
+
+                    {
+                        (isModal.status) && <ModalDone onClick={closeModal} title={isModal.title} subtitle={isModal.subtitle}/>
+                    }
+
+                </Col>
+            </Row>
+        
+        </>
           
         <Row className='mb-3'>
           <Col>
@@ -280,12 +336,12 @@ const Production = () => {
         </Row>
 
 
-        <Row className='mb-5'>
+        <Row className=' mb-5 d-flex flex-md-row flex-column'>
                 {
                     typeProductionArr && typeProductionArr.map((item, index) => {
                         return (
 
-                                <Col key={index} className='d-flex flex-md-row flex-column'>
+                                <Col key={index} className='d-flex flex-md-row flex-column mt-2 mb-2'>
                                     <motion.div
                                         className='production-list'
                                         initial={{opacity: 0}}
@@ -311,7 +367,7 @@ const Production = () => {
                 formProductionArr && formProductionArr.map((item, index) => {
 
                     return (
-                        <Col md={4} key={index}>
+                        <Col md={4} key={index} className='mt-3 mb-3'>
                             <motion.div
                                 initial={{opacity: 0, y: 0}}
                                 whileInView={{opacity: 1, y: 10}}

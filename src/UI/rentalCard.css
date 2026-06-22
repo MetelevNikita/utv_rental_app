@@ -22,13 +22,17 @@
 .rental-card-title {
   margin-top: 10px;
   width: 280px;
-  height: 50px;
+  height: 80px;
+
+  /*  */
+
+
 
   /*  */
 
   color: #FFF;
   font-family: Montserrat;
-  font-size: 18px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: 130%; /* 32.5px */

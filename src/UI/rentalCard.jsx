@@ -26,6 +26,7 @@ const {counterTrash, setCounterTrash} = addGetTrash
 const {modalSubmitRentalOpen, apiSubmitRental} = modalRentalButton
 
 let [counterQuntity, setCounterQuantity] = useState(1)
+let [titleSize, setTitleSize] = useState(0)
 
 const dispatch = useDispatch()
 const product = useSelector(state => state.product.product)
@@ -90,6 +91,9 @@ const addQuantityMinus = () => {
 }
 
 
+const resposeTitle = (title.length > 70) ? 14 : 18
+
+
 //
 
 
@@ -101,7 +105,7 @@ const addQuantityMinus = () => {
       </div>
 
 
-      <div className="rental-card-title">{title}</div>
+      <div className="rental-card-title" style={{fontSize: resposeTitle}}>{title}</div>
 
       <hr className='rental-card-line-top'/>
 

@@ -156,7 +156,7 @@ const Footer = ({ modalSubmitAnimation })  => {
 
                   <div className="contact-box">
                       <img className='contact-img' src={icon_location} alt="icon-location" />
-                      <div className="contact-title">г. Уфа, проспект Октября, д. 4/2 Е</div>
+                      <div className="contact-title">г. Уфа, проспект Октября, д.4/2Е</div>
                   </div>
 
                 </Col>

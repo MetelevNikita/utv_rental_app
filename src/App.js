@@ -120,10 +120,10 @@ const App = () => {
                 <Route path='/' element={
                     <div style={{marginTop: '100px'}}>
                     <AboutUs></AboutUs>
-                    <Production></Production>
+                    <Production modalRentalSubmitAnimation={{modalSubmitRentalOpen, apiSubmitRental}}></Production>
                     <Rental trash={{counterTrash, setCounterTrash}} modalRentalAnimation={{modalRentalOpen, apiRental}} modalRentalSubmitAnimation={{modalSubmitRentalOpen, apiSubmitRental}}></Rental>
                     <Services serviceCardModalOpen={{serviceCardModal, setServiceCardModal}} idCardModel={{idCard, setIdCard}}></Services>
-                    <Team></Team>
+                    {/* <Team></Team> */}
 
                     </div>
                   }>
