@@ -95,13 +95,13 @@ const App = () => {
 
   //
 
-  if (isLoading) {
-    return (
-      <Container>
-        <OpenPage></OpenPage>
-      </Container>
-    )
-  }
+  // if (isLoading) {
+  //   return (
+  //     <Container>
+  //       <OpenPage></OpenPage>
+  //     </Container>
+  //   )
+  // }
 
 
 
