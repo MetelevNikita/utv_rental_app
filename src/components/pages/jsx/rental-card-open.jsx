@@ -11,7 +11,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 // redux
 
 import { useSelector, useDispatch } from 'react-redux'
-import { getComplectAsync } from '../../../store/complectSlice'
+import { getProductAsync } from '../../../store/productSlice'
 import { addToTrash } from '../../../store/trashActiveSlice'
 
 
@@ -22,16 +22,19 @@ import MyButton from '../../../UI/myButton'
 
 
 
-const PackCardOpen = ({ trash, modalRentalSubmitAnimation, modalAnimation }) => {
+const RentalCardOpen = ({ trash, modalRentalSubmitAnimation, modalAnimation }) => {
 
   const { id } = useParams()
   const [showImage, setShowImage] = useState(null)
   const [currentCard, setCurrentCard] = useState(null)
 
+  console.log(id)
+
 
 
   const dispatch = useDispatch()
   const productState = useSelector(state => state.product.product)
+
 
   const {modalOpen, api} = modalAnimation
   const {modalSubmitRentalOpen, apiSubmitRental} = modalRentalSubmitAnimation
@@ -39,7 +42,7 @@ const PackCardOpen = ({ trash, modalRentalSubmitAnimation, modalAnimation }) => 
 
 
   useEffect(() => {
-    dispatch(getComplectAsync())
+    dispatch(getProductAsync())
   }, [])
 
 
@@ -55,6 +58,8 @@ const PackCardOpen = ({ trash, modalRentalSubmitAnimation, modalAnimation }) => 
   if (!currentCard) {
     return <>LOADING</>
   }
+
+  console.log('RENTAL!!!!!')
 
 
   const addToTrashCard = () => {
@@ -177,4 +182,4 @@ const PackCardOpen = ({ trash, modalRentalSubmitAnimation, modalAnimation }) => 
   )
 }
 
-export default PackCardOpen
+export default RentalCardOpen

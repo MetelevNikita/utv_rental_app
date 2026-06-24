@@ -121,7 +121,6 @@ const Rental = ({trash, modalRentalSubmitAnimation}) => {
         </Row>
 
 
-
         <Row className='mt-4' md={12} xs={12} sm={12}>
 
               {rentalMenu.map((item, index) => {
