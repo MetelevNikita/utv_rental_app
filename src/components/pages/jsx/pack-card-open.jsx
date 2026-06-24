@@ -56,7 +56,7 @@ const PackCardOpen = ({ trash, modalRentalSubmitAnimation, modalAnimation }) => 
   const addToTrashCard = () => {
 
 
-    dispatch(addToTrash({title: complectState[0].title, card: complectState[0], counterQuantity: 1}))
+    dispatch(addToTrash({title: currentCard.title, card: currentCard, counterQuantity: 1}))
     setCounterTrash(counterTrash + 1)
 
 

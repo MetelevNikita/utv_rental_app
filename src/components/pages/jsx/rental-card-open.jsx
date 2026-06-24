@@ -35,6 +35,8 @@ const RentalCardOpen = ({ trash, modalRentalSubmitAnimation, modalAnimation }) =
   const dispatch = useDispatch()
   const productState = useSelector(state => state.product.product)
 
+  console.log(productState)
+
 
   const {modalOpen, api} = modalAnimation
   const {modalSubmitRentalOpen, apiSubmitRental} = modalRentalSubmitAnimation
@@ -53,6 +55,8 @@ const RentalCardOpen = ({ trash, modalRentalSubmitAnimation, modalAnimation }) =
   }, [])
 
 
+  console.log(currentCard)
+
 
 
   if (!currentCard) {
@@ -64,8 +68,7 @@ const RentalCardOpen = ({ trash, modalRentalSubmitAnimation, modalAnimation }) =
 
   const addToTrashCard = () => {
 
-
-    dispatch(addToTrash({title: productState[0].title, card: productState[0], counterQuantity: counterTrash}))
+    dispatch(addToTrash({title: currentCard.title, card: currentCard, counterQuantity: 1}))
     setCounterTrash(counterTrash + 1)
 
 
