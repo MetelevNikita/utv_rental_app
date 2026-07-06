@@ -4,6 +4,10 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+//  yandex metrik
+
+import MetrikaPreview from './MetrikaPreview';
+
 
 // components
 
@@ -27,6 +31,8 @@ root.render(
   <React.StrictMode>
 
       <BrowserRouter>
+
+        <MetrikaPreview />
 
             <App>
                 {/* <Video></Video> */}
